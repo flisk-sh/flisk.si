@@ -48,7 +48,7 @@ sections:
         url: https://diagram.flisk.si
         text: Turn any README into an animated SVG diagram.
       - name: Helpdock
-        url: https://helpdock.flisk.sh
+        url: https://helpdock.flisk.si
         text: Your docs as a help center that answers with sources.
         bar: true
       - name: Flisk Tools
@@ -94,7 +94,7 @@ sections:
         url: https://readme.flisk.si/mcp
         text: Scores a README and lists a fix for each miss.
       - name: Flisk docs MCP
-        url: https://helpdock.flisk.sh/mcp
+        url: https://helpdock.flisk.si/mcp
         text: Searches the Flisk docs and answers with sources.
       - name: Flisk plugin for Claude
         url: https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude
