@@ -11,7 +11,7 @@ sections:
         text: The local runtime your AI agent can start, check and fix.
         bar: true
       - name: FliskOS
-        url: https://github.com/flisk-sh/fliskos
+        url: https://os.flisk.si
         text: Your projects, coding agents and Flisk apps in one local window.
         bar: true
       - name: Run My Agents
