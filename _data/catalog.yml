@@ -1,5 +1,6 @@
 # Everything the Flisk org builds. One entry per link: name, url, text (one plain sentence).
 # bar: true puts the entry in the shared top bar (assets/bar.js) that every Flisk site can load.
+# icon: a file in assets/icons (the same files live in flisk-sh/flisk-emoji, apps/ for products and kinds/ for the generic ones).
 # List a product's own site only if it answers; otherwise link its repo.
 sections:
   - id: run
@@ -8,24 +9,30 @@ sections:
     items:
       - name: Flisk CLI
         url: https://flisk.sh
+        icon: flisk-cli
         text: The local runtime your AI agent can start, check and fix.
         bar: true
       - name: FliskOS
         url: https://os.flisk.si
+        icon: fliskos
         text: Your projects, coding agents and Flisk apps in one local window.
         bar: true
       - name: Run My Agents
         url: https://run-my-agents.flisk.si/
+        icon: run-my-agents
         text: Claude Code, simplified. No server, no keys.
         bar: true
       - name: Flisk Import
         url: https://github.com/flisk-sh/flisk-import
+        icon: flisk-import
         text: Scan a repo and import its Procfile, Compose and Dockerfile services.
       - name: Flisk Export
         url: https://github.com/flisk-sh/flisk-export
+        icon: flisk-export
         text: Write render.yaml and wrangler.toml from your service files. It never deploys.
       - name: Live Preview
         url: https://github.com/flisk-sh/live-preview
+        icon: live-preview
         text: A public HTTPS link for a Docker stack running on a GitHub Actions runner.
 
   - id: publish
@@ -34,25 +41,31 @@ sections:
     items:
       - name: Pages
         url: https://pages.flisk.si
+        icon: put-my-page-online
         text: Your agent builds a page. One command makes it a link.
         bar: true
       - name: Citable
         url: https://citable.flisk.si
+        icon: citable
         text: Find out if AI answers can cite your site.
         bar: true
       - name: README Score
         url: https://readme.flisk.si
+        icon: readme-checker
         text: Your README scored out of 100, with a fix for every miss.
         bar: true
       - name: README Diagram
         url: https://diagram.flisk.si
+        icon: readme-diagram
         text: Turn any README into an animated SVG diagram.
       - name: Helpdock
         url: https://helpdock.flisk.si
+        icon: helpdock
         text: Your docs as a help center that answers with sources.
         bar: true
       - name: Flisk Tools
         url: https://tools.flisk.si/
+        icon: flisk-tools
         text: Run small web and GitHub tools on your own GitHub, free.
         bar: true
 
@@ -62,19 +75,24 @@ sections:
     items:
       - name: Build Me an App
         url: https://mcp.flisk.sh/
+        icon: build-me-an-app
         text: Say what you want. Get the parts and the commands to run it.
         bar: true
       - name: Flisk Inference
         url: https://github.com/flisk-sh/flisk-inference
+        icon: flisk-inference
         text: An OpenAI-compatible endpoint for a small model that writes Flisk config files.
       - name: Flisk Model
         url: https://github.com/flisk-sh/flisk-model
+        icon: flisk-model
         text: Can a small model write correct Flisk config? A 62-question test with results.
       - name: Awesome Model Training
         url: https://github.com/flisk-sh/awesome-model-training
+        icon: awesome
         text: Free, open tools for training small specialist models.
       - name: Flisk Agent Stack
         url: https://github.com/flisk-sh/flisk-agent-stack
+        icon: stack
         text: An agent, an MCP tool server, Postgres and NATS as one starter.
 
   - id: agents
@@ -83,39 +101,51 @@ sections:
     items:
       - name: Build Me an App MCP
         url: https://mcp.flisk.sh/mcp
+        icon: build-me-an-app
         text: Plans an app from a plain description. Remote, read-only, no key.
       - name: Put My Page Online MCP
         url: https://pages.flisk.si/mcp
+        icon: put-my-page-online
         text: Checks a page and gives the steps to publish it.
       - name: Get My Site Found by AI MCP
         url: https://citable.flisk.si/mcp
+        icon: citable
         text: Checks whether AI search can find, read and cite a site.
       - name: Improve My README MCP
         url: https://readme.flisk.si/mcp
+        icon: readme-checker
         text: Scores a README and lists a fix for each miss.
       - name: Flisk docs MCP
         url: https://helpdock.flisk.si/mcp
+        icon: helpdock
         text: Searches the Flisk docs and answers with sources.
       - name: Flisk plugin for Claude
         url: https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude
+        icon: flisk-cli
         text: The Flisk CLI as MCP tools and skills inside Claude Code.
       - name: Put My Page Online plugin
         url: https://github.com/flisk-sh/pages/tree/main/plugins/put-my-page-online
+        icon: put-my-page-online
         text: Publish a page from Claude with one skill.
       - name: AI Search Checker plugin
         url: https://github.com/flisk-sh/citable/tree/main/plugins/ai-search-checker
+        icon: citable
         text: Check a site for AI search from Claude.
       - name: README Checker plugin
         url: https://github.com/flisk-sh/readme-score/tree/main/plugins/readme-checker
+        icon: readme-checker
         text: Improve a README from Claude.
       - name: Shunt plugin
         url: https://github.com/flisk-sh/flisk-marketplaces/tree/main/plugins/shunt
+        icon: plugin
         text: Saves tokens by sending large file reads to a local model.
       - name: Flisk Skills
         url: https://github.com/flisk-sh/flisk-skills
+        icon: skills
         text: Agent skills that teach your agent the Flisk service file.
       - name: Flisk Marketplaces
         url: https://github.com/flisk-sh/flisk-marketplaces
+        icon: plugin
         text: Where every Flisk app is listed, and how to install each server.
 
   - id: learn
@@ -124,30 +154,38 @@ sections:
     items:
       - name: DevEx Roadmap
         url: https://roadmap.flisk.si
+        icon: devex-roadmap
         text: A community-edited map of local developer tools.
         bar: true
       - name: Command Comparer
         url: https://cmd.flisk.si
+        icon: command-comparer
         text: Flisk commands next to Terraform, Compose, Tilt and more.
         bar: true
       - name: Personal Demos
         url: https://demo.flisk.si
+        icon: personal-demos
         text: A demo stack generated just for you.
         bar: true
       - name: Flisk Labs
         url: https://github.com/flisk-sh/flisk-labs
+        icon: lab
         text: Lessons for the Flisk CLI. Each one starts a local stack.
       - name: Demo animation
         url: https://flisk-sh.github.io/flisk-demo-animation/
+        icon: personal-demos
         text: A recorded walkthrough from install to a healthy service.
       - name: Comparer
         url: https://flisk-sh.github.io/comparer/
+        icon: command-comparer
         text: A template for a searchable side-by-side comparison of tool commands.
       - name: Awesome Flisk
         url: https://github.com/flisk-sh/awesome-flisk-framework
+        icon: awesome
         text: Curated links for Flisk CLI examples and docs.
       - name: Rebuild cases
         url: https://github.com/flisk-sh/awesome-rea-flisk-cases
+        icon: awesome
         text: Apps reverse-engineered and rebuilt with the Flisk CLI.
 
   - id: templates
@@ -156,39 +194,51 @@ sections:
     items:
       - name: Launch template
         url: https://github.com/flisk-sh/flisk-template-launch
+        icon: template
         text: One free Bun and Hono service with SEO and icons, no database.
       - name: Portal template
         url: https://github.com/flisk-sh/flisk-template-portal
+        icon: template
         text: GitHub sign-in, API keys, usage and a metered proxy in one service.
       - name: Flisk Stack
         url: https://github.com/flisk-sh/flisk-stack
+        icon: stack
         text: A full-stack skeleton with actions, models, jobs, views and migrations.
       - name: Next.js template
         url: https://github.com/flisk-sh/flisk-template-next-app
+        icon: template
         text: A create-next-app project that runs under flisk up.
       - name: Vue template
         url: https://github.com/flisk-sh/flisk-template-vue
+        icon: template
         text: A create-vue app that runs under flisk up.
       - name: React and Hono template
         url: https://github.com/flisk-sh/flisk-template-bati
+        icon: template
         text: A create-bati app that runs under flisk up.
       - name: Angular template
         url: https://github.com/flisk-sh/flisk-template-analog
+        icon: template
         text: A create-analog app that runs under flisk up.
       - name: AdonisJS template
         url: https://github.com/flisk-sh/flisk-template-adonisjs
+        icon: template
         text: A create-adonisjs app that runs under flisk up.
       - name: CLI starter
         url: https://github.com/flisk-sh/flisk-cli-starter
+        icon: template
         text: A starter stack you can open in any cloud dev environment.
       - name: Create Flisk
         url: https://flisk-sh.github.io/create-flisk/
+        icon: template
         text: A landing page to start a Flisk project, with the quickstart commands.
       - name: Create Microservices
         url: https://github.com/flisk-sh/create-microservices
+        icon: template
         text: An interactive scaffolder for a Flisk microservice project.
       - name: Service definitions
         url: https://github.com/flisk-sh/flisk-service-definitions
+        icon: template
         text: A community registry of service files, one folder per app.
 
   - id: examples
@@ -197,36 +247,47 @@ sections:
     items:
       - name: Flisk Example
         url: https://github.com/flisk-sh/flisk-example
+        icon: example
         text: The smallest example. Two stacks, four services.
       - name: Restaurant
         url: https://github.com/flisk-sh/flisk-restaurant-example
+        icon: example
         text: Reservations, kitchen, menu and floor.
       - name: SaaS starter
         url: https://github.com/flisk-sh/flisk-saas-starter
+        icon: example
         text: A local SaaS dashboard and a checkout button.
       - name: Ecommerce
         url: https://github.com/flisk-sh/flisk-ecommerce-example
+        icon: example
         text: A Vue 3 storefront and a Hono catalog API.
       - name: Auth, queue and email
         url: https://github.com/flisk-sh/flisk-auth-queue-email-example
+        icon: example
         text: Local OIDC, NATS JetStream and Mailpit.
       - name: User management
         url: https://github.com/flisk-sh/flisk-user-management
+        icon: example
         text: Identity admin, portal and compliance stacks.
       - name: Person CRUD
         url: https://github.com/flisk-sh/flisk-person-crud-example
+        icon: example
         text: React, Express, MongoDB, Redis and RabbitMQ.
       - name: Thor storefront
         url: https://github.com/flisk-sh/flisk-thor-storefront
+        icon: example
         text: A storefront example for Thor Commerce.
       - name: Store with a Hono BFF
         url: https://github.com/flisk-sh/vercel-store
+        icon: example
         text: A storefront with a Hono backend for the frontend, and Vue.
       - name: 100-service fixture
         url: https://github.com/flisk-sh/flisk-erp-system
+        icon: stack
         text: 100 generated health services for testing scale. Not an ERP product.
       - name: Flisk in Docker Compose
         url: https://github.com/flisk-sh/flisk-docker-compose-example
+        icon: example
         text: Run the Flisk CLI inside Docker Compose, so the host needs no install.
 
   - id: install
@@ -235,28 +296,37 @@ sections:
     items:
       - name: npm package
         url: https://www.npmjs.com/package/@flisk-sh/flisk
+        icon: package
         text: The Flisk CLI on npm.
       - name: Homebrew tap
         url: https://github.com/flisk-sh/homebrew-tap
+        icon: package
         text: Install the CLI with Homebrew on macOS and Linux.
       - name: Scoop bucket
         url: https://github.com/flisk-sh/scoop-bucket
+        icon: package
         text: Install the CLI with Scoop on Windows.
       - name: Binaries
         url: https://github.com/flisk-sh/releases
+        icon: download
         text: Prebuilt CLI binaries for Linux and macOS, with checksums.
       - name: Flisk emoji
         url: https://github.com/flisk-sh/flisk-emoji
+        icon: emoji
         text: The Flisk bolt as a custom emoji, in SVG and PNG.
       - name: md2html
         url: https://github.com/flisk-sh/md2html
+        icon: doc
         text: GitHub-flavored Markdown to HTML that is safe to put in a page.
       - name: Starlark checks
         url: https://github.com/flisk-sh/codeql-starlark
+        icon: checks
         text: Unofficial Starlark checks that report to GitHub code scanning.
       - name: Goose checks
         url: https://github.com/flisk-sh/codeql-goose
+        icon: checks
         text: Unofficial Goose checks that report to GitHub code scanning.
       - name: Lobster checks
         url: https://github.com/flisk-sh/codeql-lobster
+        icon: checks
         text: Unofficial Lobster checks that report to GitHub code scanning.
