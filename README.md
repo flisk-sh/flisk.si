@@ -16,6 +16,18 @@ Any Flisk site can show the same slim strip of product links at the top of its p
 
 It sits in the page flow, keeps its styles to itself, and marks the site it is on.
 
+## The address: flisk.si
+
+GitHub Pages serves this repo at `flisk.si` (the `CNAME` file). The domain's DNS lives in Cloudflare, zone `flisk.si`:
+
+| Type | Name | Content | Proxy |
+|---|---|---|---|
+| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (four records) | DNS only until the certificate is issued |
+| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` (optional) | same |
+| CNAME | `www` | `flisk-sh.github.io` | DNS only |
+
+Delete the old `A` records for `@` (`216.24.57.16` and `216.24.57.18`, Render) first: while they exist the apex shows Cloudflare error 1000. Then turn on **Enforce HTTPS** in the repo's Pages settings.
+
 ## Run it locally
 
 ```bash
