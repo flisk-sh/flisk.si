@@ -131,7 +131,7 @@ sections:
         text: Flisk commands next to Terraform, Compose, Tilt and more.
         bar: true
       - name: Personal Demos
-        url: https://demo.flisk.sh
+        url: https://demo.flisk.si
         text: A demo stack generated just for you.
         bar: true
       - name: Flisk Labs
