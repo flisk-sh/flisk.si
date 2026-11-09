@@ -68,6 +68,7 @@
           {%- assign host = item.url | remove: "https://" | remove: "www." | split: "/" | first %}
           <li data-row data-text="{{ item.name | downcase | escape }} {{ item.text | downcase | escape }} {{ host }} {{ section.title | downcase }}">
             <a href="{{ item.url }}">
+              <img class="link-icon" src="assets/icons/{{ item.icon }}.svg" width="40" height="40" alt="" loading="lazy" decoding="async" />
               <span class="link-name">{{ item.name }}</span>
               <span class="link-text">{{ item.text }}</span>
               <span class="link-host">{% if host == "github.com" %}github{% else %}{{ host }}{% endif %} <span aria-hidden="true">↗</span></span>

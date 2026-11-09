@@ -128,7 +128,9 @@ h1 {
 
 .links a {
   display: grid;
-  gap: 0.15rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: 0.9rem;
+  row-gap: 0.15rem;
   height: 100%;
   padding: 1rem 0;
   border-bottom: 1px solid var(--hair);
@@ -136,6 +138,8 @@ h1 {
   transition: transform 180ms ease;
 }
 
+.link-icon { grid-row: 1 / span 3; width: 2.5rem; height: 2.5rem; border-radius: 0.6rem; margin-top: 0.1rem; }
+.link-name, .link-text, .link-host { grid-column: 2; }
 .link-name { color: #fff; font-size: 1.0625rem; font-weight: 700; }
 .link-text { color: var(--muted); font-size: 0.9375rem; line-height: 1.45; }
 .link-host { margin-top: 0.3rem; color: var(--faint); font: 500 0.75rem var(--mono); }
