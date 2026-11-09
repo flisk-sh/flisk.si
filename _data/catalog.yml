@@ -127,7 +127,7 @@ sections:
         text: A community-edited map of local developer tools.
         bar: true
       - name: Command Comparer
-        url: https://cmd.flisk.sh
+        url: https://cmd.flisk.si
         text: Flisk commands next to Terraform, Compose, Tilt and more.
         bar: true
       - name: Personal Demos
