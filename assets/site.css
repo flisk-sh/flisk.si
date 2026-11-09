@@ -1,0 +1,178 @@
+/* flisk.si: one page, the flisk.sh look (dark, one green accent, Satoshi and JetBrains Mono, hairline frame). */
+:root {
+  --void: #0a0a0e;
+  --raised: #121218;
+  --text: #ececf1;
+  --muted: rgba(236, 236, 241, 0.62);
+  --faint: rgba(236, 236, 241, 0.45);
+  --hair: rgba(255, 255, 255, 0.08);
+  --green: #22c55e;
+  --mint: #6ee7a0;
+  --ice: #4dd0ff;
+  --display: 'Satoshi', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--display);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ice); outline-offset: 2px; }
+
+.skip { position: absolute; left: -999rem; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 20; padding: 0.5rem 1rem; background: var(--green); color: var(--void); }
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem max(1rem, calc(50% - 40rem));
+  border-bottom: 1px solid var(--hair);
+  background: rgba(10, 10, 14, 0.82);
+  backdrop-filter: blur(20px);
+}
+
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 0.4rem; background: var(--green); color: var(--void); font: 700 0.8rem var(--mono); }
+.brand-word { font: 600 1.15rem var(--mono); letter-spacing: -0.02em; }
+
+.top-links { display: flex; gap: clamp(0.9rem, 2vw, 1.75rem); font: 500 0.8rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.top-links a { color: var(--muted); text-decoration: none; }
+.top-links a:hover { color: #fff; }
+
+.frame { width: min(82.5rem, 100%); margin: 0 auto; border-inline: 1px solid var(--hair); }
+
+.hero {
+  padding: clamp(3.5rem, 8vw, 7rem) clamp(1rem, 3vw, 2.5rem) clamp(2.5rem, 5vw, 4rem);
+  background: radial-gradient(ellipse 60% 70% at 15% 0%, rgba(34, 197, 94, 0.13), transparent 70%);
+}
+
+h1 {
+  max-width: 16ch;
+  margin: 0 0 1.25rem;
+  font: 600 clamp(2.75rem, 6.5vw, 5.5rem) / 1.02 var(--mono);
+  letter-spacing: -0.045em;
+  color: #fff;
+}
+
+.accent { color: var(--mint); }
+
+.hero-sub { max-width: 40rem; margin: 0 0 2.25rem; color: var(--muted); font-size: clamp(1.05rem, 1.5vw, 1.3rem); }
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(40rem, 100%);
+  padding: 0.35rem 0.9rem 0.35rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: var(--raised);
+}
+
+.filter:focus-within { border-color: var(--green); box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.14); }
+.filter-label { flex: none; color: var(--faint); font: 500 0.8rem var(--mono); }
+.filter input { flex: 1; min-width: 0; padding: 0.7rem 0; border: 0; background: none; color: #fff; font: 500 1rem var(--display); outline: none; }
+.filter input::placeholder { color: var(--faint); }
+.filter kbd { flex: none; padding: 0.1rem 0.45rem; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 0.3rem; color: var(--faint); font: 500 0.75rem var(--mono); }
+
+.jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.jump a { padding: 0.35rem 0.8rem; border: 1px solid var(--hair); border-radius: 999px; color: var(--muted); font-size: 0.875rem; text-decoration: none; }
+.jump a:hover { border-color: rgba(255, 255, 255, 0.3); color: #fff; }
+.jump a span { margin-left: 0.3rem; color: var(--faint); font: 500 0.75rem var(--mono); }
+
+.group {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--hair);
+}
+
+/* A small cross where the section rule meets each side rail */
+.group::before,
+.group::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  width: 11px;
+  height: 11px;
+  background:
+    linear-gradient(rgba(236, 236, 241, 0.45), rgba(236, 236, 241, 0.45)) center / 11px 1px no-repeat,
+    linear-gradient(rgba(236, 236, 241, 0.45), rgba(236, 236, 241, 0.45)) center / 1px 11px no-repeat;
+}
+.group::before { left: -6px; }
+.group::after { right: -6px; }
+
+.group-head { position: sticky; top: 5.5rem; align-self: start; }
+.group-head h2 { margin: 0 0 0.6rem; font-size: clamp(1.6rem, 2.6vw, 2.35rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; color: #fff; }
+.group-head p { margin: 0; color: var(--muted); }
+
+.links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 3vw, 3rem); margin: 0; padding: 0; list-style: none; }
+
+.links a {
+  display: grid;
+  gap: 0.15rem;
+  height: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--hair);
+  text-decoration: none;
+  transition: transform 180ms ease;
+}
+
+.link-name { color: #fff; font-size: 1.0625rem; font-weight: 700; }
+.link-text { color: var(--muted); font-size: 0.9375rem; line-height: 1.45; }
+.link-host { margin-top: 0.3rem; color: var(--faint); font: 500 0.75rem var(--mono); }
+
+.links a:hover { transform: translateX(4px); }
+.links a:hover .link-name,
+.links a:hover .link-host { color: var(--mint); }
+
+.empty { margin: 0; padding: 4rem clamp(1rem, 3vw, 2.5rem); border-top: 1px solid var(--hair); color: var(--muted); }
+
+.foot {
+  width: min(82.5rem, 100%);
+  margin: 0 auto;
+  padding: 2.5rem clamp(1rem, 3vw, 2.5rem) 4rem;
+  border: 1px solid var(--hair);
+  border-bottom: 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.foot p { margin: 0 0 0.5rem; }
+.foot a { margin-right: 1.25rem; color: var(--mint); }
+
+[hidden] { display: none !important; }
+
+@media (max-width: 900px) {
+  .group { grid-template-columns: minmax(0, 1fr); }
+  .group-head { position: static; }
+}
+
+@media (max-width: 640px) {
+  .top-links a:nth-child(-n + 2) { display: none; }
+  .links { grid-template-columns: minmax(0, 1fr); }
+  .filter-label, .filter kbd { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .links a { transition: none; }
+}

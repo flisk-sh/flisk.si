@@ -1,0 +1,91 @@
+---
+---
+{%- assign sections = site.data.catalog.sections -%}
+{%- assign total = 0 -%}
+{%- for section in sections %}{% assign total = total | plus: section.items.size %}{% endfor -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flisk: everything we build</title>
+  <meta name="description" content="{{ site.description }}" />
+  <link rel="canonical" href="{{ site.url }}/" />
+  <meta property="og:title" content="Flisk: everything we build" />
+  <meta property="og:description" content="{{ site.description }}" />
+  <meta property="og:url" content="{{ site.url }}/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0a0e" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#catalog">Skip to the list</a>
+
+  <header class="top">
+    <a class="brand" href="./" aria-label="Flisk home">
+      <span class="brand-mark" aria-hidden="true">&gt;_</span>
+      <span class="brand-word">flisk</span>
+    </a>
+    <nav class="top-links" aria-label="Main">
+      <a href="https://flisk.sh">Flisk CLI</a>
+      <a href="https://flisk.sh/docs/">Docs</a>
+      <a href="https://discord.gg/qMu5Xn8Kaq">Discord</a>
+      <a href="https://github.com/flisk-sh">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="frame">
+    <section class="hero">
+      <h1>Everything <span class="accent">Flisk</span> builds.</h1>
+      <p class="hero-sub">Every product, plugin, template and example from the Flisk team, on one page.</p>
+      <label class="filter">
+        <span class="filter-label">Filter {{ total }} links</span>
+        <input type="search" id="filter" placeholder="Try pages, mcp, template or vue" autocomplete="off" spellcheck="false" />
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <nav class="jump" aria-label="Sections">
+        {%- for section in sections %}
+        <a href="#{{ section.id }}" data-jump="{{ section.id }}">{{ section.title }} <span>{{ section.items.size }}</span></a>
+        {%- endfor %}
+      </nav>
+    </section>
+
+    <div id="catalog">
+      {%- for section in sections %}
+      <section class="group" id="{{ section.id }}" data-group>
+        <div class="group-head">
+          <h2>{{ section.title }}</h2>
+          <p>{{ section.text }}</p>
+        </div>
+        <ul class="links">
+          {%- for item in section.items %}
+          {%- assign host = item.url | remove: "https://" | remove: "www." | split: "/" | first %}
+          <li data-row data-text="{{ item.name | downcase | escape }} {{ item.text | downcase | escape }} {{ host }} {{ section.title | downcase }}">
+            <a href="{{ item.url }}">
+              <span class="link-name">{{ item.name }}</span>
+              <span class="link-text">{{ item.text }}</span>
+              <span class="link-host">{% if host == "github.com" %}github{% else %}{{ host }}{% endif %} <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endfor %}
+      <p class="empty" id="empty" hidden>Nothing matches. Clear the filter to see all {{ total }} links.</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>Flisk is open source. Most of what is listed here is MIT licensed and runs on your own machine.</p>
+    <p><a href="mailto:hello@flisk.sh">hello@flisk.sh</a> <a href="https://github.com/flisk-sh/flisk.si">Edit this page on GitHub</a></p>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

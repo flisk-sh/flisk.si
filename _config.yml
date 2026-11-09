@@ -1,0 +1,10 @@
+title: Flisk
+description: Every product, plugin, template and example from the Flisk team, on one page.
+url: https://flisk.si
+baseurl: ""
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
