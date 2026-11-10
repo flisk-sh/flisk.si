@@ -77,7 +77,6 @@ sections:
         url: https://mcp.flisk.sh/
         icon: build-me-an-app
         text: Say what you want. Get the parts and the commands to run it.
-        bar: true
       - name: Flisk Inference
         url: https://github.com/flisk-sh/flisk-inference
         icon: flisk-inference
