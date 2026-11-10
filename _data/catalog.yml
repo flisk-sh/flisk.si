@@ -74,7 +74,7 @@ sections:
     text: Tools your AI can call, and a small model that writes Flisk config.
     items:
       - name: Build Me an App
-        url: https://mcp.flisk.sh/
+        url: https://build.flisk.si/
         icon: build-me-an-app
         text: Say what you want. Get the parts and the commands to run it.
       - name: Flisk Inference
@@ -100,7 +100,7 @@ sections:
     text: Add Flisk to Claude, Claude Code, Cursor, Codex or Gemini CLI.
     items:
       - name: Build Me an App MCP
-        url: https://mcp.flisk.sh/mcp
+        url: https://build.flisk.si/mcp
         icon: build-me-an-app
         text: Plans an app from a plain description. Remote, read-only, no key.
       - name: Put My Page Online MCP

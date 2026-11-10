@@ -16,6 +16,14 @@ Any Flisk site can show the same slim strip of product links at the top of its p
 
 It sits in the page flow, keeps its styles to itself, and marks the site it is on.
 
+## The share card
+
+`og.png` (1200x630) is the image link previews show. It is built from `scripts/og.py`, which inlines the mark and product icons from `assets/`:
+
+```bash
+python3 scripts/og.py && rsvg-convert -w 1200 -h 630 scripts/og.svg -o og.png
+```
+
 ## The address: flisk.si
 
 GitHub Pages serves this repo at `flisk.si` (the `CNAME` file). The domain's DNS lives in Cloudflare, zone `flisk.si`:
