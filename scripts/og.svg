@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1410"/>
+      <stop offset="0.55" stop-color="#08090c"/>
+      <stop offset="1" stop-color="#060709"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.12" cy="0.05" r="0.6">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22c55e" stop-opacity="0.15"/>
+      <stop offset="0.45" stop-color="#22c55e" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101216"/>
+      <stop offset="1" stop-color="#0b0c0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+<svg x="72" y="64" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="mark-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#040A12"/>
+      <stop offset="0.6" stop-color="#07131D"/>
+      <stop offset="1" stop-color="#0B2A22"/>
+    </linearGradient>
+    <linearGradient id="mark-bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6EE7A0"/>
+      <stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#mark-bg)"/>
+  <g transform="translate(32 32) scale(0.6) translate(-276 -91)">
+    <polygon points="283,50 252,98 273,98 261,132 300,82 278,82" fill="url(#mark-bolt)"/>
+  </g>
+</svg>
+
+<text x="154" y="109" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Flisk</text>
+<text font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="76" font-weight="700" fill="#ffffff" letter-spacing="-2"><tspan x="68" y="282">Everything</tspan><tspan x="68" y="364">we build.</tspan></text>
+<text font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="27" fill="#9aa3ad"><tspan x="72" y="420">Every product, plugin, template</tspan><tspan x="72" y="456">and example, on one page.</tspan></text>
+<rect x="72" y="484" width="124" height="44" rx="22" fill="#14161a" stroke="#2a2e35"/>
+<text x="133.8" y="512.5" text-anchor="middle" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="19" font-weight="500" fill="#e8eaed">Products</text>
+<rect x="207.6" y="484" width="157" height="44" rx="22" fill="#14161a" stroke="#2a2e35"/>
+<text x="286.2" y="512.5" text-anchor="middle" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="19" font-weight="500" fill="#e8eaed">MCP servers</text>
+<rect x="376.79999999999995" y="484" width="135" height="44" rx="22" fill="#14161a" stroke="#2a2e35"/>
+<text x="444.2" y="512.5" text-anchor="middle" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="19" font-weight="500" fill="#e8eaed">Templates</text>
+<rect x="600" y="64" width="640" height="620" rx="18" fill="url(#panel)" stroke="#2a2e35"/>
+<rect x="614" y="78" width="170" height="30" rx="15" fill="#16191e" stroke="#2a2e35"/>
+<circle cx="632" cy="93" r="5" fill="#22c55e"/>
+<text x="646" y="99" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#d5d9de">The Flisk catalog</text>
+<rect x="630" y="138" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="644" y="150" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#22c55e"/><path d="M18 22l14 10-14 10" fill="none" stroke="#0a0a0e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 44h12" fill="none" stroke="#0a0a0e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+<text x="644" y="211" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Flisk CLI</text>
+<rect x="822" y="138" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="836" y="150" width="40" height="40" viewBox="0 0 64 64"><defs><linearGradient id="i1-g" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0" stop-color="#6ff0ae"/><stop offset="1" stop-color="#1fae74"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="#0f1426"/><path d="M45.2 21.6A19.5 19.5 0 1 1 18.8 21.6" fill="none" stroke="#fbfaf7" stroke-width="6" stroke-linecap="round"/><path transform="translate(32 29.5) scale(.35) translate(-64 -64)" d="M76 8 30 70h28l-8 50 48-66H70z" fill="url(#i1-g)" stroke="#0f1426" stroke-width="5" stroke-linejoin="round" paint-order="stroke"/></svg>
+
+<text x="836" y="211" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">FliskOS</text>
+<rect x="1014" y="138" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="1028" y="150" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#3b5bdb"/><path d="M24 17l22 15-22 15z" fill="#fbfaf7" stroke="#fbfaf7" stroke-width="2" stroke-linejoin="round"/></svg>
+
+<text x="1028" y="211" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Run My Agents</text>
+<rect x="630" y="238" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="644" y="250" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2d4cc8"/><path d="M20 12h17l11 11v29a2 2 0 0 1-2 2H20a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z" fill="#fbfaf7"/><path d="M37 12v9a2 2 0 0 0 2 2h9z" fill="#c9d2f5"/><path d="M25 32h16M25 39h16M25 46h9" stroke="#2d4cc8" stroke-width="3.5" stroke-linecap="round"/></svg>
+
+<text x="644" y="311" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Pages</text>
+<rect x="822" y="238" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="836" y="250" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2d4cc8"/><path d="M14 44V33c0-8 4-14 12-16l2 5c-4 1.6-6 4.4-6.4 8H28v14zM34 44V33c0-8 4-14 12-16l2 5c-4 1.6-6 4.4-6.4 8H48v14z" fill="#fbfaf7"/></svg>
+
+<text x="836" y="311" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Citable</text>
+<rect x="1014" y="238" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="1028" y="250" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2d4cc8"/><rect x="14" y="10" width="30" height="40" rx="4" fill="#fbfaf7"/><rect x="19" y="18" width="20" height="3.5" rx="1.75" fill="#2d4cc8"/><rect x="19" y="26" width="16" height="3.5" rx="1.75" fill="#9aa6d6"/><rect x="19" y="34" width="12" height="3.5" rx="1.75" fill="#9aa6d6"/><circle cx="44" cy="45" r="12" fill="#18794e" stroke="#2d4cc8" stroke-width="3"/><path d="M38.5 45.2l3.8 3.8 7.4-7.6" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+<text x="1028" y="311" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">README Score</text>
+<rect x="630" y="338" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="644" y="350" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0d7a62"/><path d="M18 15h8v14h12V15h8v34h-8V36H26v13h-8z" fill="#ffffff"/></svg>
+
+<text x="644" y="411" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Helpdock</text>
+<rect x="822" y="338" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="836" y="350" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#f59e0b"/><rect x="13" y="13" width="16" height="16" rx="4.5" fill="#fbfaf7"/><rect x="13" y="35" width="16" height="16" rx="4.5" fill="#fbfaf7"/><rect x="35" y="13" width="16" height="16" rx="4.5" fill="#fbfaf7"/><rect x="35" y="35" width="16" height="16" rx="4.5" fill="#fbfaf7"/></svg>
+
+<text x="836" y="411" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Flisk Tools</text>
+<rect x="1014" y="338" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="1028" y="350" width="40" height="40" viewBox="0 0 128 128">
+  
+  <defs>
+    <linearGradient id="i8-g" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0" stop-color="#5ee0a0"/>
+      <stop offset="1" stop-color="#1f9d6b"/>
+    </linearGradient>
+  </defs>
+  <path d="M76 8 30 70h28l-8 50 48-66H70z" fill="url(#i8-g)" stroke="#16805a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M74 20 44 62h22" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<text x="1028" y="411" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Build Me an App</text>
+<rect x="630" y="438" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="644" y="450" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0f1426"/><rect x="20" y="20" width="24" height="24" rx="4" fill="none" stroke="#fbfaf7" stroke-width="4"/><rect x="28" y="28" width="8" height="8" rx="1.5" fill="#6ff0ae"/><path d="M28 11v9M36 11v9M28 44v9M36 44v9M11 28h9M11 36h9M44 28h9M44 36h9" fill="none" stroke="#fbfaf7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+<text x="644" y="511" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Inference</text>
+<rect x="822" y="438" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="836" y="450" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#7c3aed"/><rect x="24" y="11" width="16" height="12" rx="3" fill="#fbfaf7"/><rect x="9" y="41" width="18" height="12" rx="3" fill="#fbfaf7"/><rect x="37" y="41" width="18" height="12" rx="3" fill="#fbfaf7"/><path d="M32 23v9M18 41v-9h28v9" fill="none" stroke="#fbfaf7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+<text x="836" y="511" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">README Diagram</text>
+<rect x="1014" y="438" width="178" height="86" rx="12" fill="#121418" stroke="#22262c"/>
+<svg x="1028" y="450" width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0f1426"/><circle cx="32" cy="32" r="19" fill="none" stroke="#fbfaf7" stroke-width="4"/><path d="M42 22l-6 14-14 6 6-14z" fill="#6ff0ae" stroke="#6ff0ae" stroke-width="2" stroke-linejoin="round"/></svg>
+
+<text x="1028" y="511" font-family="'Helvetica Neue', Inter, Arial, sans-serif" font-size="15" font-weight="500" fill="#c9ced4">Roadmap</text>
+<rect x="72" y="552" width="1060" height="1.5" fill="url(#rule)"/>
+<text x="72" y="598" font-family="Menlo, 'JetBrains Mono', monospace" font-size="28" fill="#f2f4f6">flisk.si</text>
+</svg>
