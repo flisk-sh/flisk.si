@@ -103,35 +103,35 @@ sections:
         url: https://build.flisk.si/mcp
         icon: build-me-an-app
         text: Plans an app from a plain description. Remote, read-only, no key.
-      - name: Put My Page Online MCP
+      - name: Pages MCP
         url: https://pages.flisk.si/mcp
         icon: put-my-page-online
         text: Checks a page and gives the steps to publish it.
-      - name: Get My Site Found by AI MCP
+      - name: Citable MCP
         url: https://citable.flisk.si/mcp
         icon: citable
         text: Checks whether AI search can find, read and cite a site.
-      - name: Improve My README MCP
+      - name: README Score MCP
         url: https://readme.flisk.si/mcp
         icon: readme-checker
         text: Scores a README and lists a fix for each miss.
-      - name: Flisk docs MCP
+      - name: Helpdock MCP
         url: https://helpdock.flisk.si/mcp
         icon: helpdock
         text: Searches the Flisk docs and answers with sources.
-      - name: Flisk plugin for Claude
+      - name: Flisk CLI plugin
         url: https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude
         icon: flisk-cli
         text: The Flisk CLI as MCP tools and skills inside Claude Code.
-      - name: Put My Page Online plugin
+      - name: Pages plugin
         url: https://github.com/flisk-sh/pages/tree/main/plugins/put-my-page-online
         icon: put-my-page-online
         text: Publish a page from Claude with one skill.
-      - name: AI Search Checker plugin
+      - name: Citable plugin
         url: https://github.com/flisk-sh/citable/tree/main/plugins/ai-search-checker
         icon: citable
         text: Check a site for AI search from Claude.
-      - name: README Checker plugin
+      - name: README Score plugin
         url: https://github.com/flisk-sh/readme-score/tree/main/plugins/readme-checker
         icon: readme-checker
         text: Improve a README from Claude.

@@ -22,9 +22,9 @@ TILES = [
     ("helpdock", "Helpdock"),
     ("flisk-tools", "Flisk Tools"),
     ("build-me-an-app", "Build Me an App"),
-    ("flisk-inference", "Inference"),
+    ("flisk-inference", "Flisk Inference"),
     ("readme-diagram", "README Diagram"),
-    ("devex-roadmap", "Roadmap"),
+    ("devex-roadmap", "DevEx Roadmap"),
 ]
 
 
