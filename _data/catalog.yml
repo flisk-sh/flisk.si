@@ -87,6 +87,11 @@ sections:
         icon: flisk-inference
         text: An OpenAI-compatible endpoint for a small model that writes Flisk config files.
         bar: true
+      - name: Fleet
+        url: https://fleet.flisk.si
+        icon: fleet
+        text: One API for agent pods on the cheapest sandbox provider you have a key for.
+        bar: true
       - name: Flisk Model
         url: https://github.com/flisk-sh/flisk-model
         icon: flisk-model
