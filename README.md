@@ -6,6 +6,10 @@ One page that links to everything the [Flisk](https://flisk.sh) org builds: prod
 
 Every link is one entry in [`_data/catalog.yml`](_data/catalog.yml): `name`, `url` and one plain sentence in `text`. Add `bar: true` to show it in the shared bar.
 
+## Checks
+
+Every other Flisk site loads `assets/bar.js`, which is built from the catalog, so a mistake goes live everywhere. Pull requests run `.github/workflows/ci.yml`: `ruby scripts/check_catalog.rb` (the YAML parses, each item has a name, url, text and an icon that exists in `assets/icons`), `bundle exec jekyll build`, and `node --check _site/assets/bar.js`. Run the first locally before you push.
+
 ## The Flisk bar
 
 Any Flisk site can show the same slim strip of product links at the top of its page:

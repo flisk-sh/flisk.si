@@ -1,0 +1,37 @@
+# assets/bar.js is built from _data/catalog.yml and loaded by every Flisk site, so a slip here goes live everywhere on the
+# next push to main. This builds the site, syntax-checks the built bar script and checks the catalog.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 22
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Check the catalog (YAML, fields, icon files)
+        run: ruby scripts/check_catalog.rb
+      - name: Build the site
+        run: bundle exec jekyll build
+      - name: Syntax-check the built bar script
+        run: node --check _site/assets/bar.js
