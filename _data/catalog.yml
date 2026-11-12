@@ -66,8 +66,7 @@ sections:
       - name: Helpdock
         url: https://helpdock.flisk.si
         icon: helpdock
-        text: Your docs as a help center that answers with sources.
-        bar: true
+        text: Paused until 1 December. Your docs as a help center that answers with sources.
       - name: Flisk Tools
         url: https://tools.flisk.si/
         icon: flisk-tools
@@ -128,7 +127,7 @@ sections:
       - name: Helpdock MCP
         url: https://helpdock.flisk.si/mcp
         icon: helpdock
-        text: Searches the Flisk docs and answers with sources.
+        text: Paused until 1 December. Searches the Flisk docs and answers with sources.
       - name: Flisk CLI plugin
         url: https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude
         icon: flisk-cli
