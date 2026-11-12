@@ -58,6 +58,11 @@ sections:
         url: https://diagram.flisk.si
         icon: readme-diagram
         text: Turn any README into an animated SVG diagram.
+      - name: Gardener
+        url: https://gardener.flisk.si
+        icon: gardener
+        text: Grow a dependency tower meme from any GitHub repo.
+        bar: true
       - name: Helpdock
         url: https://helpdock.flisk.si
         icon: helpdock
