@@ -91,6 +91,11 @@ sections:
         icon: fleet
         text: One API for agent pods on the cheapest sandbox provider you have a key for.
         bar: true
+      - name: Host
+        url: https://host.flisk.si
+        icon: host
+        text: Free places to run your own agent pods, and a cabinet that starts a host with your own provider key.
+        bar: true
       - name: Flisk Model
         url: https://github.com/flisk-sh/flisk-model
         icon: flisk-model
