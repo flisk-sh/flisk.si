@@ -39,6 +39,19 @@ sections.each do |section|
   end
 end
 
+# The shared bar names its flagship and menu items by name, so each name must match exactly one catalog item.
+names = sections.flat_map { |s| Array(s["items"]).map { |i| i.is_a?(Hash) ? i["name"] : nil } }.compact
+bar = catalog["bar"]
+if !bar.is_a?(Hash) || !bar["first"].is_a?(String) || !bar["menus"].is_a?(Array) || bar["menus"].empty?
+  errors << "bar: needs `first` (an item name) and a non-empty `menus` list"
+else
+  ([bar["first"]] + bar["menus"].flat_map { |m| Array(m["items"]) }).each do |name|
+    count = names.count(name)
+    errors << "bar: #{name.inspect} matches #{count} catalog items, needs exactly 1" unless count == 1
+  end
+  bar["menus"].each { |m| errors << "bar: a menu has no label" unless m["label"].is_a?(String) && !m["label"].empty? }
+end
+
 if errors.empty?
   puts "catalog.yml: #{sections.sum { |s| s["items"].size }} items, all icons exist."
 else
