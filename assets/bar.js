@@ -95,6 +95,20 @@
       .item[aria-current] b { color: #6ee7a0; }
       .panel p { margin: 0.6rem 0.6rem 0.2rem; color: rgba(236,236,241,0.4); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
       .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid rgba(255,255,255,0.08); color: #ececf1; }
+      /* On a light page the bar goes light too, so it reads as part of the page and not a black slab on top of it. */
+      nav.light { background: var(--bar-bg, #f7f6f2); border-bottom-color: rgba(0,0,0,0.1); color: rgba(20,20,24,0.66); }
+      nav.light .home, nav.light .every-link, nav.light .item b, nav.light .every { color: #141418; }
+      nav.light a:hover, nav.light a[aria-current], nav.light button[data-current], nav.light .item[aria-current] b, nav.light .every-link:hover { color: #15803d; }
+      nav.light .first { background: rgba(21,128,61,0.12); color: #15803d; }
+      nav.light .first:hover, nav.light .first[aria-current] { background: #15803d; color: #fff; }
+      nav.light .first::before { background: #15803d; box-shadow: 0 0 0 3px rgba(21,128,61,0.2); }
+      nav.light .first:hover::before, nav.light .first[aria-current]::before { background: #fff; }
+      nav.light button:hover, nav.light button[aria-expanded="true"] { color: #141418; background: rgba(0,0,0,0.06); }
+      nav.light .panel { background: #fff; border-color: rgba(0,0,0,0.12); box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
+      nav.light .item:hover { background: rgba(0,0,0,0.05); }
+      nav.light .item small { color: rgba(20,20,24,0.6); }
+      nav.light .panel p { color: rgba(20,20,24,0.45); }
+      nav.light .every { border-top-color: rgba(0,0,0,0.1); }
       @media (max-width: 760px) {
         .menu:not(.all-menu), .every-link { display: none; }
         .all-menu { display: block; }
@@ -141,7 +155,20 @@
   }
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  const mount = () => document.body.insertBefore(host, document.body.firstChild);
+  // Match a light page: read the colour behind the bar, and when it is light, use it for the bar.
+  const nav = root.querySelector('nav');
+  const paint = () => {
+    for (const el of [document.body, document.documentElement]) {
+      const m = el && getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+      if (!m || (m.length > 3 && +m[3] === 0)) continue;
+      const [r, g, b] = m.map(Number);
+      const light = 0.2126 * r + 0.7152 * g + 0.0722 * b > 160;
+      nav.classList.toggle('light', light);
+      if (light) nav.style.setProperty('--bar-bg', `rgb(${r}, ${g}, ${b})`);
+      return;
+    }
+  };
+  const mount = () => { document.body.insertBefore(host, document.body.firstChild); paint(); };
   if (document.body) mount();
   else document.addEventListener('DOMContentLoaded', mount);
 })();
