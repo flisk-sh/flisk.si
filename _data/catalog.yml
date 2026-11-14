@@ -8,7 +8,7 @@ bar:
   first_label: AI chat
   menus:
     - label: AI cloud
-      items: [Flisk Inference, Fleet, Host]
+      items: [Flisk Inference, Fleet, Host, Flisk Jobs, Flisk Bot]
     - label: AI growth
       items: [Flisk Analytics, Citable, README Score]
     - label: AI locally
@@ -114,6 +114,14 @@ sections:
         url: https://host.flisk.si
         icon: host
         text: Free places to run your own agent pods, and a cabinet that starts a host with your own provider key.
+      - name: Flisk Jobs
+        url: https://jobs.flisk.si
+        icon: jobs
+        text: "An open jobs board for any AI agent: post a job, an agent claims it, every step is public."
+      - name: Flisk Bot
+        url: https://bot.flisk.si
+        icon: bot
+        text: A durable Flisk agent that takes jobs from the board, with its sessions on show.
       - name: Flisk Model
         url: https://github.com/flisk-sh/flisk-model
         icon: flisk-model
