@@ -26,6 +26,16 @@
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const here = window.location.hostname.replace(/^www\./, '');
   const isHere = (url) => new URL(url).hostname.replace(/^www\./, '') === here;
+  // Count visits on every site that shows the bar, unless the page already has Flisk Analytics. data-domain is the site's own host.
+  if (!document.querySelector('script[src*="flisk.sh/a.js"]')) {
+    const stat = document.createElement('script');
+    stat.defer = true;
+    stat.dataset.domain = here;
+    stat.src = 'https://flisk.sh/a.js';
+    document.head.appendChild(stat);
+  }
+  // The flagship link says which Flisk site sent the visitor, so analytics.flisk.si can show which site brings Chat its users.
+  const tracked = (url) => isHere(url) ? url : `${url}${url.includes('?') ? '&' : '?'}utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=flisk-bar`;
   // flisk.si and flisk.sh already show the flisk brand in their own header, so the bar leaves its brand out there.
   const ownsBrand = here === 'flisk.si' || here === 'flisk.sh';
   const host = document.createElement('flisk-bar');
@@ -93,7 +103,7 @@
     </style>
     <nav aria-label="Flisk products">
       ${ownsBrand ? '' : `<a class="home" href="${HOME}/"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
-      ${firstUrl ? `<a class="first" href="${esc(firstUrl)}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
+      ${firstUrl ? `<a class="first" href="${esc(tracked(firstUrl))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
       ${menus}
       ${here === 'flisk.si' ? '' : `<a class="every-link" href="${HOME}/">All products</a>`}
       ${all}
