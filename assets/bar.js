@@ -23,6 +23,7 @@
     ]],
     {%- endfor %}
   ];
+  const THEMES = {{ site.data.bar_themes | jsonify }};
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const here = window.location.hostname.replace(/^www\./, '');
   const isHere = (url) => new URL(url).hostname.replace(/^www\./, '') === here;
@@ -34,6 +35,20 @@
     stat.src = 'https://flisk.sh/a.js';
     document.head.appendChild(stat);
   }
+  // One Flisk look across every site. The chosen look travels in the ?flisk_theme= link parameter (so it crosses to flisk.sh)
+  // and in a cookie on .flisk.si (so every *.flisk.si site sees it). The bar themes itself from it and marks <html data-flisk-theme>,
+  // so a site can adopt the same tokens from flisk-themes. With no look chosen, the bar follows the colour of the page it is on.
+  const KEY = 'flisk_theme';
+  const onFlisk = /(^|\.)flisk\.si$/.test(here);
+  const readCookie = () => (document.cookie.match(/(?:^|;\s*)flisk_theme=([a-z-]{2,24})/) || [])[1];
+  let theme = (new URLSearchParams(location.search).get(KEY) || '').toLowerCase();
+  if (!THEMES[theme]) theme = readCookie() || '';
+  if (!THEMES[theme]) theme = '';
+  if (theme) {
+    try { document.cookie = `${KEY}=${theme}; Path=/; Max-Age=31536000; SameSite=Lax${onFlisk ? '; Domain=.flisk.si' : ''}${location.protocol === 'https:' ? '; Secure' : ''}`; } catch (e) { /* cookies blocked: the link parameter still carries the look */ }
+    document.documentElement.dataset.fliskTheme = theme;
+  }
+  const carry = (url) => !theme ? url : `${url}${url.includes('?') ? '&' : '?'}${KEY}=${theme}`;
   // The flagship link says which Flisk site sent the visitor, so analytics.flisk.si can show which site brings Chat its users.
   const tracked = (url) => isHere(url) ? url : `${url}${url.includes('?') ? '&' : '?'}utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=flisk-bar`;
   // flisk.si and flisk.sh already show the flisk brand in their own header, so the bar leaves its brand out there.
@@ -43,7 +58,7 @@
   const root = host.attachShadow({ mode: 'open' });
 
   const panel = (items) => items.map(([name, url, icon, text]) =>
-    `<a class="item" href="${esc(url)}"${isHere(url) ? ' aria-current="page"' : ''}>
+    `<a class="item" href="${esc(carry(url))}"${isHere(url) ? ' aria-current="page"' : ''}>
        <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28" loading="lazy">
        <span><b>${esc(name)}</b><small>${esc(text)}</small></span></a>`).join('');
   const menus = MENUS.map(([label, items], i) => {
@@ -55,60 +70,49 @@
   const all = `<div class="menu all-menu">
       <button type="button" aria-expanded="false" aria-controls="mall">Products<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel wide" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(label)}</p>${panel(items)}`).join('')}
-        ${here === 'flisk.si' ? '' : `<a class="every" href="${HOME}/">Every Flisk product →</a>`}</div></div>`;
+        ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
 
   root.innerHTML = `
     <style>
       :host { all: initial; }
-      nav { display: flex; align-items: center; gap: 0.35rem; padding: 0 1rem; height: 2.5rem;
-            background: #0a0a0e; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(236,236,241,0.66);
+      /* Every colour comes from these tokens. They default to the dark Flisk look; the script below overrides them from the shared Flisk theme, or from the page's own colour. */
+      nav { --bg: #0a0a0e; --panel: #111116; --ink: #ececf1; --line: rgba(255,255,255,0.1); --acc: #22c55e; --hi: #6ee7a0; --on: #0a0a0e;
+            --dim: color-mix(in srgb, var(--ink) 66%, transparent); --faint: color-mix(in srgb, var(--ink) 45%, transparent); --wash: color-mix(in srgb, var(--ink) 7%, transparent);
+            display: flex; align-items: center; gap: 0.35rem; padding: 0 1rem; height: 2.5rem;
+            background: var(--bg); border-bottom: 1px solid var(--line); color: var(--dim);
             font: 500 12px/1 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap; }
       a { color: inherit; text-decoration: none; }
       a:focus-visible, button:focus-visible { outline: 2px solid #4dd0ff; outline-offset: 2px; }
-      .home { display: inline-flex; align-items: center; gap: 0.45rem; margin-right: 0.6rem; color: #ececf1; font-weight: 600; }
-      .mark { display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 0.25rem; background: #22c55e; color: #0a0a0e; font-size: 9px; font-weight: 700; }
+      .home { display: inline-flex; align-items: center; gap: 0.45rem; margin-right: 0.6rem; color: var(--ink); font-weight: 600; }
+      .mark { display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 0.25rem; background: var(--acc); color: var(--on); font-size: 9px; font-weight: 700; }
       .first { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.7rem; border-radius: 999px;
-               background: rgba(34,197,94,0.14); color: #6ee7a0; font-weight: 600; margin-right: 0.35rem; }
-      .first::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
-      .first:hover, .first[aria-current] { background: #22c55e; color: #0a0a0e; }
-      .first[aria-current]::before, .first:hover::before { background: #0a0a0e; box-shadow: none; }
+               background: color-mix(in srgb, var(--acc) 16%, transparent); color: var(--hi); font-weight: 600; margin-right: 0.35rem; }
+      .first::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 25%, transparent); }
+      .first:hover, .first[aria-current] { background: var(--acc); color: var(--on); }
+      .first[aria-current]::before, .first:hover::before { background: var(--on); box-shadow: none; }
       button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.55rem; border-radius: 0.3rem; }
       button svg { width: 8px; height: 6px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .15s; }
-      button:hover, button[aria-expanded="true"] { color: #ececf1; background: rgba(255,255,255,0.06); }
+      button:hover, button[aria-expanded="true"] { color: var(--ink); background: var(--wash); }
       button[aria-expanded="true"] svg { transform: rotate(180deg); }
-      button[data-current] { color: #6ee7a0; }
+      button[data-current] { color: var(--hi); }
       .menu { position: relative; }
       .all-menu { display: none; margin-left: auto; }
-      .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: #ececf1; }
-      .every-link:hover { color: #6ee7a0; }
+      .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: var(--ink); }
+      .every-link:hover { color: var(--hi); }
       .panel { position: absolute; top: calc(100% + 0.45rem); left: 0; width: 22rem; padding: 0.4rem; box-sizing: border-box;
-               background: #111116; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.6rem;
-               box-shadow: 0 18px 40px rgba(0,0,0,0.45); white-space: normal; }
+               background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem;
+               box-shadow: 0 18px 40px rgba(0,0,0,0.3); white-space: normal; }
       .panel[hidden] { display: none; }
       .item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.55rem 0.6rem; border-radius: 0.4rem; }
       .item img { flex: none; width: 28px; height: 28px; border-radius: 6px; }
       .item span { display: grid; gap: 0.3rem; }
-      .item b { color: #ececf1; font-weight: 600; }
-      .item small { color: rgba(236,236,241,0.55); font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
-      .item:hover { background: rgba(255,255,255,0.06); }
-      .item[aria-current] b { color: #6ee7a0; }
-      .panel p { margin: 0.6rem 0.6rem 0.2rem; color: rgba(236,236,241,0.4); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
-      .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid rgba(255,255,255,0.08); color: #ececf1; }
-      /* On a light page the bar goes light too, so it reads as part of the page and not a black slab on top of it. */
-      nav.light { background: var(--bar-bg, #f7f6f2); border-bottom-color: rgba(0,0,0,0.1); color: rgba(20,20,24,0.66); }
-      nav.light .home, nav.light .every-link, nav.light .item b, nav.light .every { color: #141418; }
-      nav.light a:hover, nav.light a[aria-current], nav.light button[data-current], nav.light .item[aria-current] b, nav.light .every-link:hover { color: #15803d; }
-      nav.light .first { background: rgba(21,128,61,0.12); color: #15803d; }
-      nav.light .first:hover, nav.light .first[aria-current] { background: #15803d; color: #fff; }
-      nav.light .first::before { background: #15803d; box-shadow: 0 0 0 3px rgba(21,128,61,0.2); }
-      nav.light .first:hover::before, nav.light .first[aria-current]::before { background: #fff; }
-      nav.light button:hover, nav.light button[aria-expanded="true"] { color: #141418; background: rgba(0,0,0,0.06); }
-      nav.light .panel { background: #fff; border-color: rgba(0,0,0,0.12); box-shadow: 0 18px 40px rgba(0,0,0,0.14); }
-      nav.light .item:hover { background: rgba(0,0,0,0.05); }
-      nav.light .item small { color: rgba(20,20,24,0.6); }
-      nav.light .panel p { color: rgba(20,20,24,0.45); }
-      nav.light .every { border-top-color: rgba(0,0,0,0.1); }
+      .item b { color: var(--ink); font-weight: 600; }
+      .item small { color: var(--dim); font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+      .item:hover { background: var(--wash); }
+      .item[aria-current] b { color: var(--hi); }
+      .panel p { margin: 0.6rem 0.6rem 0.2rem; color: var(--faint); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+      .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid var(--line); color: var(--ink); }
       @media (max-width: 760px) {
         .menu:not(.all-menu), .every-link { display: none; }
         .all-menu { display: block; }
@@ -116,10 +120,10 @@
       }
     </style>
     <nav aria-label="Flisk products">
-      ${ownsBrand ? '' : `<a class="home" href="${HOME}/"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
-      ${firstUrl ? `<a class="first" href="${esc(tracked(firstUrl))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
+      ${ownsBrand ? '' : `<a class="home" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
+      ${firstUrl ? `<a class="first" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
       ${menus}
-      ${here === 'flisk.si' ? '' : `<a class="every-link" href="${HOME}/">All products</a>`}
+      ${here === 'flisk.si' ? '' : `<a class="every-link" href="${esc(carry(HOME + '/'))}">All products</a>`}
       ${all}
     </nav>`;
 
@@ -155,16 +159,25 @@
   }
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  // Match a light page: read the colour behind the bar, and when it is light, use it for the bar.
   const nav = root.querySelector('nav');
+  const set = (k, v) => nav.style.setProperty(`--${k}`, v);
   const paint = () => {
+    const t = THEMES[theme];
+    if (t) {
+      // A chosen look: its own tokens. The accent text is the look's accentInk on dark looks and its accent on light ones.
+      set('bg', t.bg); set('panel', t.surface); set('ink', t.ink); set('line', t.line);
+      set('acc', t.accent); set('hi', t.mode === 'dark' ? t.accentInk : t.accent); set('on', t.onAccent);
+      return;
+    }
+    // No look chosen: when the page behind the bar is light, use its colour and dark text.
     for (const el of [document.body, document.documentElement]) {
       const m = el && getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
       if (!m || (m.length > 3 && +m[3] === 0)) continue;
       const [r, g, b] = m.map(Number);
-      const light = 0.2126 * r + 0.7152 * g + 0.0722 * b > 160;
-      nav.classList.toggle('light', light);
-      if (light) nav.style.setProperty('--bar-bg', `rgb(${r}, ${g}, ${b})`);
+      if (0.2126 * r + 0.7152 * g + 0.0722 * b > 160) {
+        set('bg', `rgb(${r}, ${g}, ${b})`); set('panel', '#fff'); set('ink', '#141418'); set('line', 'rgba(0,0,0,0.12)');
+        set('acc', '#15803d'); set('hi', '#15803d'); set('on', '#fff');
+      }
       return;
     }
   };
