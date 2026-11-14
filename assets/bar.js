@@ -11,7 +11,7 @@
   {%- assign bar = site.data.catalog.bar %}
   const FIRST = [
     {%- for section in site.data.catalog.sections %}{% for item in section.items %}{% if item.name == bar.first %}
-    {{ item.name | jsonify }}, {{ item.url | jsonify }},
+    {{ bar.first_label | default: item.name | jsonify }}, {{ item.url | jsonify }},
     {%- endif %}{% endfor %}{% endfor %}
   ];
   const MENUS = [
@@ -117,8 +117,7 @@
     b.setAttribute('aria-expanded', 'false');
     root.getElementById(b.getAttribute('aria-controls')).hidden = true;
   });
-  buttons.forEach((b) => b.addEventListener('click', () => {
-    const open = b.getAttribute('aria-expanded') !== 'true';
+  const setOpen = (b, open) => {
     close(b);
     b.setAttribute('aria-expanded', String(open));
     const p = root.getElementById(b.getAttribute('aria-controls'));
@@ -129,7 +128,17 @@
       const over = p.getBoundingClientRect().right - (window.innerWidth - 8);
       if (over > 0) p.style.left = `${-over}px`;
     }
-  }));
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => setOpen(b, b.getAttribute('aria-expanded') !== 'true')));
+  // With a mouse, a menu also opens when the pointer rests on it and closes shortly after the pointer leaves. Touch keeps tap to open.
+  if (window.matchMedia('(hover: hover)').matches) {
+    root.querySelectorAll('.menu').forEach((m) => {
+      const b = m.querySelector('button');
+      let t;
+      m.addEventListener('pointerenter', (e) => { if (e.pointerType === 'touch') return; clearTimeout(t); setOpen(b, true); });
+      m.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; t = setTimeout(() => setOpen(b, false), 180); });
+    });
+  }
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   const mount = () => document.body.insertBefore(host, document.body.firstChild);
