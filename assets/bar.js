@@ -100,6 +100,11 @@
       .all-menu { display: none; margin-left: auto; }
       .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: var(--ink); }
       .every-link:hover { color: var(--hi); }
+      /* The sponsor link: GitHub Sponsors pink on every look, so it reads as the one ask on the bar. */
+      .give { display: inline-flex; align-items: center; gap: 0.35rem; margin-left: 0.5rem; padding: 0.4rem 0.7rem; border-radius: 999px;
+              border: 1px solid color-mix(in srgb, #ea4aaa 55%, transparent); color: #ea4aaa; font-weight: 600; }
+      .give svg { width: 12px; height: 12px; fill: currentColor; }
+      .give:hover { background: #ea4aaa; color: #fff; }
       .panel { position: absolute; top: calc(100% + 0.45rem); left: 0; width: 22rem; padding: 0.4rem; box-sizing: border-box;
                background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem;
                box-shadow: 0 18px 40px rgba(0,0,0,0.3); white-space: normal; }
@@ -118,6 +123,8 @@
       @media (max-width: 760px) {
         .menu:not(.all-menu), .every-link { display: none; }
         .all-menu { display: block; }
+        .give span { display: none; }
+        .give { padding: 0.4rem 0.5rem; }
         .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
       }
     </style>
@@ -127,6 +134,7 @@
       ${menus}
       ${here === 'flisk.si' ? '' : `<a class="every-link" href="${esc(carry(HOME + '/'))}">All products</a>`}
       ${all}
+      <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="Help us explore more: sponsor Flisk on GitHub" title="Sponsor Flisk on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>Help us explore more</span></a>
     </nav>`;
 
   // A site whose CSP blocks images from flisk.si still gets a working menu, just without the icons.
