@@ -137,8 +137,12 @@
     b.setAttribute('aria-expanded', 'false');
     root.getElementById(b.getAttribute('aria-controls')).hidden = true;
   });
+  const timers = new Map();
   const setOpen = (b, open) => {
-    close(b);
+    clearTimeout(timers.get(b));
+    // Opening one menu closes the others; closing a menu leaves the others alone, so a late close
+    // timer from the menu the pointer just left cannot shut the menu it moved onto.
+    if (open) close(b);
     b.setAttribute('aria-expanded', String(open));
     const p = root.getElementById(b.getAttribute('aria-controls'));
     p.hidden = !open;
@@ -149,14 +153,30 @@
       if (over > 0) p.style.left = `${-over}px`;
     }
   };
-  buttons.forEach((b) => b.addEventListener('click', () => setOpen(b, b.getAttribute('aria-expanded') !== 'true')));
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  let hoverOpened = null;
+  buttons.forEach((b) => b.addEventListener('click', (e) => {
+    // A click on a menu the pointer already opened keeps it open instead of toggling it shut.
+    // Keyboard clicks (detail 0) and touch still toggle.
+    if (e.detail > 0 && hoverOpened === b) { setOpen(b, true); return; }
+    setOpen(b, b.getAttribute('aria-expanded') !== 'true');
+  }));
   // With a mouse, a menu also opens when the pointer rests on it and closes shortly after the pointer leaves. Touch keeps tap to open.
-  if (window.matchMedia('(hover: hover)').matches) {
+  if (canHover) {
     root.querySelectorAll('.menu').forEach((m) => {
       const b = m.querySelector('button');
-      let t;
-      m.addEventListener('pointerenter', (e) => { if (e.pointerType === 'touch') return; clearTimeout(t); setOpen(b, true); });
-      m.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; t = setTimeout(() => setOpen(b, false), 300); });
+      m.addEventListener('pointerenter', (e) => {
+        if (e.pointerType === 'touch') return;
+        timers.forEach((t) => clearTimeout(t));
+        timers.clear();
+        hoverOpened = b;
+        setOpen(b, true);
+      });
+      m.addEventListener('pointerleave', (e) => {
+        if (e.pointerType === 'touch') return;
+        if (hoverOpened === b) hoverOpened = null;
+        timers.set(b, setTimeout(() => setOpen(b, false), 300));
+      });
     });
   }
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
