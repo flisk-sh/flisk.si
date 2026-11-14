@@ -122,6 +122,9 @@
       .item[aria-current] b { color: var(--hi); }
       .panel p { margin: 0.6rem 0.6rem 0.2rem; color: var(--faint); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
       .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid var(--line); color: var(--ink); }
+      /* The compact bar: one Products menu and a heart-only sponsor button. Phones get it from the media query;
+         wider windows get it from the .tight class the script sets when the full bar does not fit (a site with
+         many menus, or a 768-980px window), so the bar never makes the page wider than the window. */
       @media (max-width: 760px) {
         .menu:not(.all-menu), .every-link { display: none; }
         .all-menu { display: block; }
@@ -129,6 +132,11 @@
         .give { padding: 0.4rem 0.5rem; }
         .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
       }
+      nav.tight .menu:not(.all-menu), nav.tight .every-link { display: none; }
+      nav.tight .all-menu { display: block; }
+      nav.tight .give span { display: none; }
+      nav.tight .give { padding: 0.4rem 0.5rem; }
+      nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
     </style>
     <nav aria-label="Flisk products">
       ${ownsBrand ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
@@ -192,6 +200,16 @@
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   const nav = root.querySelector('nav');
+  // Switch to the compact bar when the full one would run past the right edge. Measures the bar's own items
+  // (open menu panels are absolute, so they do not count), and again on resize and once the fonts load.
+  const fit = () => {
+    nav.classList.remove('tight');
+    const edge = nav.getBoundingClientRect().right;
+    if ([...nav.children].some((c) => c.getBoundingClientRect().right > edge + 0.5)) nav.classList.add('tight');
+  };
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(host); else window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   const set = (k, v) => nav.style.setProperty(`--${k}`, v);
   // Colour helpers for paint(): parse #hex or rgb()/rgba(), lay a colour over a background, and measure WCAG contrast.
   const rgb = (c) => {
