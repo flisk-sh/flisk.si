@@ -104,6 +104,8 @@
                background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem;
                box-shadow: 0 18px 40px rgba(0,0,0,0.3); white-space: normal; }
       .panel[hidden] { display: none; }
+      /* An invisible bridge over the gap between the button and its panel, so the pointer never leaves the menu on the way down. */
+      .panel::before { content: ''; position: absolute; left: 0; right: 0; top: -0.6rem; height: 0.6rem; }
       .item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.55rem 0.6rem; border-radius: 0.4rem; }
       .item img { flex: none; width: 28px; height: 28px; border-radius: 6px; }
       .item span { display: grid; gap: 0.3rem; }
@@ -154,7 +156,7 @@
       const b = m.querySelector('button');
       let t;
       m.addEventListener('pointerenter', (e) => { if (e.pointerType === 'touch') return; clearTimeout(t); setOpen(b, true); });
-      m.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; t = setTimeout(() => setOpen(b, false), 180); });
+      m.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; t = setTimeout(() => setOpen(b, false), 300); });
     });
   }
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
