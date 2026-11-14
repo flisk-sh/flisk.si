@@ -183,12 +183,36 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   const nav = root.querySelector('nav');
   const set = (k, v) => nav.style.setProperty(`--${k}`, v);
+  // Colour helpers for paint(): parse #hex or rgb()/rgba(), lay a colour over a background, and measure WCAG contrast.
+  const rgb = (c) => {
+    if (c[0] === '#') { let h = c.slice(1); if (h.length === 3) h = [...h].map((x) => x + x).join(''); return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)).concat(1); }
+    const m = c.match(/[\d.]+/g).map(Number); return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1];
+  };
+  const over = (f, b) => f.slice(0, 3).map((v, i) => Math.round(v * f[3] + b[i] * (1 - f[3])));
+  const lum = (c) => { const [r, g, b] = c.map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const ratio = (a, b) => { const x = lum(a.slice(0, 3)), y = lum(b.slice(0, 3)); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  const css = (c) => `rgb(${c.slice(0, 3).join(', ')})`;
+  // The first candidate that reads at 4.5:1 on every background, else the best one pulled toward the text colour until it does.
+  const readable = (cands, bgs, ink) => {
+    const worst = (c) => Math.min(...bgs.map((b) => ratio(c, b)));
+    const hit = cands.find((c) => worst(c) >= 4.5); if (hit) return hit;
+    const best = cands.reduce((a, c) => (worst(c) > worst(a) ? c : a));
+    for (let k = 1; k <= 10; k++) { const m = best.map((v, i) => Math.round(v + (ink[i] - v) * k / 10)); if (worst(m) >= 4.5) return m; }
+    return ink;
+  };
   const paint = () => {
     const t = THEMES[theme];
     if (t) {
-      // A chosen look: its own tokens. The accent text is the look's accentInk on dark looks and its accent on light ones.
-      set('bg', t.bg); set('panel', t.surface); set('ink', t.ink); set('line', t.line);
-      set('acc', t.accent); set('hi', t.mode === 'dark' ? t.accentInk : t.accent); set('on', t.onAccent);
+      // A chosen look: its own tokens, made safe to read. A see-through surface (geist-glass) is laid over the bar colour so
+      // the menu panel is solid, and the accent text and the text on the accent pill are kept at 4.5:1 or better.
+      const bg = rgb(t.bg), ink = rgb(t.ink), acc = rgb(t.accent);
+      const panel = over(rgb(t.surface), bg);
+      const first = t.mode === 'dark' ? [t.accentInk, t.accent] : [t.accent, t.accentInk];
+      set('bg', t.bg); set('panel', css(panel)); set('ink', t.ink); set('line', t.line); set('acc', t.accent);
+      const tint = over([acc[0], acc[1], acc[2], 0.16], bg); // the pill behind accent text (.first)
+      set('hi', css(readable(first.map((c) => over(rgb(c), bg)), [bg, panel, tint], ink)));
+      set('on', css([rgb(t.onAccent), [255, 255, 255, 1], [0, 0, 0, 1]].map((c) => c.slice(0, 3))
+        .reduce((a, c) => (ratio(a, acc) >= 4.5 || ratio(a, acc) >= ratio(c, acc) ? a : c))));
       return;
     }
     // No look chosen: when the page behind the bar is light, use its colour and dark text.
