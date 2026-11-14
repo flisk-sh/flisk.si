@@ -20,6 +20,8 @@ Any Flisk site can show the same slim strip of product links at the top of its p
 
 It sits in the page flow, keeps its styles to itself, and marks the site it is on.
 
+Its right end has a pink ♥ Help us explore more button to GitHub Sponsors. To restyle the rest of the bar (say, a colourless look), target `flisk-bar::part(tone)`: every part except that button carries it, so `flisk-bar::part(tone) { filter: grayscale(1) }` greys the bar and keeps the button pink.
+
 ## The share card
 
 `og.png` (1200x630) is the image link previews show. It is built from `scripts/og.py`, which inlines the mark and product icons from `assets/`:

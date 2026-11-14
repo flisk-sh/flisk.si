@@ -5,6 +5,8 @@
    It sits in the page flow (it never covers content), keeps its styles to itself, and is built from the `bar:` block of
    _data/catalog.yml: the flagship first, then a few menus, each item with its icon and one plain sentence.
    The page it is on is marked as current. */
+/* A page can restyle every part of the bar except the sponsor button with flisk-bar::part(tone), for example
+   flisk-bar::part(tone) { filter: grayscale(1) } for a colourless look that still keeps the button pink. */
 (function () {
   if (window.top !== window.self || document.querySelector('flisk-bar')) return;
   const HOME = {{ site.url | jsonify }};
@@ -64,12 +66,12 @@
   const menus = MENUS.map(([label, items], i) => {
     const current = items.some(([, url]) => isHere(url)) ? ' data-current' : '';
     return `<div class="menu">
-      <button type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(label)}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel" id="m${i}" hidden>${panel(items)}</div></div>`;
+      <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(label)}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+      <div class="panel" part="tone" id="m${i}" hidden>${panel(items)}</div></div>`;
   }).join('');
   const all = `<div class="menu all-menu">
-      <button type="button" aria-expanded="false" aria-controls="mall">Products<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel wide" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(label)}</p>${panel(items)}`).join('')}
+      <button part="tone" type="button" aria-expanded="false" aria-controls="mall">Products<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+      <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(label)}</p>${panel(items)}`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
 
@@ -129,10 +131,10 @@
       }
     </style>
     <nav aria-label="Flisk products">
-      ${ownsBrand ? '' : `<a class="home" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
-      ${firstUrl ? `<a class="first" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
+      ${ownsBrand ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
+      ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
       ${menus}
-      ${here === 'flisk.si' ? '' : `<a class="every-link" href="${esc(carry(HOME + '/'))}">All products</a>`}
+      ${here === 'flisk.si' ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">All products</a>`}
       ${all}
       <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="Help us explore more: sponsor Flisk on GitHub" title="Sponsor Flisk on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>Help us explore more</span></a>
     </nav>`;
