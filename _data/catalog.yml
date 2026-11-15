@@ -14,7 +14,7 @@ bar:
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
-      items: [Learn AI, DevEx Roadmap, Command Comparer, Personal Demos]
+      items: [Practice & Learn AI, DevEx Roadmap, Command Comparer, Personal Demos]
     - label: AI tools
       items: [Pages, Citable, README Score, Gardener, README Diagram, Flisk Tools]
 
