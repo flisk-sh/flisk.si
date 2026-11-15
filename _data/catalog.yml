@@ -14,7 +14,7 @@ bar:
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
-      items: [DevEx Roadmap, Command Comparer, Personal Demos]
+      items: [Learn AI, DevEx Roadmap, Command Comparer, Personal Demos]
     - label: AI tools
       items: [Pages, Citable, README Score, Gardener, README Diagram, Flisk Tools]
 
@@ -204,10 +204,10 @@ sections:
         url: https://demo.flisk.si
         icon: personal-demos
         text: A demo stack generated just for you.
-      - name: Flisk Labs
-        url: https://github.com/flisk-sh/flisk-labs
-        icon: lab
-        text: Lessons for the Flisk CLI. Each one starts a local stack.
+      - name: Learn AI
+        url: https://flisk-sh.github.io/flisk-labs/
+        icon: learn-ai
+        text: A free course of 26 hands-on labs, from a first model call to a shipped assistant.
       - name: Demo animation
         url: https://flisk-sh.github.io/flisk-demo-animation/
         icon: personal-demos
