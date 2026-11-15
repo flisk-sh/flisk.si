@@ -10,7 +10,7 @@ bar:
     - label: AI cloud
       items: [Flisk Inference, Fleet, Host, Flisk Bot]
     - label: AI growth
-      items: [Flisk Analytics, Citable, README Score, Flisk Jobs]
+      items: [Grow, Flisk Analytics, Citable, README Score, Flisk Jobs]
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
@@ -61,6 +61,10 @@ sections:
     title: Publish and get found
     text: Put a page online and check how people and AI find it.
     items:
+      - name: Grow
+        url: https://grow.flisk.si
+        icon: grow
+        text: Paste a link to what you made. Get who would buy it, where they are, and emails and posts to send.
       - name: Pages
         url: https://pages.flisk.si
         icon: put-my-page-online
