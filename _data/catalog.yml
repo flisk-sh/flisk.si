@@ -204,7 +204,7 @@ sections:
         url: https://demo.flisk.si
         icon: personal-demos
         text: A demo stack generated just for you.
-      - name: Learn AI
+      - name: Practice & Learn AI
         url: https://practice.flisk.si/
         icon: learn-ai
         text: A free course of 26 hands-on labs, from a first model call to a shipped assistant.
