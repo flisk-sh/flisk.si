@@ -10,7 +10,7 @@ bar:
     - label: AI cloud
       items: [Flisk Inference, Fleet, Host, Flisk Bot]
     - label: AI growth
-      items: [Grow, Ranker, Flisk Analytics, Citable, README Score, Flisk Jobs]
+      items: [Grow, Ranker, Cilytics, Flisk Analytics, Citable, README Score, Flisk Jobs]
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
@@ -81,6 +81,10 @@ sections:
         url: https://ranker.flisk.si
         icon: ranker
         text: Products ranked by stars gained on GitHub, each with a live README badge.
+      - name: Cilytics
+        url: https://cilytics.flisk.si
+        icon: cilytics
+        text: See which CI runs are red, slow or flaky across every repo of a GitHub org.
       - name: README Diagram
         url: https://diagram.flisk.si
         icon: readme-diagram
