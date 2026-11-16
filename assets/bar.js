@@ -57,6 +57,12 @@
   const ownsBrand = here === 'flisk.si' || here === 'flisk.sh';
   const host = document.createElement('flisk-bar');
   host.style.cssText = 'display:block;position:relative;z-index:2147483000';
+  /* Inter ExtraLight, the same face as the Ranker headline. Web fonts load from the page, not the shadow root. */
+  if (!document.querySelector('link[data-flisk-bar-font]')) {
+    const f = document.createElement('link');
+    f.rel = 'stylesheet'; f.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap'; f.setAttribute('data-flisk-bar-font', '');
+    document.head.appendChild(f);
+  }
   const root = host.attachShadow({ mode: 'open' });
 
   const panel = (items) => items.map(([name, url, icon, text]) =>
@@ -83,13 +89,13 @@
             --dim: color-mix(in srgb, var(--ink) 66%, transparent); --faint: color-mix(in srgb, var(--ink) 45%, transparent); --wash: color-mix(in srgb, var(--ink) 7%, transparent);
             display: flex; align-items: center; gap: 0.35rem; padding: 0 1rem; height: 2.5rem;
             background: var(--bg); border-bottom: 1px solid var(--line); color: var(--dim);
-            font: 500 12px/1 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap; }
+            font: 200 14px/1 Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: -0.02em; white-space: nowrap; }
       a { color: inherit; text-decoration: none; }
       a:focus-visible, button:focus-visible { outline: 2px solid #4dd0ff; outline-offset: 2px; }
-      .home { display: inline-flex; align-items: center; gap: 0.45rem; margin-right: 0.6rem; color: var(--ink); font-weight: 600; }
+      .home { display: inline-flex; align-items: center; gap: 0.45rem; margin-right: 0.6rem; color: var(--ink); font: 600 12px/1 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0; }
       .mark { display: grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 0.25rem; background: var(--acc); color: var(--on); font-size: 9px; font-weight: 700; }
       .first { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.7rem; border-radius: 999px;
-               background: color-mix(in srgb, var(--acc) 16%, transparent); color: var(--hi); font-weight: 600; margin-right: 0.35rem; }
+               background: color-mix(in srgb, var(--acc) 16%, transparent); color: var(--hi); font-weight: 300; margin-right: 0.35rem; }
       .first::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acc) 25%, transparent); }
       .first:hover, .first[aria-current] { background: var(--acc); color: var(--on); }
       .first[aria-current]::before, .first:hover::before { background: var(--on); box-shadow: none; }
@@ -116,7 +122,7 @@
       .item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.55rem 0.6rem; border-radius: 0.4rem; }
       .item img { flex: none; width: 28px; height: 28px; border-radius: 6px; }
       .item span { display: grid; gap: 0.3rem; }
-      .item b { color: var(--ink); font-weight: 600; }
+      .item b { color: var(--ink); font-weight: 400; }
       .item small { color: var(--dim); font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
       .item:hover { background: var(--wash); }
       .item[aria-current] b { color: var(--hi); }
