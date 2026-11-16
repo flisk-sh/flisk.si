@@ -56,6 +56,10 @@ sections:
         url: https://github.com/flisk-sh/live-preview
         icon: live-preview
         text: A public HTTPS link for a Docker stack running on a GitHub Actions runner.
+      - name: cfworker2browser
+        url: https://github.com/flisk-sh/cfworker2browser
+        icon: cfworker2browser
+        text: Run a Cloudflare Worker in the visitor's browser tab. No server, no account.
 
   - id: publish
     title: Publish and get found
