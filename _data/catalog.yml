@@ -220,6 +220,10 @@ sections:
         url: https://practice.flisk.si/
         icon: learn-ai
         text: A free course of 26 hands-on labs, from a first model call to a shipped assistant.
+      - name: Flisk Learn
+        url: https://learn.flisk.si
+        icon: learn-ai
+        text: Learn, practice and take an exam on AI engineering, with hands-on labs.
       - name: Demo animation
         url: https://flisk-sh.github.io/flisk-demo-animation/
         icon: personal-demos
