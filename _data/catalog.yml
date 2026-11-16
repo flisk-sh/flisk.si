@@ -8,7 +8,7 @@ bar:
   first_label: AI chat
   menus:
     - label: AI cloud
-      items: [Flisk Inference, Fleet, Host, Flisk Bot]
+      items: [Fleet, Flisk Inference, Host, Flisk Bot]
     - label: AI growth
       items: [Grow, Ranker, Cilytics, Flisk Analytics, Citable, README Score, Flisk Jobs]
     - label: AI locally
