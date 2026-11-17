@@ -146,6 +146,14 @@
         .give { padding: 0.4rem 0.5rem; }
         .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
       }
+      /* Very narrow phones (320px): tighter spacing so the sponsor heart is not cut off the right edge. */
+      @media (max-width: 360px) {
+        nav { padding: 0 0.5rem; gap: 0.1rem; }
+        .home { margin-right: 0.2rem; }
+        .first { padding: 0.4rem 0.5rem; }
+        button { padding: 0.4rem 0.35rem; }
+        .give { margin-left: 0.2rem; }
+      }
       nav.tight .menu:not(.all-menu), nav.tight .every-link { display: none; }
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
