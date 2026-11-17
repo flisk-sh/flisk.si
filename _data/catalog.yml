@@ -35,7 +35,7 @@ sections:
       - name: Flisk CLI
         url: https://flisk.sh
         icon: flisk-cli
-        text: The local runtime your AI agent can start, check and fix.
+        text: Run your whole app on your laptop with one command. Your AI can start, check and fix it.
       - name: FliskOS
         url: https://os.flisk.si
         icon: fliskos
@@ -55,7 +55,7 @@ sections:
       - name: Live Preview
         url: https://github.com/flisk-sh/live-preview
         icon: live-preview
-        text: A public HTTPS link for a Docker stack running on a GitHub Actions runner.
+        text: Share an app running on your GitHub as a public link.
       - name: cfworker2browser
         url: https://github.com/flisk-sh/cfworker2browser
         icon: cfworker2browser
@@ -72,7 +72,7 @@ sections:
       - name: Pages
         url: https://pages.flisk.si
         icon: put-my-page-online
-        text: Your agent builds a page. One command makes it a link.
+        text: Your AI builds a page. One command puts it online.
       - name: Citable
         url: https://citable.flisk.si
         icon: citable
@@ -112,7 +112,7 @@ sections:
 
   - id: ai
     title: AI and models
-    text: Tools your AI can call, and a small model that writes Flisk config.
+    text: Free AI models, places to run AI helpers, and a jobs board for them.
     items:
       - name: Build Me an App
         url: https://build.flisk.si/
@@ -121,19 +121,19 @@ sections:
       - name: Flisk Inference
         url: https://inference.flisk.si
         icon: flisk-inference
-        text: An OpenAI-compatible endpoint for a small model that writes Flisk config files.
+        text: A free AI model for your apps. Get a key in one minute, no card.
       - name: Fleet
         url: https://fleet.flisk.si
         icon: fleet
-        text: One API for agent pods on the cheapest sandbox provider you have a key for.
+        text: Safe, cheap places to run AI agents, with one key and one balance.
       - name: Host
         url: https://host.flisk.si
         icon: host
-        text: Free places to run your own agent pods, and a cabinet that starts a host with your own provider key.
+        text: Free places to run your AI agent, and a 4-step guide to set it up.
       - name: Flisk Jobs
         url: https://jobs.flisk.si
         icon: jobs
-        text: "An open jobs board for any AI agent: post a job, an agent claims it, every step is public."
+        text: "A public jobs board for AI helpers: post a job, one picks it up, and you see every step."
       - name: Flisk Traces
         url: https://traces.flisk.si
         icon: traces
@@ -141,7 +141,7 @@ sections:
       - name: Flisk Bot
         url: https://bot.flisk.si
         icon: bot
-        text: A durable Flisk agent that takes jobs from the board, with its sessions on show.
+        text: An AI helper that takes jobs from the board and keeps going after a restart.
       - name: Flisk Model
         url: https://github.com/flisk-sh/flisk-model
         icon: flisk-model
@@ -153,7 +153,7 @@ sections:
       - name: Flisk Agent Stack
         url: https://github.com/flisk-sh/flisk-agent-stack
         icon: stack
-        text: An agent, an MCP tool server, Postgres and NATS as one starter.
+        text: A ready-made starter: an AI helper with tools, a database and messages.
 
   - id: agents
     title: MCP servers, plugins and skills
@@ -182,7 +182,7 @@ sections:
       - name: Flisk CLI plugin
         url: https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude
         icon: flisk-cli
-        text: The Flisk CLI as MCP tools and skills inside Claude Code.
+        text: Use Flisk from inside Claude Code.
       - name: Pages plugin
         url: https://github.com/flisk-sh/pages/tree/main/plugins/put-my-page-online
         icon: put-my-page-online
@@ -198,11 +198,11 @@ sections:
       - name: Shunt plugin
         url: https://github.com/flisk-sh/flisk-marketplaces/tree/main/plugins/shunt
         icon: plugin
-        text: Saves tokens by sending large file reads to a local model.
+        text: Saves money by letting a small local AI read big files for you.
       - name: Flisk Skills
         url: https://github.com/flisk-sh/flisk-skills
         icon: skills
-        text: Agent skills that teach your agent the Flisk service file.
+        text: Teaches your AI how to set up a Flisk app.
       - name: Flisk Marketplaces
         url: https://github.com/flisk-sh/flisk-marketplaces
         icon: plugin
@@ -260,7 +260,7 @@ sections:
       - name: Portal template
         url: https://github.com/flisk-sh/flisk-template-portal
         icon: template
-        text: GitHub sign-in, API keys, usage and a metered proxy in one service.
+        text: Sign in with GitHub, get keys and see what you used, in one service.
       - name: Flisk Stack
         url: https://github.com/flisk-sh/flisk-stack
         icon: stack
