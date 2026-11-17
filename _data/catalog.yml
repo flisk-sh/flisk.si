@@ -10,7 +10,7 @@ bar:
     - label: AI cloud
       items: [Fleet, Flisk Inference, Host, Flisk Bot]
     - label: AI growth
-      items: [Grow, Ranker, Cilytics, Flisk Analytics, Citable, README Score, Flisk Jobs, Flisk Traces]
+      items: [Grow, Ranker, Cilytics, Flisk Analytics, Flisk Jobs, Flisk Traces]
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
