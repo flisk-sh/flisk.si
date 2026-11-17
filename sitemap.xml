@@ -2,8 +2,10 @@
 layout: null
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://flisk.si/</loc><lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://flisk.si/</loc><lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://flisk.si/"/><xhtml:link rel="alternate" hreflang="nl" href="https://flisk.si/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://flisk.si/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://flisk.si/"/></url>
+  <url><loc>https://flisk.si/nl/</loc><lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://flisk.si/"/><xhtml:link rel="alternate" hreflang="nl" href="https://flisk.si/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://flisk.si/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://flisk.si/"/></url>
+  <url><loc>https://flisk.si/de/</loc><lastmod>{{ site.time | date: '%Y-%m-%d' }}</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://flisk.si/"/><xhtml:link rel="alternate" hreflang="nl" href="https://flisk.si/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://flisk.si/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://flisk.si/"/></url>
 {%- for section in site.data.catalog.sections -%}{%- for item in section.items -%}{%- assign skip = false -%}{%- if item.url contains '/mcp' or item.url contains 'helpdock' -%}{%- assign skip = true -%}{%- endif -%}{%- if item.url contains '.flisk.si' and skip == false -%}
   <url><loc>{{ item.url }}</loc></url>
 {%- endif -%}{%- endfor -%}{%- endfor %}
