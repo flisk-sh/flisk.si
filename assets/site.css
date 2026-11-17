@@ -181,3 +181,8 @@ h1 {
   html { scroll-behavior: auto; }
   .links a { transition: none; }
 }
+
+/* Language switcher in the footer: the current language is marked, the others are plain links. */
+.foot .lang { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1rem; }
+.foot .lang a { margin-right: 0; color: var(--muted); }
+.foot .lang a[aria-current] { color: #fff; text-decoration: none; cursor: default; }

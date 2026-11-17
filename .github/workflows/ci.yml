@@ -31,7 +31,11 @@ jobs:
           bundler-cache: true
       - name: Check the catalog (YAML, fields, icon files)
         run: ruby scripts/check_catalog.rb
+      - name: Check the Dutch and German strings
+        run: ruby scripts/check_i18n.rb
       - name: Build the site
         run: bundle exec jekyll build
+      - name: Check the built nl and de pages (lang, hreflang, canonical, sitemap)
+        run: ruby scripts/check_i18n.rb --built
       - name: Syntax-check the built bar script
         run: node --check _site/assets/bar.js

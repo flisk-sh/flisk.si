@@ -1,0 +1,132 @@
+{%- comment -%}
+  The home page for one language. Included by index.html (en), nl/index.html and de/index.html with `lang`.
+  Strings and item texts for nl and de come from _data/i18n/<lang>.yml; anything missing there falls back to the English catalog.
+{%- endcomment -%}
+{%- assign code = include.lang | default: "en" -%}
+{%- assign tr = site.data.i18n[code] -%}
+{%- assign sections = site.data.catalog.sections -%}
+{%- assign total = 0 -%}
+{%- for section in sections %}{% assign total = total | plus: section.items.size %}{% endfor -%}
+{%- if code == "en" -%}{%- assign prefix = "" -%}{%- else -%}{%- assign prefix = "/" | append: code -%}{%- endif -%}
+{%- assign page_title = tr.title | default: "Flisk: everything we build" -%}
+{%- assign page_desc = tr.description | default: site.description -%}
+{%- assign og_alt = tr.og_alt | default: "Flisk: everything we build. Every product, plugin, template and example, on one page. flisk.si" -%}
+{%- assign ui = tr.ui -%}
+<!doctype html>
+<html lang="{{ code }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script defer data-domain="flisk.si" src="https://flisk.sh/a.js"></script>
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_desc }}" />
+  <link rel="canonical" href="{{ site.url }}{{ prefix }}/" />
+  <link rel="alternate" hreflang="en" href="{{ site.url }}/" />
+  <link rel="alternate" hreflang="nl" href="{{ site.url }}/nl/" />
+  <link rel="alternate" hreflang="de" href="{{ site.url }}/de/" />
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Flisk" />
+  <meta property="og:locale" content="{% case code %}{% when 'nl' %}nl_NL{% when 'de' %}de_DE{% else %}en_US{% endcase %}" />
+  <meta property="og:title" content="{{ page_title }}" />
+  <meta property="og:description" content="{{ page_desc }}" />
+  <meta property="og:url" content="{{ site.url }}{{ prefix }}/" />
+  <meta property="og:image" content="{{ site.url }}/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{{ og_alt }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ page_title }}" />
+  <meta name="twitter:description" content="{{ page_desc }}" />
+  <meta name="twitter:image" content="{{ site.url }}/og.png" />
+  <meta name="theme-color" content="#0a0a0e" />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#catalog">{{ ui.skip | default: "Skip to the list" }}</a>
+
+  <header class="top">
+    <a class="brand" href="{{ prefix }}/" aria-label="{{ ui.home_label | default: 'Flisk home' }}">
+      <span class="brand-mark" aria-hidden="true">&gt;_</span>
+      <span class="brand-word">flisk</span>
+    </a>
+    <nav class="top-links" aria-label="{{ ui.nav_label | default: 'Main' }}">
+      <a href="https://flisk.sh">{{ ui.nav_cli | default: "Flisk CLI" }}</a>
+      <a href="https://flisk.sh/docs/">{{ ui.nav_docs | default: "Docs" }}</a>
+      <a href="https://discord.gg/qMu5Xn8Kaq">Discord</a>
+      <a href="https://github.com/flisk-sh">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="frame">
+    <section class="hero">
+      {%- if code == "en" %}
+      <h1>Everything <span class="accent">Flisk</span> builds.</h1>
+      {%- else %}
+      <h1>{{ ui.hero_before }} <span class="accent">Flisk</span> {{ ui.hero_after }}</h1>
+      {%- endif %}
+      <p class="hero-sub">{{ page_desc }}</p>
+      <label class="filter">
+        <span class="filter-label">{% if ui %}{{ ui.filter_label | replace: "%d", total }}{% else %}Filter {{ total }} links{% endif %}</span>
+        <input type="search" id="filter" placeholder="{{ ui.filter_placeholder | default: 'Try pages, mcp, template or vue' }}" autocomplete="off" spellcheck="false" />
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <nav class="jump" aria-label="{{ ui.sections_label | default: 'Sections' }}">
+        {%- for section in sections %}
+        {%- assign st = tr.sections[section.id] %}
+        <a href="#{{ section.id }}" data-jump="{{ section.id }}">{{ st.title | default: section.title }} <span>{{ section.items.size }}</span></a>
+        {%- endfor %}
+      </nav>
+    </section>
+
+    <div id="catalog">
+      {%- for section in sections %}
+      {%- assign st = tr.sections[section.id] %}
+      <section class="group" id="{{ section.id }}" data-group>
+        <div class="group-head">
+          <h2>{{ st.title | default: section.title }}</h2>
+          <p>{{ st.text | default: section.text }}</p>
+        </div>
+        <ul class="links">
+          {%- for item in section.items %}
+          {%- assign host = item.url | remove: "https://" | remove: "www." | split: "/" | first %}
+          {%- assign item_text = tr.items[item.url] | default: item.text %}
+          <li data-row data-text="{{ item.name | downcase | escape }} {{ item_text | downcase | escape }} {{ host }} {{ st.title | default: section.title | downcase }}">
+            <a href="{{ item.url }}">
+              <img class="link-icon" src="/assets/icons/{{ item.icon }}.svg" width="40" height="40" alt="" loading="lazy" decoding="async" />
+              <span class="link-name">{{ item.name }}</span>
+              <span class="link-text">{{ item_text }}</span>
+              <span class="link-host">{% if host == "github.com" %}github{% else %}{{ host }}{% endif %} <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endfor %}
+      <p class="empty" id="empty" hidden>{% if ui %}{{ ui.empty | replace: "%d", total }}{% else %}Nothing matches. Clear the filter to see all {{ total }} links.{% endif %}</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>{{ ui.foot_text | default: "Flisk is open source. Most of what is listed here is MIT licensed and runs on your own machine." }}</p>
+    <p><a href="mailto:hello@flisk.sh">hello@flisk.sh</a> <a href="https://github.com/flisk-sh/flisk.si">{{ ui.foot_edit | default: "Edit this page on GitHub" }}</a></p>
+    <p class="lang" aria-label="{{ ui.language | default: 'Language' }}">
+      <a href="/" hreflang="en" lang="en" data-lang="en"{% if code == "en" %} aria-current="true"{% endif %}>English</a>
+      <a href="/nl/" hreflang="nl" lang="nl" data-lang="nl"{% if code == "nl" %} aria-current="true"{% endif %}>Nederlands</a>
+      <a href="/de/" hreflang="de" lang="de" data-lang="de"{% if code == "de" %} aria-current="true"{% endif %}>Deutsch</a>
+    </p>
+  </footer>
+
+  <script src="/assets/bar.js" defer></script>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+# German strings for flisk.si/de/. Items are keyed by their url in catalog.yml; a missing entry falls back to the English text.
+code: de
+name: Deutsch
+title: "Flisk: alles, was wir bauen"
+description: Jedes Produkt, Plugin, Template und Beispiel des Flisk-Teams auf einer Seite.
+og_alt: "Flisk: alles, was wir bauen. Jedes Produkt, Plugin, Template und Beispiel auf einer Seite. flisk.si"
+ui:
+  skip: Zur Liste springen
+  home_label: Flisk-Startseite
+  nav_label: Hauptmenü
+  nav_cli: Flisk CLI
+  nav_docs: Dokumentation
+  hero_before: Alles, was
+  hero_after: baut.
+  filter_label: "%d Links filtern"
+  filter_placeholder: Probier pages, mcp, template oder vue
+  sections_label: Bereiche
+  empty: "Keine Treffer. Lösche den Filter, um alle %d Links zu sehen."
+  foot_text: Flisk ist Open Source. Das meiste hier steht unter der MIT-Lizenz und läuft auf deinem eigenen Rechner.
+  foot_edit: Diese Seite auf GitHub bearbeiten
+  language: Sprache
+sections:
+  chat: {title: Chat, text: Frag in einfachen Worten. Flisk erledigt die Arbeit auf einem Computer und gibt dir einen Link.}
+  run: {title: Deine App ausführen, text: Starte, prüfe und repariere eine ganze App auf deinem eigenen Rechner.}
+  publish: {title: Veröffentlichen und gefunden werden, text: Stell eine Seite online und prüfe, wie Menschen und KI sie finden.}
+  ai: {title: KI und Modelle, text: "Kostenlose KI-Modelle, Orte für KI-Helfer und eine Jobbörse für sie."}
+  agents: {title: MCP-Server, Plugins und Skills, text: "Füge Flisk zu Claude, Claude Code, Cursor, Codex oder Gemini CLI hinzu."}
+  learn: {title: Vergleichen und lernen, text: "Karten, Vergleiche, Lektionen und Demos."}
+  templates: {title: Templates und Starter, text: Starte ein neues Projekt mit etwas, das schon läuft.}
+  examples: {title: Beispiele, text: Ganze Systeme, die du klonen und lokal starten kannst.}
+  install: {title: Installation und Extras, text: "Wege, die CLI zu bekommen, und kleine Dinge, die nebenbei entstanden sind."}
+items:
+  "https://chat.flisk.si": Frag nach einer Website, einem Video oder einer Antwort. Kostenlos mit GitHub anmelden.
+  "https://flisk.sh": Führe deine ganze App mit einem Befehl auf dem Laptop aus. Deine KI kann sie starten, prüfen und reparieren.
+  "https://os.flisk.si": Deine Projekte, Coding-Agenten und Flisk-Apps in einem lokalen Fenster.
+  "https://run-my-agents.flisk.si/": Claude Code, vereinfacht. Kein Server, keine Schlüssel.
+  "https://github.com/flisk-sh/flisk-import": Scanne ein Repo und importiere seine Services aus Procfile, Compose und Dockerfile.
+  "https://github.com/flisk-sh/flisk-export": Schreibt render.yaml und wrangler.toml aus deinen Service-Dateien. Es deployt nie.
+  "https://github.com/flisk-sh/live-preview": Teile eine App, die auf deinem GitHub läuft, als öffentlichen Link.
+  "https://github.com/flisk-sh/cfworker2browser": Führe einen Cloudflare Worker im Browser-Tab des Besuchers aus. Kein Server, kein Konto.
+  "https://grow.flisk.si": Füge einen Link zu deinem Werk ein. Erfahre, wer es kaufen würde, wo diese Leute sind und welche E-Mails und Beiträge du senden kannst.
+  "https://pages.flisk.si": Deine KI baut eine Seite. Ein Befehl stellt sie online.
+  "https://citable.flisk.si": Finde heraus, ob KI-Antworten deine Website zitieren können.
+  "https://readme.flisk.si": Dein README mit einer Note von 0 bis 100, samt Korrektur für jeden Fehler.
+  "https://ranker.flisk.si": Produkte nach gewonnenen GitHub-Sternen gerankt, jedes mit einem Live-README-Badge.
+  "https://cilytics.flisk.si": Sieh, welche CI-Läufe rot, langsam oder instabil sind, über alle Repos einer GitHub-Organisation.
+  "https://diagram.flisk.si": Verwandle jedes README in ein animiertes SVG-Diagramm.
+  "https://gardener.flisk.si": Züchte aus jedem GitHub-Repo ein Abhängigkeitsturm-Meme.
+  "https://helpdock.flisk.si": Pausiert bis zum 1. Dezember. Deine Doku als Hilfecenter, das mit Quellen antwortet.
+  "https://analytics.flisk.si": Sieh, wer deine Website besucht. Keine Cookies und kein Banner.
+  "https://tools.flisk.si/": Führe kleine Web- und GitHub-Tools kostenlos auf deinem eigenen GitHub aus.
+  "https://build.flisk.si/": Sag, was du willst. Erhalte die Bausteine und die Befehle, um es auszuführen.
+  "https://inference.flisk.si": Ein kostenloses KI-Modell für deine Apps. Schlüssel in einer Minute, keine Karte nötig.
+  "https://fleet.flisk.si": Sichere, günstige Orte für KI-Agenten, mit einem Schlüssel und einem Guthaben.
+  "https://host.flisk.si": Kostenlose Orte für deinen KI-Agenten und eine Anleitung in 4 Schritten zur Einrichtung.
+  "https://jobs.flisk.si": "Eine öffentliche Jobbörse für KI-Helfer: Job einstellen, ein Helfer übernimmt ihn, und du siehst jeden Schritt."
+  "https://traces.flisk.si": "Nur die Probleme der Flisk-Backends: Fehler, falsche Routen, langsame Aufrufe. Läuft alles gut, wird nichts protokolliert."
+  "https://bot.flisk.si": Ein KI-Helfer, der Jobs von der Börse übernimmt und nach einem Neustart weitermacht.
+  "https://github.com/flisk-sh/flisk-model": Kann ein kleines Modell korrekte Flisk-Konfiguration schreiben? Ein Test mit 62 Fragen samt Ergebnissen.
+  "https://github.com/flisk-sh/awesome-model-training": Kostenlose, offene Tools zum Trainieren kleiner Spezialmodelle.
+  "https://github.com/flisk-sh/flisk-agent-stack": "Ein fertiger Starter: ein KI-Helfer mit Tools, einer Datenbank und Nachrichten."
+  "https://build.flisk.si/mcp": Plant eine App aus einer einfachen Beschreibung. Remote, schreibgeschützt, ohne Schlüssel.
+  "https://pages.flisk.si/mcp": Prüft eine Seite und nennt die Schritte zum Veröffentlichen.
+  "https://citable.flisk.si/mcp": Prüft, ob die KI-Suche eine Website finden, lesen und zitieren kann.
+  "https://readme.flisk.si/mcp": Bewertet ein README und nennt für jeden Fehler eine Korrektur.
+  "https://helpdock.flisk.si/mcp": Pausiert bis zum 1. Dezember. Durchsucht die Flisk-Doku und antwortet mit Quellen.
+  "https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude": Nutze Flisk direkt in Claude Code.
+  "https://github.com/flisk-sh/pages/tree/main/plugins/put-my-page-online": Veröffentliche eine Seite aus Claude heraus mit einem Skill.
+  "https://github.com/flisk-sh/citable/tree/main/plugins/ai-search-checker": Prüfe aus Claude heraus, ob eine Website für die KI-Suche auffindbar ist.
+  "https://github.com/flisk-sh/readme-score/tree/main/plugins/readme-checker": Verbessere ein README aus Claude heraus.
+  "https://github.com/flisk-sh/flisk-marketplaces/tree/main/plugins/shunt": Spart Geld, indem eine kleine lokale KI große Dateien für dich liest.
+  "https://github.com/flisk-sh/flisk-skills": Bringt deiner KI bei, wie man eine Flisk-App einrichtet.
+  "https://github.com/flisk-sh/flisk-marketplaces": Wo jede Flisk-App gelistet ist und wie du jeden Server installierst.
+  "https://roadmap.flisk.si": Eine von der Community gepflegte Karte lokaler Entwickler-Tools.
+  "https://cmd.flisk.si": Flisk-Befehle neben Terraform, Compose, Tilt und mehr.
+  "https://demo.flisk.si": Ein Demo-Stack, der extra für dich erzeugt wird.
+  "https://practice.flisk.si/": Ein kostenloser Kurs mit 26 praktischen Labs, vom ersten Modellaufruf bis zum fertigen Assistenten.
+  "https://learn.flisk.si": Lerne, übe und lege eine Prüfung in KI-Engineering ab, mit praktischen Labs.
+  "https://flisk-sh.github.io/flisk-demo-animation/": Eine aufgezeichnete Anleitung von der Installation bis zum gesunden Service.
+  "https://flisk-sh.github.io/comparer/": Eine Vorlage für einen durchsuchbaren Vergleich von Tool-Befehlen nebeneinander.
+  "https://github.com/flisk-sh/awesome-flisk-framework": Ausgewählte Links zu Beispielen und Doku der Flisk CLI.
+  "https://github.com/flisk-sh/awesome-rea-flisk-cases": Apps, die per Reverse Engineering nachgebaut und mit der Flisk CLI neu aufgesetzt wurden.
+  "https://github.com/flisk-sh/flisk-template-launch": Ein kostenloser Bun- und Hono-Service mit SEO und Icons, ohne Datenbank.
+  "https://github.com/flisk-sh/flisk-template-portal": Mit GitHub anmelden, Schlüssel erhalten und sehen, was du genutzt hast, in einem Service.
+  "https://github.com/flisk-sh/flisk-stack": Ein Full-Stack-Grundgerüst mit Actions, Modellen, Jobs, Views und Migrationen.
+  "https://github.com/flisk-sh/flisk-template-next-app": Ein create-next-app-Projekt, das unter flisk up läuft.
+  "https://github.com/flisk-sh/flisk-template-vue": Eine create-vue-App, die unter flisk up läuft.
+  "https://github.com/flisk-sh/flisk-template-bati": Eine create-bati-App, die unter flisk up läuft.
+  "https://github.com/flisk-sh/flisk-template-analog": Eine create-analog-App, die unter flisk up läuft.
+  "https://github.com/flisk-sh/flisk-template-adonisjs": Eine create-adonisjs-App, die unter flisk up läuft.
+  "https://github.com/flisk-sh/flisk-cli-starter": Ein Starter-Stack, den du in jeder Cloud-Entwicklungsumgebung öffnen kannst.
+  "https://flisk-sh.github.io/create-flisk/": Eine Landingpage zum Start eines Flisk-Projekts, mit den Quickstart-Befehlen.
+  "https://github.com/flisk-sh/create-microservices": Ein interaktiver Generator für ein Flisk-Microservice-Projekt.
+  "https://github.com/flisk-sh/flisk-service-definitions": Ein Community-Register von Service-Dateien, ein Ordner pro App.
+  "https://github.com/flisk-sh/flisk-example": Das kleinste Beispiel. Zwei Stacks, vier Services.
+  "https://github.com/flisk-sh/flisk-restaurant-example": Reservierungen, Küche, Speisekarte und Service.
+  "https://github.com/flisk-sh/flisk-saas-starter": Ein lokales SaaS-Dashboard und ein Bezahlbutton.
+  "https://github.com/flisk-sh/flisk-ecommerce-example": Ein Vue-3-Shopfront und eine Hono-Katalog-API.
+  "https://github.com/flisk-sh/flisk-auth-queue-email-example": Lokales OIDC, NATS JetStream und Mailpit.
+  "https://github.com/flisk-sh/flisk-user-management": Stacks für Identitätsverwaltung, Portal und Compliance.
+  "https://github.com/flisk-sh/flisk-person-crud-example": React, Express, MongoDB, Redis und RabbitMQ.
+  "https://github.com/flisk-sh/flisk-thor-storefront": Ein Shopfront-Beispiel für Thor Commerce.
+  "https://github.com/flisk-sh/vercel-store": Ein Shopfront mit einem Hono-Backend für das Frontend, und Vue.
+  "https://github.com/flisk-sh/flisk-erp-system": 100 erzeugte Health-Services zum Testen der Skalierung. Kein ERP-Produkt.
+  "https://github.com/flisk-sh/flisk-docker-compose-example": Führe die Flisk CLI in Docker Compose aus, damit der Host nichts installieren muss.
+  "https://www.npmjs.com/package/@flisk-sh/flisk": Die Flisk CLI auf npm.
+  "https://github.com/flisk-sh/homebrew-tap": Installiere die CLI mit Homebrew auf macOS und Linux.
+  "https://github.com/flisk-sh/scoop-bucket": Installiere die CLI mit Scoop unter Windows.
+  "https://github.com/flisk-sh/releases": Fertige CLI-Binaries für Linux und macOS, mit Prüfsummen.
+  "https://github.com/flisk-sh/flisk-emoji": Der Flisk-Blitz als eigenes Emoji, in SVG und PNG.
+  "https://github.com/flisk-sh/md2html": GitHub-Flavored Markdown zu HTML, das sicher in eine Seite eingebettet werden kann.
+  "https://github.com/flisk-sh/codeql-starlark": Inoffizielle Starlark-Prüfungen, die an GitHub Code Scanning melden.
+  "https://github.com/flisk-sh/codeql-goose": Inoffizielle Goose-Prüfungen, die an GitHub Code Scanning melden.
+  "https://github.com/flisk-sh/codeql-lobster": Inoffizielle Lobster-Prüfungen, die an GitHub Code Scanning melden.
