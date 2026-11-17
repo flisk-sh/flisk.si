@@ -137,7 +137,7 @@ sections:
       - name: Flisk Traces
         url: https://traces.flisk.si
         icon: traces
-        text: Only the problems of Flisk's backends: errors, wrong routes, slow calls. Nothing is logged when all is well.
+        text: "Only the problems of Flisk's backends: errors, wrong routes, slow calls. Nothing is logged when all is well."
       - name: Flisk Bot
         url: https://bot.flisk.si
         icon: bot
