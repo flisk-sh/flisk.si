@@ -10,7 +10,7 @@ bar:
     - label: AI cloud
       items: [Fleet, Flisk Inference, Host, Flisk Bot]
     - label: AI growth
-      items: [Grow, Ranker, Cilytics, Flisk Analytics, Citable, README Score, Flisk Jobs]
+      items: [Grow, Ranker, Cilytics, Flisk Analytics, Citable, README Score, Flisk Jobs, Flisk Traces]
     - label: AI locally
       items: [Flisk CLI, FliskOS, Run My Agents]
     - label: AI learn
@@ -134,6 +134,10 @@ sections:
         url: https://jobs.flisk.si
         icon: jobs
         text: "An open jobs board for any AI agent: post a job, an agent claims it, every step is public."
+      - name: Flisk Traces
+        url: https://traces.flisk.si
+        icon: traces
+        text: Only the problems of Flisk's backends: errors, wrong routes, slow calls. Nothing is logged when all is well.
       - name: Flisk Bot
         url: https://bot.flisk.si
         icon: bot
