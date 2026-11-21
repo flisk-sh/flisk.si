@@ -225,8 +225,8 @@
         .give { padding: 0.4rem 0.5rem; }
         .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
       }
-      /* Very narrow phones (320px): tighter spacing so the sponsor heart is not cut off the right edge. */
-      @media (max-width: 360px) {
+      /* Phones up to 420px (320px, and 375-414px iPhones with a product chip and an extra icon): tighter spacing so the sponsor heart is not cut off the right edge. */
+      @media (max-width: 420px) {
         nav { padding: 0 0.5rem; gap: 0.1rem; }
         .home { margin-right: 0.2rem; }
         .first { padding: 0.4rem 0.5rem; }
