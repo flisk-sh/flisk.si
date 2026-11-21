@@ -6,7 +6,7 @@
    _data/catalog.yml: the flagship first, then a few menus, each item with its icon and one plain sentence.
    The page it is on is marked as current.
    A site can also show its own logo card in the bar, with a "from Flisk" line, its sibling products and tooltips:
-   <script src="https://flisk.si/assets/bar.js" data-product="GEL" data-icon="gel" data-accent="#b49cff" data-siblings="Cilytics,Ranker" data-text="One plain sentence about the site" defer></script> */
+   <script src="https://flisk.si/assets/bar.js" data-product="GEL" data-icon="gel" data-accent="#b49cff" data-text="One plain sentence about the site" defer></script> */
 /* A page can restyle every part of the bar except the sponsor button with flisk-bar::part(tone), for example
    flisk-bar::part(tone) { filter: grayscale(1) } for a colourless look that still keeps the button pink. */
 (function () {
@@ -85,7 +85,17 @@
   const find = (name) => MENUS.flatMap(([, items]) => items).find(([n]) => n === name);
   const iconSrc = (i) => /^(https?:|\/|data:)/.test(i) ? i : `${HOME}/assets/icons/${i}.svg`;
   const tip = (title, text) => ` data-tip="${esc(text ? title + '\n' + text : title)}"`;
-  const siblings = PRODUCT ? (OPT.siblings || '').split(',').map((n) => find(n.trim())).filter(Boolean) : [];
+  // Siblings come from the catalog: the two nearest products in this product's own bar menu (matched by icon, then name).
+  // A product that is in no menu (the flagship, or one not listed yet) shows none; data-siblings is no longer read.
+  const neighbours = () => {
+    for (const [, items] of MENUS) {
+      const at = items.findIndex(([n, , i]) => (OPT.icon && i === OPT.icon) || n === PRODUCT);
+      if (at < 0) continue;
+      return items.map((it, k) => [Math.abs(k - at), k, it]).filter(([d]) => d > 0).sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 2).map(([, , it]) => it);
+    }
+    return null;
+  };
+  const siblings = !PRODUCT ? [] : (neighbours() || []);
   const card = !PRODUCT ? '' : `<div class="card" part="tone">
       <img class="pi" src="${esc(iconSrc(OPT.icon || 'flisk-cli'))}" alt="" width="40" height="40">
       <a class="pn"${tip(PRODUCT, OPT.text)} href="${esc(location.origin + '/')}">${esc(PRODUCT)}</a>
