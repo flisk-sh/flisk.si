@@ -4,10 +4,13 @@
    like one site. Add it with one line:  <script src="https://flisk.si/assets/bar.js" defer></script>
    It sits in the page flow (it never covers content), keeps its styles to itself, and is built from the `bar:` block of
    _data/catalog.yml: the flagship first, then a few menus, each item with its icon and one plain sentence.
-   The page it is on is marked as current. */
+   The page it is on is marked as current.
+   A site can also show its own logo card in the bar, with a "from Flisk" line, its sibling products and tooltips:
+   <script src="https://flisk.si/assets/bar.js" data-product="GEL" data-icon="gel" data-accent="#b49cff" data-siblings="Cilytics,Ranker" data-text="One plain sentence about the site" defer></script> */
 /* A page can restyle every part of the bar except the sponsor button with flisk-bar::part(tone), for example
    flisk-bar::part(tone) { filter: grayscale(1) } for a colourless look that still keeps the button pink. */
 (function () {
+  const OPT = (document.currentScript && document.currentScript.dataset) || {};
   if (window.top !== window.self || document.querySelector('flisk-bar')) return;
   const HOME = {{ site.url | jsonify }};
   {%- assign bar = site.data.catalog.bar %}
@@ -73,14 +76,25 @@
   /* Inter ExtraLight, the same face as the Ranker headline. Web fonts load from the page, not the shadow root. */
   if (!document.querySelector('link[data-flisk-bar-font]')) {
     const f = document.createElement('link');
-    f.rel = 'stylesheet'; f.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap'; f.setAttribute('data-flisk-bar-font', '');
+    f.rel = 'stylesheet'; f.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Space+Grotesk:wght@700&display=swap'; f.setAttribute('data-flisk-bar-font', '');
     document.head.appendChild(f);
   }
   const root = host.attachShadow({ mode: 'open' });
+  // Product mode: the site's own logo card, its sibling products, and tooltips on the small controls.
+  const PRODUCT = OPT.product || '';
+  const find = (name) => MENUS.flatMap(([, items]) => items).find(([n]) => n === name);
+  const iconSrc = (i) => /^(https?:|\/|data:)/.test(i) ? i : `${HOME}/assets/icons/${i}.svg`;
+  const tip = (title, text) => ` data-tip="${esc(text ? title + '\n' + text : title)}"`;
+  const siblings = PRODUCT ? (OPT.siblings || '').split(',').map((n) => find(n.trim())).filter(Boolean) : [];
+  const card = !PRODUCT ? '' : `<div class="card" part="tone">
+      <img class="pi" src="${esc(iconSrc(OPT.icon || 'flisk-cli'))}" alt="" width="40" height="40">
+      <a class="pn"${tip(PRODUCT, OPT.text)} href="${esc(location.origin + '/')}">${esc(PRODUCT)}</a>
+      <a class="fl"${tip('All Flisk products', 'AI chat, cloud, growth, locally, learn and tools')} href="${esc(carry(HOME + '/'))}">from <img src="${HOME}/assets/icons/flisk-cli.svg" alt="" width="14" height="14"><strong translate="no">Flisk</strong></a></div>
+    <span class="sibs">${siblings.map(([n, u, i, t]) => `<a class="sib" part="tone"${tip(n, t)} href="${esc(carry(u))}"><img src="${HOME}/assets/icons/${esc(i)}.svg" alt="" width="26" height="26"><span class="sr">${esc(n)}</span></a>`).join('')}</span>`;
 
   const panel = (items) => items.map(([name, url, icon, text]) =>
     `<a class="item" href="${esc(carry(url))}"${isHere(url) ? ' aria-current="page"' : ''}>
-       <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28" loading="lazy">
+       <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28">
        <span><b>${esc(name)}</b><small>${esc(text)}</small></span></a>`).join('');
   const menus = MENUS.map(([label, items], i) => {
     const current = items.some(([, url]) => isHere(url)) ? ' data-current' : '';
@@ -88,7 +102,11 @@
       <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(t(label))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel" part="tone" id="m${i}" hidden>${panel(items)}</div></div>`;
   }).join('');
-  const all = `<div class="menu all-menu">
+  const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
+      <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
+      <div class="panel wide mega" part="tone" id="msw" hidden>${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items)}</div>`).join('')}
+        <a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a></div></div>`;
+  const all = PRODUCT ? '' : `<div class="menu all-menu">
       <button part="tone" type="button" aria-expanded="false" aria-controls="mall">${esc(t('Products'))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(t(label))}</p>${panel(items)}`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
@@ -119,6 +137,13 @@
       button[data-current] { color: var(--hi); }
       .menu { position: relative; }
       .all-menu { display: none; margin-left: auto; }
+      .sw button[aria-expanded="true"]::after { display: none; }
+      .menu.sw { display: block; margin: 0 0.3rem 0 0; }
+      .sw button { padding: 0.45rem; } .sw .gr { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+      .sw button svg { transform: none; }
+      .panel.mega:not([hidden]) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.4rem; width: min(58rem, 92vw); }
+      .mega .grp p:first-child { margin-top: 0.4rem; } .mega .every { grid-column: 1 / -1; }
+      @media (max-width: 900px) { .panel.mega:not([hidden]) { grid-template-columns: 1fr; } }
       .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: var(--ink); }
       .every-link:hover { color: var(--hi); }
       /* The sponsor link: GitHub Sponsors pink on every look, so it reads as the one ask on the bar. */
@@ -134,6 +159,37 @@
                      background: var(--panel); border: 1px solid var(--line); color: var(--ink); font: 400 12px/1.2 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
                      letter-spacing: 0; box-shadow: 0 10px 24px rgba(0,0,0,0.25); opacity: 0; pointer-events: none; transition: opacity .12s; }
       .help:hover::after, .help:focus-visible::after { opacity: 1; }
+      /* Product mode (data-product): the site's logo card with "from Flisk", its sibling products, and one tooltip style for the small controls. */
+      nav.prod { --pa: var(--acc); height: 4rem; gap: 0.2rem; background: radial-gradient(22rem 8rem at 0 0, color-mix(in srgb, var(--pa) 18%, transparent), transparent), var(--bg); }
+      .card { display: grid; grid-template-columns: auto 1fr; column-gap: 0.65rem; align-items: center; padding: 0.3rem 0.9rem 0.3rem 0.3rem; margin-right: 0.2rem; border-radius: 1rem;
+              background: var(--panel); box-shadow: 0 0 0 1px color-mix(in srgb, var(--pa) 55%, transparent), 0 8px 22px -10px var(--pa); }
+      .card .pi { grid-row: span 2; width: 2.5rem; height: 2.5rem; border-radius: 0.7rem; transition: transform .25s; }
+      .card:hover .pi { transform: rotate(-6deg) scale(1.06); }
+      .pn { color: var(--ink); font: 700 1.35rem/1 'Space Grotesk', Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.03em; align-self: end; }
+      .fl { display: inline-flex; align-items: center; gap: 0.3rem; align-self: start; margin-top: 0.3rem; color: var(--faint); font: 500 0.78rem/1 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 0; }
+      .fl img { width: 14px; height: 14px; border-radius: 4px; }
+      .fl strong { font-weight: 600; background: linear-gradient(100deg, var(--faint) 20%, var(--pa) 42%, var(--ink) 50%, var(--pa) 58%, var(--faint) 80%) 0 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 4s linear infinite; }
+      @keyframes shimmer { to { background-position: -300% 0; } }
+      @media (prefers-reduced-motion: reduce) { .fl strong { animation: none; } }
+      .sibs { display: inline-flex; gap: 0.1rem; margin: 0 0.4rem 0 0.2rem; padding-left: 0.5rem; border-left: 1px solid var(--line); }
+      .sib { display: inline-grid; place-items: center; padding: 0.3rem; border-radius: 0.6rem; }
+      .sib img { width: 26px; height: 26px; border-radius: 7px; transition: transform .2s; }
+      .sib:hover { background: var(--wash); } .sib:hover img { transform: scale(1.1) rotate(-4deg); }
+      .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      nav.prod .first { margin-left: 0.2rem; }
+      nav.prod .help { margin-left: auto; }
+      /* Tooltips: a name, then one plain sentence. They appear on hover and keyboard focus, and never take the pointer. */
+      [data-tip] { position: relative; }
+      [data-tip]::after { content: attr(data-tip); position: absolute; top: calc(100% + 0.5rem); left: 50%; transform: translate(-50%, 4px); z-index: 5; width: max-content; max-width: 16rem; padding: 0.5rem 0.75rem;
+                          border-radius: 0.5rem; background: var(--panel); border: 1px solid var(--line); color: var(--dim); white-space: pre-line; text-align: left;
+                          font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: 0; box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+                          opacity: 0; pointer-events: none; transition: opacity .14s .15s, transform .14s .15s; }
+      [data-tip]:hover::after, [data-tip]:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+      .pn[data-tip]::after, .fl[data-tip]::after { left: 0; transform: translate(0, 4px); }
+      .pn[data-tip]:hover::after, .fl[data-tip]:hover::after, .pn[data-tip]:focus-visible::after, .fl[data-tip]:focus-visible::after { transform: translate(0, 0); }
+      .help[data-tip]::after { left: auto; right: 0; transform: none; }
+      .give[data-tip]::after { left: auto; right: 0; transform: translate(0, 4px); } .give[data-tip]:hover::after { transform: translate(0, 0); }
+      @media (hover: none) { [data-tip]::after { display: none; } }
       .panel { position: absolute; top: calc(100% + 0.45rem); left: 0; width: 22rem; padding: 0.4rem; box-sizing: border-box;
                background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem;
                box-shadow: 0 18px 40px rgba(0,0,0,0.3); white-space: normal; }
@@ -173,14 +229,16 @@
       nav.tight .give { padding: 0.4rem 0.5rem; }
       nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
     </style>
-    <nav aria-label="${esc(t('Flisk products'))}">
-      ${ownsBrand ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
+    <nav aria-label="${esc(t('Flisk products'))}"${PRODUCT ? ' class="prod"' : ''}>
+      ${card}
+      ${switcher}
+      ${ownsBrand || PRODUCT ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
       ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(t(firstName))}</a>` : ''}
       ${menus}
-      ${here === 'flisk.si' ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
+      ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
       ${all}
       <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
-      <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}" title="${esc(t('Sponsor Flisk on GitHub'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
+      <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}"${PRODUCT ? tip(t('Help us explore more'), t('Sponsor Flisk on GitHub')) : ` title="${esc(t('Sponsor Flisk on GitHub'))}"`}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
     </nav>`;
 
   // A site whose CSP blocks images from flisk.si still gets a working menu, just without the icons.
@@ -265,6 +323,7 @@
     return ink;
   };
   const paint = () => {
+    if (OPT.accent) nav.style.setProperty('--pa', OPT.accent);
     const t = THEMES[theme];
     if (t) {
       // A chosen look: its own tokens, made safe to read. A see-through surface (geist-glass) is laid over the bar colour so
