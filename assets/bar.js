@@ -89,7 +89,11 @@
       <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(label)}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel" part="tone" id="m${i}" hidden>${panel(items)}</div></div>`;
   }).join('');
-  const all = `<div class="menu all-menu">
+  const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
+      <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="All Flisk products"${tip('All Flisk products', 'Switch to any Flisk product')}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
+      <div class="panel wide mega" part="tone" id="msw" hidden>${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(label)}</p>${panel(items)}</div>`).join('')}
+        <a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a></div></div>`;
+  const all = PRODUCT ? '' : `<div class="menu all-menu">
       <button part="tone" type="button" aria-expanded="false" aria-controls="mall">Products<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(label)}</p>${panel(items)}`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a>`}</div></div>`;
@@ -120,6 +124,13 @@
       button[data-current] { color: var(--hi); }
       .menu { position: relative; }
       .all-menu { display: none; margin-left: auto; }
+      .sw button[aria-expanded="true"]::after { display: none; }
+      .menu.sw { display: block; margin: 0 0.3rem 0 0; }
+      .sw button { padding: 0.45rem; } .sw .gr { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+      .sw button svg { transform: none; }
+      .panel.mega:not([hidden]) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.4rem; width: min(58rem, 92vw); }
+      .mega .grp p:first-child { margin-top: 0.4rem; } .mega .every { grid-column: 1 / -1; }
+      @media (max-width: 900px) { .panel.mega:not([hidden]) { grid-template-columns: 1fr; } }
       .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: var(--ink); }
       .every-link:hover { color: var(--hi); }
       /* The sponsor link: GitHub Sponsors pink on every look, so it reads as the one ask on the bar. */
@@ -207,6 +218,7 @@
     </style>
     <nav aria-label="Flisk products"${PRODUCT ? ' class="prod"' : ''}>
       ${card}
+      ${switcher}
       ${ownsBrand || PRODUCT ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
       ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
       ${menus}
