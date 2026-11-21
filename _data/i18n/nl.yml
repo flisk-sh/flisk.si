@@ -1,0 +1,114 @@
+# Dutch strings for flisk.si/nl/. Items are keyed by their url in catalog.yml; a missing entry falls back to the English text.
+code: nl
+name: Nederlands
+title: "Flisk: alles wat wij bouwen"
+description: Elk product, elke plugin, elk sjabloon en elk voorbeeld van het Flisk-team, op één pagina.
+og_alt: "Flisk: alles wat wij bouwen. Elk product, elke plugin, elk sjabloon en elk voorbeeld, op één pagina. flisk.si"
+ui:
+  skip: Naar de lijst
+  home_label: Flisk-startpagina
+  nav_label: Hoofdmenu
+  nav_cli: Flisk CLI
+  nav_docs: Documentatie
+  hero_before: Alles wat
+  hero_after: bouwt.
+  filter_label: "Filter %d links"
+  filter_placeholder: Probeer pages, mcp, sjabloon of vue
+  sections_label: Secties
+  empty: "Niets gevonden. Wis het filter om alle %d links te zien."
+  foot_text: Flisk is open source. Het meeste hier heeft een MIT-licentie en draait op je eigen computer.
+  foot_edit: Bewerk deze pagina op GitHub
+  language: Taal
+sections:
+  chat: {title: Chat, text: Vraag het in gewone woorden. Flisk doet het werk op een computer en geeft je een link.}
+  run: {title: Draai je app, text: Start, controleer en repareer een hele app op je eigen computer.}
+  publish: {title: Publiceren en gevonden worden, text: Zet een pagina online en kijk hoe mensen en AI hem vinden.}
+  ai: {title: AI en modellen, text: "Gratis AI-modellen, plekken om AI-helpers te draaien en een klussenbord voor ze."}
+  agents: {title: MCP-servers, plugins en skills, text: "Voeg Flisk toe aan Claude, Claude Code, Cursor, Codex of Gemini CLI."}
+  learn: {title: Vergelijken en leren, text: "Kaarten, vergelijkingen, lessen en demo's."}
+  templates: {title: Sjablonen en starters, text: Begin een nieuw project met iets dat al draait.}
+  examples: {title: Voorbeelden, text: Complete systemen die je kunt klonen en lokaal kunt starten.}
+  install: {title: Installeren en extra's, text: "Manieren om de CLI te krijgen en kleine dingen die we onderweg maakten."}
+items:
+  "https://chat.flisk.si": Vraag om een website, een video of een antwoord. Log gratis in met GitHub.
+  "https://flisk.sh": Draai je hele app op je laptop met één commando. Je AI kan hem starten, controleren en repareren.
+  "https://os.flisk.si": Je projecten, codeeragents en Flisk-apps in één lokaal venster.
+  "https://run-my-agents.flisk.si/": Claude Code, eenvoudiger. Geen server, geen sleutels.
+  "https://github.com/flisk-sh/flisk-import": Scan een repo en importeer de services uit Procfile, Compose en Dockerfile.
+  "https://github.com/flisk-sh/flisk-export": Schrijft render.yaml en wrangler.toml op basis van je servicebestanden. Het rolt nooit iets uit.
+  "https://github.com/flisk-sh/live-preview": Deel een app die op jouw GitHub draait als openbare link.
+  "https://github.com/flisk-sh/cfworker2browser": Draai een Cloudflare Worker in het browsertabblad van de bezoeker. Geen server, geen account.
+  "https://grow.flisk.si": Plak een link naar wat je maakte. Zie wie het zou kopen, waar die mensen zijn en welke e-mails en berichten je kunt sturen.
+  "https://pages.flisk.si": Je AI bouwt een pagina. Eén commando zet hem online.
+  "https://citable.flisk.si": Ontdek of AI-antwoorden je site kunnen citeren.
+  "https://readme.flisk.si": Je README beoordeeld met een cijfer uit 100, met een oplossing voor elke misser.
+  "https://ranker.flisk.si": Producten gerangschikt op gewonnen GitHub-sterren, elk met een live README-badge.
+  "https://cilytics.flisk.si": Zie welke CI-runs rood, traag of wisselvallig zijn in alle repo's van een GitHub-organisatie.
+  "https://diagram.flisk.si": Maak van elke README een geanimeerd SVG-diagram.
+  "https://gardener.flisk.si": Kweek een afhankelijkhedentoren-meme uit elke GitHub-repo.
+  "https://helpdock.flisk.si": Gepauzeerd tot 1 december. Je documentatie als helpcentrum dat antwoordt met bronnen.
+  "https://analytics.flisk.si": Zie wie je site bezoekt. Geen cookies en geen banner.
+  "https://tools.flisk.si/": Draai kleine web- en GitHub-tools gratis op je eigen GitHub.
+  "https://build.flisk.si/": Zeg wat je wilt. Krijg de onderdelen en de commando's om het te draaien.
+  "https://inference.flisk.si": Een gratis AI-model voor je apps. Een sleutel in één minuut, geen kaart nodig.
+  "https://fleet.flisk.si": Veilige, goedkope plekken om AI-agents te draaien, met één sleutel en één saldo.
+  "https://host.flisk.si": Gratis plekken om je AI-agent te draaien, plus een stappenplan van 4 stappen om hem in te stellen.
+  "https://jobs.flisk.si": "Een openbaar klussenbord voor AI-helpers: plaats een klus, een helper pakt hem op en je ziet elke stap."
+  "https://traces.flisk.si": "Alleen de problemen van de backends van Flisk: fouten, verkeerde routes, trage aanroepen. Als alles goed gaat, wordt er niets gelogd."
+  "https://bot.flisk.si": Een AI-helper die klussen van het bord pakt en na een herstart gewoon doorgaat.
+  "https://github.com/flisk-sh/flisk-model": Kan een klein model correcte Flisk-configuratie schrijven? Een test van 62 vragen, met resultaten.
+  "https://github.com/flisk-sh/awesome-model-training": Gratis, open tools om kleine gespecialiseerde modellen te trainen.
+  "https://github.com/flisk-sh/flisk-agent-stack": "Een kant-en-klare starter: een AI-helper met tools, een database en berichten."
+  "https://build.flisk.si/mcp": Maakt een plan voor een app op basis van een gewone beschrijving. Op afstand, alleen-lezen, geen sleutel.
+  "https://pages.flisk.si/mcp": Controleert een pagina en geeft de stappen om hem te publiceren.
+  "https://citable.flisk.si/mcp": Controleert of AI-zoekmachines een site kunnen vinden, lezen en citeren.
+  "https://readme.flisk.si/mcp": Beoordeelt een README en noemt een oplossing voor elke misser.
+  "https://helpdock.flisk.si/mcp": Gepauzeerd tot 1 december. Doorzoekt de Flisk-documentatie en antwoordt met bronnen.
+  "https://github.com/flisk-sh/flisk/tree/main/plugins/flisk-claude": Gebruik Flisk vanuit Claude Code.
+  "https://github.com/flisk-sh/pages/tree/main/plugins/put-my-page-online": Publiceer een pagina vanuit Claude met één skill.
+  "https://github.com/flisk-sh/citable/tree/main/plugins/ai-search-checker": Controleer vanuit Claude of een site vindbaar is voor AI-zoekmachines.
+  "https://github.com/flisk-sh/readme-score/tree/main/plugins/readme-checker": Verbeter een README vanuit Claude.
+  "https://github.com/flisk-sh/flisk-marketplaces/tree/main/plugins/shunt": Bespaart geld doordat een kleine lokale AI grote bestanden voor je leest.
+  "https://github.com/flisk-sh/flisk-skills": Leert je AI hoe je een Flisk-app opzet.
+  "https://github.com/flisk-sh/flisk-marketplaces": Waar elke Flisk-app staat en hoe je elke server installeert.
+  "https://roadmap.flisk.si": Een door de community bewerkte kaart van lokale ontwikkeltools.
+  "https://cmd.flisk.si": Flisk-commando's naast Terraform, Compose, Tilt en meer.
+  "https://demo.flisk.si": Een demostack die speciaal voor jou is gegenereerd.
+  "https://practice.flisk.si/": Een gratis cursus met 26 praktijklabs, van een eerste modelaanroep tot een opgeleverde assistent.
+  "https://learn.flisk.si": Leer, oefen en doe een examen over AI-engineering, met praktijklabs.
+  "https://flisk-sh.github.io/flisk-demo-animation/": Een opgenomen rondleiding van installatie tot een gezonde service.
+  "https://flisk-sh.github.io/comparer/": Een sjabloon voor een doorzoekbare vergelijking van toolcommando's naast elkaar.
+  "https://github.com/flisk-sh/awesome-flisk-framework": Zorgvuldig gekozen links naar voorbeelden en documentatie van de Flisk CLI.
+  "https://github.com/flisk-sh/awesome-rea-flisk-cases": Apps die zijn nagebouwd en opnieuw opgezet met de Flisk CLI.
+  "https://github.com/flisk-sh/flisk-template-launch": Eén gratis Bun- en Hono-service met SEO en iconen, zonder database.
+  "https://github.com/flisk-sh/flisk-template-portal": Log in met GitHub, krijg sleutels en zie wat je gebruikte, in één service.
+  "https://github.com/flisk-sh/flisk-stack": Een full-stackskelet met acties, modellen, jobs, views en migraties.
+  "https://github.com/flisk-sh/flisk-template-next-app": Een create-next-app-project dat draait onder flisk up.
+  "https://github.com/flisk-sh/flisk-template-vue": Een create-vue-app die draait onder flisk up.
+  "https://github.com/flisk-sh/flisk-template-bati": Een create-bati-app die draait onder flisk up.
+  "https://github.com/flisk-sh/flisk-template-analog": Een create-analog-app die draait onder flisk up.
+  "https://github.com/flisk-sh/flisk-template-adonisjs": Een create-adonisjs-app die draait onder flisk up.
+  "https://github.com/flisk-sh/flisk-cli-starter": Een starterstack die je in elke cloud-ontwikkelomgeving kunt openen.
+  "https://flisk-sh.github.io/create-flisk/": Een landingspagina om een Flisk-project te starten, met de quickstart-commando's.
+  "https://github.com/flisk-sh/create-microservices": Een interactieve generator voor een Flisk-microserviceproject.
+  "https://github.com/flisk-sh/flisk-service-definitions": Een communityregister van servicebestanden, één map per app.
+  "https://github.com/flisk-sh/flisk-example": Het kleinste voorbeeld. Twee stacks, vier services.
+  "https://github.com/flisk-sh/flisk-restaurant-example": Reserveringen, keuken, menu en zaal.
+  "https://github.com/flisk-sh/flisk-saas-starter": Een lokaal SaaS-dashboard en een afrekenknop.
+  "https://github.com/flisk-sh/flisk-ecommerce-example": Een Vue 3-webwinkel en een Hono-catalogus-API.
+  "https://github.com/flisk-sh/flisk-auth-queue-email-example": Lokale OIDC, NATS JetStream en Mailpit.
+  "https://github.com/flisk-sh/flisk-user-management": Stacks voor identiteitsbeheer, portaal en compliance.
+  "https://github.com/flisk-sh/flisk-person-crud-example": React, Express, MongoDB, Redis en RabbitMQ.
+  "https://github.com/flisk-sh/flisk-thor-storefront": Een webwinkelvoorbeeld voor Thor Commerce.
+  "https://github.com/flisk-sh/vercel-store": Een webwinkel met een Hono-backend voor de frontend, en Vue.
+  "https://github.com/flisk-sh/flisk-erp-system": 100 gegenereerde gezondheidsservices om schaal te testen. Geen ERP-product.
+  "https://github.com/flisk-sh/flisk-docker-compose-example": Draai de Flisk CLI in Docker Compose, zodat de host niets hoeft te installeren.
+  "https://www.npmjs.com/package/@flisk-sh/flisk": De Flisk CLI op npm.
+  "https://github.com/flisk-sh/homebrew-tap": Installeer de CLI met Homebrew op macOS en Linux.
+  "https://github.com/flisk-sh/scoop-bucket": Installeer de CLI met Scoop op Windows.
+  "https://github.com/flisk-sh/releases": Kant-en-klare CLI-binaries voor Linux en macOS, met checksums.
+  "https://github.com/flisk-sh/flisk-emoji": De Flisk-bliksem als eigen emoji, in SVG en PNG.
+  "https://github.com/flisk-sh/md2html": Markdown in GitHub-stijl naar HTML die veilig in een pagina past.
+  "https://github.com/flisk-sh/codeql-starlark": Onofficiële Starlark-controles die rapporteren aan GitHub code scanning.
+  "https://github.com/flisk-sh/codeql-goose": Onofficiële Goose-controles die rapporteren aan GitHub code scanning.
+  "https://github.com/flisk-sh/codeql-lobster": Onofficiële Lobster-controles die rapporteren aan GitHub code scanning.

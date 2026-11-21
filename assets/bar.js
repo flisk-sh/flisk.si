@@ -30,6 +30,19 @@
   ];
   const THEMES = {{ site.data.bar_themes | jsonify }};
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  // The bar's own words follow the language of the page it sits on (<html lang>). Product names and the sentences under them stay English.
+  const WORDS = {
+    nl: { 'AI chat': 'AI-chat', 'AI cloud': 'AI-cloud', 'AI growth': 'AI-groei', 'AI locally': 'AI lokaal', 'AI learn': 'AI leren', 'AI tools': 'AI-tools',
+          'Products': 'Producten', 'All products': 'Alle producten', 'Every Flisk product →': 'Elk Flisk-product →', 'Flisk products': 'Flisk-producten',
+          'Talk to a human engineer': 'Praat met een echte engineer', 'Talk to a human engineer on Discord': 'Praat op Discord met een engineer',
+          'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub' },
+    de: { 'AI chat': 'KI-Chat', 'AI cloud': 'KI-Cloud', 'AI growth': 'KI-Wachstum', 'AI locally': 'KI lokal', 'AI learn': 'KI lernen', 'AI tools': 'KI-Tools',
+          'Products': 'Produkte', 'All products': 'Alle Produkte', 'Every Flisk product →': 'Jedes Flisk-Produkt →', 'Flisk products': 'Flisk-Produkte',
+          'Talk to a human engineer': 'Sprich mit einem echten Engineer', 'Talk to a human engineer on Discord': 'Sprich auf Discord mit einem Engineer',
+          'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern' },
+  };
+  const words = WORDS[(document.documentElement.lang || '').slice(0, 2).toLowerCase()] || {};
+  const t = (text) => words[text] || text;
   const here = window.location.hostname.replace(/^www\./, '');
   const isHere = (url) => new URL(url).hostname.replace(/^www\./, '') === here;
   // Count visits on every site that shows the bar, unless the page already has Flisk Analytics. data-domain is the site's own host.
@@ -86,17 +99,17 @@
   const menus = MENUS.map(([label, items], i) => {
     const current = items.some(([, url]) => isHere(url)) ? ' data-current' : '';
     return `<div class="menu">
-      <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(label)}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+      <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(t(label))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel" part="tone" id="m${i}" hidden>${panel(items)}</div></div>`;
   }).join('');
   const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
-      <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="All Flisk products"${tip('All Flisk products', 'Switch to any Flisk product')}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
-      <div class="panel wide mega" part="tone" id="msw" hidden>${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(label)}</p>${panel(items)}</div>`).join('')}
-        <a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a></div></div>`;
+      <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
+      <div class="panel wide mega" part="tone" id="msw" hidden>${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items)}</div>`).join('')}
+        <a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a></div></div>`;
   const all = PRODUCT ? '' : `<div class="menu all-menu">
-      <button part="tone" type="button" aria-expanded="false" aria-controls="mall">Products<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(label)}</p>${panel(items)}`).join('')}
-        ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">Every Flisk product →</a>`}</div></div>`;
+      <button part="tone" type="button" aria-expanded="false" aria-controls="mall">${esc(t('Products'))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+      <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(t(label))}</p>${panel(items)}`).join('')}
+        ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
 
   root.innerHTML = `
@@ -216,16 +229,16 @@
       nav.tight .give { padding: 0.4rem 0.5rem; }
       nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
     </style>
-    <nav aria-label="Flisk products"${PRODUCT ? ' class="prod"' : ''}>
+    <nav aria-label="${esc(t('Flisk products'))}"${PRODUCT ? ' class="prod"' : ''}>
       ${card}
       ${switcher}
       ${ownsBrand || PRODUCT ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
-      ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(firstName)}</a>` : ''}
+      ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(t(firstName))}</a>` : ''}
       ${menus}
-      ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">All products</a>`}
+      ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
       ${all}
-      <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="Talk to a human engineer" aria-label="Talk to a human engineer on Discord"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
-      <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="Help us explore more: sponsor Flisk on GitHub"${PRODUCT ? tip('Help us explore more', 'Sponsor Flisk on GitHub') : ' title="Sponsor Flisk on GitHub"'}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>Help us explore more</span></a>
+      <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
+      <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}"${PRODUCT ? tip(t('Help us explore more'), t('Sponsor Flisk on GitHub')) : ` title="${esc(t('Sponsor Flisk on GitHub'))}"`}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
     </nav>`;
 
   // A site whose CSP blocks images from flisk.si still gets a working menu, just without the icons.
