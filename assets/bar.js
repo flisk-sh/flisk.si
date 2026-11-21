@@ -81,7 +81,7 @@
 
   const panel = (items) => items.map(([name, url, icon, text]) =>
     `<a class="item" href="${esc(carry(url))}"${isHere(url) ? ' aria-current="page"' : ''}>
-       <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28" loading="lazy">
+       <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28">
        <span><b>${esc(name)}</b><small>${esc(text)}</small></span></a>`).join('');
   const menus = MENUS.map(([label, items], i) => {
     const current = items.some(([, url]) => isHere(url)) ? ' data-current' : '';
