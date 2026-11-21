@@ -16,7 +16,7 @@ bar:
     - label: AI learn
       items: [Practice & Learn AI, DevEx Roadmap, Command Comparer, Personal Demos]
     - label: AI tools
-      items: [Pages, Citable, README Score, Gardener, README Diagram, Flisk Tools]
+      items: [Pages, Citable, GEL, README Score, Gardener, README Diagram, Flisk Tools]
 
 sections:
   - id: chat
@@ -77,6 +77,10 @@ sections:
         url: https://citable.flisk.si
         icon: citable
         text: Find out if AI answers can cite your site.
+      - name: GEL
+        url: https://gel.flisk.si
+        icon: gel
+        text: Five CI checks that catch leaked keys, unpinned actions, dead links and false green in AI pull requests.
       - name: README Score
         url: https://readme.flisk.si
         icon: readme-checker
