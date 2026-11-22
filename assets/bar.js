@@ -35,11 +35,15 @@
     nl: { 'AI chat': 'AI-chat', 'AI cloud': 'AI-cloud', 'AI growth': 'AI-groei', 'AI locally': 'AI lokaal', 'AI learn': 'AI leren', 'AI tools': 'AI-tools',
           'Products': 'Producten', 'All products': 'Alle producten', 'Every Flisk product →': 'Elk Flisk-product →', 'Flisk products': 'Flisk-producten',
           'Talk to a human engineer': 'Praat met een echte engineer', 'Talk to a human engineer on Discord': 'Praat op Discord met een engineer',
-          'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub' },
+          'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub',
+          'Find a tool': 'Zoek een tool', 'Your tools': 'Jouw tools', 'Pin': 'Maak vast', 'Unpin': 'Maak los', 'No tool matches that.': 'Geen tool gevonden.',
+          'Star a tool to pin it. The last tools you opened show up here too.': 'Geef een tool een ster om hem vast te maken. Je laatst geopende tools staan hier ook.' },
     de: { 'AI chat': 'KI-Chat', 'AI cloud': 'KI-Cloud', 'AI growth': 'KI-Wachstum', 'AI locally': 'KI lokal', 'AI learn': 'KI lernen', 'AI tools': 'KI-Tools',
           'Products': 'Produkte', 'All products': 'Alle Produkte', 'Every Flisk product →': 'Jedes Flisk-Produkt →', 'Flisk products': 'Flisk-Produkte',
           'Talk to a human engineer': 'Sprich mit einem echten Engineer', 'Talk to a human engineer on Discord': 'Sprich auf Discord mit einem Engineer',
-          'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern' },
+          'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern',
+          'Find a tool': 'Tool suchen', 'Your tools': 'Deine Tools', 'Pin': 'Anpinnen', 'Unpin': 'Lösen', 'No tool matches that.': 'Kein Tool gefunden.',
+          'Star a tool to pin it. The last tools you opened show up here too.': 'Markiere ein Tool mit dem Stern, um es anzupinnen. Zuletzt geöffnete Tools erscheinen hier auch.' },
   };
   const words = WORDS[(document.documentElement.lang || '').slice(0, 2).toLowerCase()] || {};
   const t = (text) => words[text] || text;
@@ -102,10 +106,17 @@
       <a class="fl"${tip('All Flisk products', 'AI chat, cloud, growth, locally, learn and tools')} href="${esc(carry(HOME + '/'))}">from <img src="${HOME}/assets/icons/flisk-cli.svg" alt="" width="14" height="14"><strong translate="no">Flisk</strong></a></div>
     <span class="sibs">${siblings.map(([n, u, i, t]) => `<a class="sib" part="tone"${tip(n, t)} href="${esc(carry(u))}"><img src="${HOME}/assets/icons/${esc(i)}.svg" alt="" width="26" height="26"><span class="sr">${esc(n)}</span></a>`).join('')}</span>`;
 
-  const panel = (items) => items.map(([name, url, icon, text]) =>
-    `<a class="item" href="${esc(carry(url))}"${isHere(url) ? ' aria-current="page"' : ''}>
+  // In the wide panels each item also gets a pin button next to its link (a sibling, never nested inside the link).
+  const panel = (items, pins) => items.map(([name, url, icon, text]) => {
+    const link = `<a class="item" href="${esc(carry(url))}"${isHere(url) ? ' aria-current="page"' : ''}>
        <img src="${HOME}/assets/icons/${esc(icon)}.svg" alt="" width="28" height="28">
-       <span><b>${esc(name)}</b><small>${esc(text)}</small></span></a>`).join('');
+       <span><b>${esc(name)}</b><small>${esc(text)}</small></span></a>`;
+    return pins ? `<div class="it" data-icon="${esc(icon)}">${link}<button class="pin" type="button" aria-pressed="false" data-name="${esc(name)}" aria-label="${esc(t('Pin'))} ${esc(name)}">☆</button></div>` : link;
+  }).join('');
+  // The top of a wide panel: a search box, the visitor's pinned and recent tools, and the empty-search message.
+  const finder = `<div class="find"><input type="search" placeholder="${esc(t('Find a tool'))}" aria-label="${esc(t('Find a tool'))}" autocomplete="off"><span class="cnt" aria-live="polite"></span></div>
+      <div class="mine"><p>${esc(t('Your tools'))}</p><p class="hint">${esc(t('Star a tool to pin it. The last tools you opened show up here too.'))}</p><div class="mineList"></div></div>
+      <p class="none" hidden>${esc(t('No tool matches that.'))}</p>`;
   const menus = MENUS.map(([label, items], i) => {
     const current = items.some(([, url]) => isHere(url)) ? ' data-current' : '';
     return `<div class="menu">
@@ -114,11 +125,11 @@
   }).join('');
   const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
       <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
-      <div class="panel wide mega" part="tone" id="msw" hidden>${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items)}</div>`).join('')}
+      <div class="panel wide mega" part="tone" id="msw" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         <a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a></div></div>`;
   const all = PRODUCT ? '' : `<div class="menu all-menu">
       <button part="tone" type="button" aria-expanded="false" aria-controls="mall">${esc(t('Products'))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel wide" part="tone" id="mall" hidden>${MENUS.map(([label, items]) => `<p>${esc(t(label))}</p>${panel(items)}`).join('')}
+      <div class="panel wide" part="tone" id="mall" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
 
@@ -214,6 +225,28 @@
       .item:hover { background: var(--wash); }
       .item[aria-current] b { color: var(--hi); }
       .panel p { margin: 0.6rem 0.6rem 0.2rem; color: var(--faint); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+      .grp[hidden], .it[hidden], .mine[hidden], .none[hidden], .mine .hint[hidden] { display: none; }
+      .find, .mine, .none { grid-column: 1 / -1; }
+      .find { display: flex; align-items: center; gap: 0.5rem; margin: 0.2rem 0.2rem 0.5rem; padding: 0 0.7rem; border: 1px solid var(--line); border-radius: 0.4rem; }
+      .find:focus-within { border-color: var(--acc); }
+      .find input { flex: 1; min-width: 0; min-height: 2.5rem; padding: 0; border: 0; background: transparent; color: var(--ink); font: 400 13px/1.2 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: 0; outline: none; }
+      .find input::placeholder { color: var(--faint); }
+      .cnt { color: var(--dim); font: 400 12px/1 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; letter-spacing: 0; }
+      .mine { margin: 0 0.2rem 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+      .mine p { margin: 0.2rem 0.4rem 0.3rem; color: var(--hi); }
+      .mine .hint { margin: 0.1rem 0.4rem; color: var(--dim); font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; text-transform: none; letter-spacing: 0; }
+      .none { margin: 0.4rem 0.6rem; color: var(--dim); font-size: 12px; text-transform: none; letter-spacing: 0; }
+      .mineList { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0.2rem; }
+      .mineList a { display: flex; align-items: center; gap: 0.45rem; min-height: 2.2rem; padding: 0 0.8rem 0 0.5rem; border: 1px solid var(--line); border-radius: 0.4rem; color: var(--ink); }
+      .mineList a:hover { background: var(--wash); }
+      .mineList img { width: 20px; height: 20px; border-radius: 4px; }
+      .it { position: relative; }
+      .it .item { padding-right: 2.6rem; }
+      .panel.wide { max-height: calc(100vh - 3.5rem); overflow-y: auto; }
+      .pin { position: absolute; top: 0.3rem; right: 0.3rem; width: 2.2rem; height: 2.2rem; padding: 0; justify-content: center; color: var(--dim); font-size: 16px; }
+      .pin[aria-pressed="true"] { color: var(--hi); }
+      @media (hover: hover) { .pin[aria-pressed="false"] { opacity: 0; } .it:hover .pin, .pin:focus-visible { opacity: 1; } }
+      @media (hover: none) { .find input { font-size: 16px; } .item { padding-right: 2.8rem; } }
       .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid var(--line); color: var(--ink); }
       /* The compact bar: one Products menu and a heart-only sponsor button. Phones get it from the media query;
          wider windows get it from the .tight class the script sets when the full bar does not fit (a site with
@@ -253,7 +286,7 @@
 
   // A site whose CSP blocks images from flisk.si still gets a working menu, just without the icons.
   root.addEventListener('error', (e) => { if (e.target.tagName === 'IMG') e.target.remove(); }, true);
-  const buttons = [...root.querySelectorAll('button')];
+  const buttons = [...root.querySelectorAll('.menu > button')];
   const close = (except) => buttons.forEach((b) => {
     if (b === except) return;
     b.setAttribute('aria-expanded', 'false');
@@ -268,6 +301,7 @@
     b.setAttribute('aria-expanded', String(open));
     const p = root.getElementById(b.getAttribute('aria-controls'));
     p.hidden = !open;
+    if (!open) { const q = p.querySelector('.find input'); if (q && q.value) { q.value = ''; q.dispatchEvent(new Event('input')); } }
     if (open && !p.classList.contains('wide')) {
       // Keep the menu inside the window when its button sits near the right edge.
       p.style.left = '0';
@@ -301,6 +335,58 @@
       });
     });
   }
+  // Search, pins and recent tools in the wide panels. Pins and recents are two small cookies, shared by every *.flisk.si site
+  // like the look; they are written only when the visitor pins a tool or opens one. Without cookies the search still works.
+  const cookie = (k) => ((document.cookie.match(new RegExp('(?:^|;\\s*)' + k + '=([a-z0-9,-]*)')) || [])[1] || '').split(',').filter(Boolean);
+  const keep = (k, list) => { try { document.cookie = `${k}=${list.join(',')}; Path=/; Max-Age=31536000; SameSite=Lax${onFlisk ? '; Domain=.flisk.si' : ''}${location.protocol === 'https:' ? '; Secure' : ''}`; } catch (e) { /* cookies blocked: nothing is remembered */ } };
+  const wide = [...root.querySelectorAll('.panel.wide')];
+  const paintTools = () => {
+    const pins = cookie('flisk_pins'), rec = cookie('flisk_recent').filter((i) => !pins.includes(i)).slice(0, 4);
+    wide.forEach((p) => {
+      const linkOf = (i) => p.querySelector(`.it[data-icon="${CSS.escape(i)}"] .item`);
+      const list = [...pins, ...rec].filter(linkOf), box = p.querySelector('.mineList');
+      box.replaceChildren(...list.map((i) => {
+        const src = linkOf(i), a = document.createElement('a'), im = document.createElement('img'), s = document.createElement('span');
+        a.href = src.href; a.dataset.icon = i; im.src = src.querySelector('img').src; im.alt = ''; im.width = 20; im.height = 20; s.textContent = src.querySelector('b').textContent;
+        a.append(im, s); return a;
+      }));
+      p.querySelector('.mine .hint').hidden = list.length > 0;
+      p.querySelectorAll('.pin').forEach((b) => {
+        const on = pins.includes(b.closest('.it').dataset.icon);
+        b.setAttribute('aria-pressed', String(on)); b.textContent = on ? '★' : '☆'; b.setAttribute('aria-label', `${t(on ? 'Unpin' : 'Pin')} ${b.dataset.name}`);
+      });
+    });
+  };
+  wide.forEach((p) => {
+    const input = p.querySelector('.find input'), cnt = p.querySelector('.cnt'), none = p.querySelector('.none'), its = [...p.querySelectorAll('.it')];
+    const run = () => {
+      const v = input.value.trim().toLowerCase();
+      let n = 0;
+      its.forEach((el) => { const hit = !v || el.textContent.toLowerCase().includes(v); el.hidden = !hit; if (hit) n += 1; });
+      p.querySelectorAll('.grp').forEach((g) => { g.hidden = ![...g.querySelectorAll('.it')].some((el) => !el.hidden); });
+      p.querySelector('.mine').hidden = !!v;
+      cnt.textContent = v ? `${n} / ${its.length}` : '';
+      none.hidden = n > 0;
+    };
+    input.addEventListener('input', run);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && input.value) { input.value = ''; run(); e.stopPropagation(); }
+      if (e.key === 'Enter') { const a = p.querySelector('.it:not([hidden]) .item'); if (a) a.click(); }
+    });
+  });
+  root.addEventListener('click', (e) => {
+    const el = e.composedPath()[0];
+    const pin = el.closest && el.closest('.pin');
+    if (pin) {
+      const icon = pin.closest('.it').dataset.icon, pins = cookie('flisk_pins');
+      keep('flisk_pins', pins.includes(icon) ? pins.filter((i) => i !== icon) : [...pins, icon]);
+      paintTools();
+      return;
+    }
+    const link = el.closest && el.closest('.it .item, .mineList a');
+    if (link) { const icon = link.dataset.icon || link.closest('.it').dataset.icon; keep('flisk_recent', [icon, ...cookie('flisk_recent').filter((i) => i !== icon)].slice(0, 8)); }
+  });
+  paintTools();
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   const nav = root.querySelector('nav');
