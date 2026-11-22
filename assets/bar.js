@@ -127,9 +127,9 @@
       <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
       <div class="panel wide mega" part="tone" id="msw" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         <a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a></div></div>`;
-  const all = PRODUCT ? '' : `<div class="menu all-menu">
+  const all = PRODUCT ? '' : `<div class="menu all-menu always">
       <button part="tone" type="button" aria-expanded="false" aria-controls="mall">${esc(t('Products'))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel wide" part="tone" id="mall" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
+      <div class="panel wide mega" part="tone" id="mall" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
 
@@ -158,6 +158,10 @@
       button[data-current] { color: var(--hi); }
       .menu { position: relative; }
       .all-menu { display: none; margin-left: auto; }
+      /* A site without its own logo card shows one Products menu, the same panel as the product switcher, instead of five small ones. */
+      .all-menu.always { display: block; position: static; }
+      nav { position: relative; }
+      .all-menu.always .panel.mega { left: auto; right: 0.5rem; }
       .sw button[aria-expanded="true"]::after { display: none; }
       .menu.sw { display: block; margin: 0 0.3rem 0 0; }
       .sw button { padding: 0.45rem; } .sw .gr { width: 16px; height: 16px; fill: currentColor; stroke: none; }
@@ -277,7 +281,7 @@
       ${switcher}
       ${ownsBrand || PRODUCT ? '' : `<a class="home" part="tone" href="${esc(carry(HOME + '/'))}"><span class="mark" aria-hidden="true">&gt;_</span>flisk</a>`}
       ${firstUrl ? `<a class="first" part="tone" href="${esc(carry(tracked(firstUrl)))}"${isHere(firstUrl) ? ' aria-current="page"' : ''}>${esc(t(firstName))}</a>` : ''}
-      ${menus}
+      ${PRODUCT ? menus : ''}
       ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
       ${all}
       <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
