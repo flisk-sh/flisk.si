@@ -161,14 +161,12 @@
       /* A site without its own logo card shows one Products menu, the same panel as the product switcher, instead of five small ones. */
       .all-menu.always { display: block; position: static; }
       nav { position: relative; }
-      .all-menu.always .panel.mega { left: auto; right: 0.5rem; }
       .sw button[aria-expanded="true"]::after { display: none; }
       .menu.sw { display: block; margin: 0 0.3rem 0 0; }
       .sw button { padding: 0.45rem; } .sw .gr { width: 16px; height: 16px; fill: currentColor; stroke: none; }
       .sw button svg { transform: none; }
-      .panel.mega:not([hidden]) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 0.4rem; width: min(58rem, 92vw); }
+      .panel.mega:not([hidden]) { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 0 0.4rem; width: min(58rem, 92vw); }
       .mega .grp p:first-child { margin-top: 0.4rem; } .mega .every { grid-column: 1 / -1; }
-      @media (max-width: 900px) { .panel.mega:not([hidden]) { grid-template-columns: 1fr; } }
       .every-link { margin-left: auto; padding: 0.4rem 0.2rem; color: var(--ink); }
       .every-link:hover { color: var(--hi); }
       /* The sponsor link: GitHub Sponsors pink on every look, so it reads as the one ask on the bar. */
@@ -246,7 +244,7 @@
       .mineList img { width: 20px; height: 20px; border-radius: 4px; }
       .it { position: relative; }
       .it .item { padding-right: 2.6rem; }
-      .panel.wide { max-height: calc(100vh - 3.5rem); overflow-y: auto; }
+      .panel.wide { overflow-y: auto; }
       .pin { position: absolute; top: 0.3rem; right: 0.3rem; width: 2.2rem; height: 2.2rem; padding: 0; justify-content: center; color: var(--dim); font-size: 16px; }
       .pin[aria-pressed="true"] { color: var(--hi); }
       @media (hover: hover) { .pin[aria-pressed="false"] { opacity: 0; } .it:hover .pin, .pin:focus-visible { opacity: 1; } }
@@ -260,7 +258,7 @@
         .all-menu { display: block; }
         .give span { display: none; }
         .give { padding: 0.4rem 0.5rem; }
-        .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
+        .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; overflow-y: auto; }
       }
       /* Phones up to 420px (320px, and 375-414px iPhones with a product chip and an extra icon): tighter spacing so the sponsor heart is not cut off the right edge. */
       @media (max-width: 420px) {
@@ -274,7 +272,7 @@
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
       nav.tight .give { padding: 0.4rem 0.5rem; }
-      nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; max-height: calc(100vh - 3.5rem); overflow-y: auto; }
+      nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; overflow-y: auto; }
     </style>
     <nav aria-label="${esc(t('Flisk products'))}"${PRODUCT ? ' class="prod"' : ''}>
       ${card}
@@ -297,6 +295,17 @@
     root.getElementById(b.getAttribute('aria-controls')).hidden = true;
   });
   const timers = new Map();
+  // A wide panel fits the window it is in: as wide as the window allows (58rem at most), kept between the window's edges,
+  // and no taller than the space under the bar, so a long list scrolls inside the panel instead of running off the page.
+  // The compact bar's fixed panel gets only the height.
+  const fitPanel = (p) => {
+    p.style.maxHeight = ''; p.style.width = ''; p.style.left = ''; p.style.right = '';
+    p.style.maxHeight = `${Math.max(240, window.innerHeight - p.getBoundingClientRect().top - 8)}px`;
+    if (getComputedStyle(p).position === 'fixed' || !p.offsetParent) return;
+    const gap = 8, width = Math.min(p.getBoundingClientRect().width, window.innerWidth - 2 * gap);
+    const x = Math.max(gap, Math.min(p.parentElement.getBoundingClientRect().left, window.innerWidth - width - gap));
+    p.style.width = `${width}px`; p.style.left = `${x - p.offsetParent.getBoundingClientRect().left}px`; p.style.right = 'auto';
+  };
   const setOpen = (b, open) => {
     clearTimeout(timers.get(b));
     // Opening one menu closes the others; closing a menu leaves the others alone, so a late close
@@ -306,6 +315,7 @@
     const p = root.getElementById(b.getAttribute('aria-controls'));
     p.hidden = !open;
     if (!open) { const q = p.querySelector('.find input'); if (q && q.value) { q.value = ''; q.dispatchEvent(new Event('input')); } }
+    if (open && p.classList.contains('wide')) fitPanel(p);
     if (open && !p.classList.contains('wide')) {
       // Keep the menu inside the window when its button sits near the right edge.
       p.style.left = '0';
@@ -391,6 +401,7 @@
     if (link) { const icon = link.dataset.icon || link.closest('.it').dataset.icon; keep('flisk_recent', [icon, ...cookie('flisk_recent').filter((i) => i !== icon)].slice(0, 8)); }
   });
   paintTools();
+  window.addEventListener('resize', () => wide.forEach((p) => { if (!p.hidden) fitPanel(p); }));
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   const nav = root.querySelector('nav');
