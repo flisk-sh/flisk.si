@@ -268,6 +268,15 @@
         button { padding: 0.4rem 0.35rem; }
         .give { margin-left: 0.2rem; }
       }
+      /* Touch screens: every control gets a hit area of at least 40px (the two stacked product-name links at least 24px, the
+         WCAG 2.2 minimum), so a thumb does not miss. Only coarse pointers: a mouse sees the same bar as before. */
+      @media (pointer: coarse) {
+        .help { min-width: 1.5rem; height: 2.5rem; margin-left: 0; border-radius: 0.8rem; }
+        .sw button { min-height: 2.5rem; }
+        .give, .first { min-height: 2.5rem; }
+        .pn, .fl { display: inline-flex; align-items: center; min-height: 1.5rem; margin-top: 0; }
+        .card { padding-right: 0.5rem; margin-right: 0; }
+      }
       nav.tight .menu:not(.all-menu), nav.tight .every-link { display: none; }
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
