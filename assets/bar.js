@@ -34,7 +34,10 @@
   // login is a CSS selector of an element the site already renders with the login name (without it the menu offers Sign in), and
   // console is where the Console item goes (default: the fleet console).
   //   'chat.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/signout', method: 'GET' }, login: '#who' },
-  const ACCOUNT = {};
+  const ACCOUNT = {
+    'fleet.flisk.si': { signIn: '/console', signOut: { url: '/auth/signout', method: 'POST' }, login: '[data-flisk-login]' },
+    'host.flisk.si': { signIn: '/console', signOut: { url: '/auth/signout', method: 'POST' }, login: '[data-flisk-login]' },
+  };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   // The bar's own words follow the language of the page it sits on (<html lang>). Product names and the sentences under them stay English.
   const WORDS = {
