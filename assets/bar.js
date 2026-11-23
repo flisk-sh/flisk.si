@@ -314,6 +314,7 @@
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
       nav.tight .give { padding: 0.4rem 0.5rem; }
+      nav.tighter .sibs { display: none; }
       nav.tight .panel.wide { position: fixed; top: 2.9rem; left: 0.5rem; right: 0.5rem; width: auto; overflow-y: auto; }
     </style>
     <nav aria-label="${esc(t('Flisk products'))}"${PRODUCT ? ' class="prod"' : ''}>
@@ -493,9 +494,11 @@
   // Switch to the compact bar when the full one would run past the right edge. Measures the bar's own items
   // (open menu panels are absolute, so they do not count), and again on resize and once the fonts load.
   const fit = () => {
-    nav.classList.remove('tight');
+    nav.classList.remove('tight', 'tighter');
     const edge = nav.getBoundingClientRect().right;
-    if ([...nav.children].some((c) => c.getBoundingClientRect().right > edge + 0.5)) nav.classList.add('tight');
+    const over = () => [...nav.children].some((c) => c.getBoundingClientRect().right > edge + 0.5);
+    // Still too wide after the compact bar (a product bar with a card, a switcher, help, heart and the profile icon): drop the sibling icons.
+    if (over()) { nav.classList.add('tight'); if (over()) nav.classList.add('tighter'); }
   };
   fit();
   if (window.ResizeObserver) new ResizeObserver(fit).observe(host); else window.addEventListener('resize', fit);
