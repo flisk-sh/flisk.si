@@ -37,6 +37,13 @@
   const ACCOUNT = {
     'fleet.flisk.si': { signIn: '/console', signOut: { url: '/auth/signout', method: 'POST' }, login: '[data-flisk-login]' },
     'host.flisk.si': { signIn: '/console', signOut: { url: '/auth/signout', method: 'POST' }, login: '[data-flisk-login]' },
+    'learn.flisk.si': { signIn: '/auth/login', signOut: { url: '/auth/logout', method: 'POST' }, login: '[data-flisk-login]', console: '/practice' },
+    'analytics.flisk.si': { signIn: '/auth/login', signOut: { url: '/logout', method: 'POST' }, login: '[data-flisk-login]', console: '/' },
+    'chat.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/signout', method: 'GET' }, login: '[data-flisk-login]', console: '/reviews' },
+    'inference.flisk.si': { signIn: '/auth/github', signOut: { url: '/auth/logout', method: 'GET' }, login: '[data-flisk-login]', console: '/?section=keys' },
+    'grow.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/out', method: 'GET' }, login: '[data-flisk-login]', console: '/me' },
+    'traces.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/signout', method: 'GET' }, login: '[data-flisk-login]', console: '/' },
+    'ranker.flisk.si': { signIn: '/login', signOut: { url: '/logout', method: 'GET' }, login: '[data-flisk-login]', console: '/submit' },
   };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   // The bar's own words follow the language of the page it sits on (<html lang>). Product names and the sentences under them stay English.
