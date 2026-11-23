@@ -29,6 +29,12 @@
     {%- endfor %}
   ];
   const THEMES = {{ site.data.bar_themes | jsonify }};
+  // The profile icon at the far right shows only on a site listed here, so it can roll out one site at a time. The bar never touches a
+  // site's sign-in: signIn is the site's own sign-in link, signOut replays its own sign-out (a same-origin form POST, or a plain GET),
+  // login is a CSS selector of an element the site already renders with the login name (without it the menu offers Sign in), and
+  // console is where the Console item goes (default: the fleet console).
+  //   'chat.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/signout', method: 'GET' }, login: '#who' },
+  const ACCOUNT = {};
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   // The bar's own words follow the language of the page it sits on (<html lang>). Product names and the sentences under them stay English.
   const WORDS = {
@@ -37,13 +43,15 @@
           'Talk to a human engineer': 'Praat met een echte engineer', 'Talk to a human engineer on Discord': 'Praat op Discord met een engineer',
           'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub',
           'Find a tool': 'Zoek een tool', 'Your tools': 'Jouw tools', 'Pin': 'Maak vast', 'Unpin': 'Maak los', 'No tool matches that.': 'Geen tool gevonden.',
-          'Star a tool to pin it. The last tools you opened show up here too.': 'Geef een tool een ster om hem vast te maken. Je laatst geopende tools staan hier ook.' },
+          'Star a tool to pin it. The last tools you opened show up here too.': 'Geef een tool een ster om hem vast te maken. Je laatst geopende tools staan hier ook.',
+          'Account': 'Account', 'Sign in': 'Inloggen', 'Signed in as': 'Ingelogd als', 'Console': 'Console', 'Log out': 'Uitloggen' },
     de: { 'AI chat': 'KI-Chat', 'AI cloud': 'KI-Cloud', 'AI growth': 'KI-Wachstum', 'AI locally': 'KI lokal', 'AI learn': 'KI lernen', 'AI tools': 'KI-Tools',
           'Products': 'Produkte', 'All products': 'Alle Produkte', 'Every Flisk product →': 'Jedes Flisk-Produkt →', 'Flisk products': 'Flisk-Produkte',
           'Talk to a human engineer': 'Sprich mit einem echten Engineer', 'Talk to a human engineer on Discord': 'Sprich auf Discord mit einem Engineer',
           'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern',
           'Find a tool': 'Tool suchen', 'Your tools': 'Deine Tools', 'Pin': 'Anpinnen', 'Unpin': 'Lösen', 'No tool matches that.': 'Kein Tool gefunden.',
-          'Star a tool to pin it. The last tools you opened show up here too.': 'Markiere ein Tool mit dem Stern, um es anzupinnen. Zuletzt geöffnete Tools erscheinen hier auch.' },
+          'Star a tool to pin it. The last tools you opened show up here too.': 'Markiere ein Tool mit dem Stern, um es anzupinnen. Zuletzt geöffnete Tools erscheinen hier auch.',
+          'Account': 'Konto', 'Sign in': 'Anmelden', 'Signed in as': 'Angemeldet als', 'Console': 'Console', 'Log out': 'Abmelden' },
   };
   const words = WORDS[(document.documentElement.lang || '').slice(0, 2).toLowerCase()] || {};
   const t = (text) => words[text] || text;
@@ -132,6 +140,7 @@
       <div class="panel wide mega" part="tone" id="mall" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
+  const acct = ACCOUNT[here];
 
   root.innerHTML = `
     <style>
@@ -249,12 +258,24 @@
       .pin[aria-pressed="true"] { color: var(--hi); }
       @media (hover: hover) { .pin[aria-pressed="false"] { opacity: 0; } .it:hover .pin, .pin:focus-visible { opacity: 1; } }
       @media (hover: none) { .find input { font-size: 16px; } .item { padding-right: 2.8rem; } }
+      /* The profile icon: a round button like .help, always the last item of the bar. Signed out it is a person outline; signed in it is
+         the GitHub avatar over the login's initials (the initials stay when the image cannot load). Its panel hangs from the right edge. */
+      .menu.acct { margin-left: 0.4rem; }
+      .me { position: relative; width: 1.9rem; height: 1.9rem; padding: 0; justify-content: center; border-radius: 50%; color: var(--dim); font: 600 11px/1 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 0; text-transform: uppercase; }
+      .me svg, .me[aria-expanded="true"] svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; transform: none; }
+      .me .av { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+      .me[data-in] { box-shadow: 0 0 0 1px var(--line); color: var(--ink); background: var(--wash); }
+      .acct .panel { left: auto; right: 0; width: 15rem; }
+      .acct .item { width: 100%; box-sizing: border-box; align-items: center; }
+      .acct .item b { font-weight: 400; }
+      .acct .panel p.who { margin: 0.4rem 0.6rem 0.3rem; text-transform: none; letter-spacing: 0; font: 400 12px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; overflow-wrap: anywhere; }
+      .acct .who b { color: var(--ink); font-weight: 600; }
       .every { display: block; margin-top: 0.3rem; padding: 0.7rem 0.6rem; border-top: 1px solid var(--line); color: var(--ink); }
       /* The compact bar: one Products menu and a heart-only sponsor button. Phones get it from the media query;
          wider windows get it from the .tight class the script sets when the full bar does not fit (a site with
          many menus, or a 768-980px window), so the bar never makes the page wider than the window. */
       @media (max-width: 760px) {
-        .menu:not(.all-menu), .every-link { display: none; }
+        .menu:not(.all-menu):not(.acct), .every-link { display: none; }
         .all-menu { display: block; }
         .give span { display: none; }
         .give { padding: 0.4rem 0.5rem; }
@@ -267,17 +288,19 @@
         .first { padding: 0.4rem 0.5rem; }
         button { padding: 0.4rem 0.35rem; }
         .give { margin-left: 0.2rem; }
+        .sibs { display: none; } /* a product bar keeps its card, the switcher and the profile icon on a phone */
       }
       /* Touch screens: every control gets a hit area of at least 40px (the two stacked product-name links at least 24px, the
          WCAG 2.2 minimum), so a thumb does not miss. Only coarse pointers: a mouse sees the same bar as before. */
       @media (pointer: coarse) {
         .help { min-width: 1.5rem; height: 2.5rem; margin-left: 0; border-radius: 0.8rem; }
+        .me { width: 2.5rem; height: 2.5rem; }
         .sw button { min-height: 2.5rem; }
         .give, .first { min-height: 2.5rem; }
         .pn, .fl { display: inline-flex; align-items: center; min-height: 1.5rem; margin-top: 0; }
         .card { padding-right: 0.5rem; margin-right: 0; }
       }
-      nav.tight .menu:not(.all-menu), nav.tight .every-link { display: none; }
+      nav.tight .menu:not(.all-menu):not(.acct), nav.tight .every-link { display: none; }
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
       nav.tight .give { padding: 0.4rem 0.5rem; }
@@ -293,6 +316,7 @@
       ${all}
       <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
       <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}"${PRODUCT ? tip(t('Help us explore more'), t('Sponsor Flisk on GitHub')) : ` title="${esc(t('Sponsor Flisk on GitHub'))}"`}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
+      ${acct ? `<div class="menu acct"><button class="me" part="tone" type="button" aria-expanded="false" aria-controls="macct" aria-label="${esc(t('Account'))}"></button><div class="panel" part="tone" id="macct" hidden></div></div>` : ''}
     </nav>`;
 
   // A site whose CSP blocks images from flisk.si still gets a working menu, just without the icons.
@@ -325,7 +349,8 @@
     p.hidden = !open;
     if (!open) { const q = p.querySelector('.find input'); if (q && q.value) { q.value = ''; q.dispatchEvent(new Event('input')); } }
     if (open && p.classList.contains('wide')) fitPanel(p);
-    if (open && !p.classList.contains('wide')) {
+    if (open && b.classList.contains('me')) paintAccount();
+    if (open && !p.classList.contains('wide') && !b.classList.contains('me')) {
       // Keep the menu inside the window when its button sits near the right edge.
       p.style.left = '0';
       const over = p.getBoundingClientRect().right - (window.innerWidth - 8);
@@ -410,6 +435,47 @@
     if (link) { const icon = link.dataset.icon || link.closest('.it').dataset.icon; keep('flisk_recent', [icon, ...cookie('flisk_recent').filter((i) => i !== icon)].slice(0, 8)); }
   });
   paintTools();
+  // The profile menu. The login is read only from the element the site already renders (ACCOUNT[host].login) and only if it looks like a
+  // GitHub login; on any doubt the menu shows the signed-out view. Log out replays the site's own sign-out, it never reads or clears a cookie.
+  const me = root.querySelector('.me'), mePanel = root.getElementById('macct');
+  const person = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="2.75"/><path d="M2.5 14c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5"/></svg>';
+  const readLogin = () => {
+    try {
+      const v = ((acct.login && document.querySelector(acct.login)) || {}).textContent;
+      const m = String(v || '').trim().replace(/^@/, '').match(/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/);
+      return m ? m[0] : '';
+    } catch (e) { return ''; }
+  };
+  const logOut = () => {
+    try {
+      const so = acct.signOut, url = new URL(so.url, location.origin);
+      if (so.method !== 'POST') { location.assign(url.href); return; }
+      if (url.origin !== location.origin) return;
+      const f = document.createElement('form');
+      f.method = 'POST'; f.action = url.href; f.hidden = true;
+      document.body.appendChild(f); f.submit();
+    } catch (e) { /* no sign-out to replay: the menu stays as it is */ }
+  };
+  let shown;
+  const paintAccount = () => {
+    if (!me) return;
+    const login = readLogin();
+    if (login === shown) return;
+    shown = login;
+    const a = (href, text) => `<a class="item" href="${esc(href)}"><b>${esc(t(text))}</b></a>`;
+    try {
+      if (!login) {
+        me.removeAttribute('data-in'); me.innerHTML = person;
+        mePanel.innerHTML = a(new URL(acct.signIn, location.origin).href, 'Sign in');
+        return;
+      }
+      me.dataset.in = ''; me.innerHTML = `${esc(login.slice(0, 2))}<img class="av" src="https://github.com/${esc(login)}.png?size=60" alt="" width="30" height="30" referrerpolicy="no-referrer">`;
+      mePanel.innerHTML = `<p class="who">${esc(t('Signed in as'))} <b>${esc(login)}</b></p>${a(acct.console || 'https://fleet.flisk.si/console', 'Console')}<button class="item out" type="button"><b>${esc(t('Log out'))}</b></button>`;
+      mePanel.querySelector('.out').addEventListener('click', logOut);
+    } catch (e) { shown = undefined; }
+  };
+  paintAccount();
+  window.addEventListener('load', paintAccount);
   window.addEventListener('resize', () => wide.forEach((p) => { if (!p.hidden) fitPanel(p); }));
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
