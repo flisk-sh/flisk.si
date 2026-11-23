@@ -16,7 +16,7 @@ bar:
     - label: AI learn
       items: [Practice & Learn AI, DevEx Roadmap, Command Comparer, Personal Demos]
     - label: AI tools
-      items: [Pages, Citable, GEL, README Score, Gardener, README Diagram, Flisk Tools]
+      items: [Pages, Citable, GEL, README Score, Gardener, README Diagram, Studio, Flisk Tools]
 
 sections:
   - id: chat
@@ -97,6 +97,10 @@ sections:
         url: https://diagram.flisk.si
         icon: readme-diagram
         text: Turn any README into an animated SVG diagram.
+      - name: Studio
+        url: https://studio.flisk.si
+        icon: studio
+        text: Resize photos and merge, shrink and watermark PDFs in your browser. Your files never leave your computer.
       - name: Gardener
         url: https://gardener.flisk.si
         icon: gardener
