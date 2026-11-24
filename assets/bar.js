@@ -43,6 +43,7 @@
     'inference.flisk.si': { signIn: '/auth/github', signOut: { url: '/auth/logout', method: 'GET' }, login: '[data-flisk-login]', console: '/?section=keys' },
     'grow.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/out', method: 'GET' }, login: '[data-flisk-login]', console: '/me' },
     'traces.flisk.si': { signIn: '/auth/start', signOut: { url: '/auth/signout', method: 'GET' }, login: '[data-flisk-login]', console: '/' },
+    'roadmap.flisk.si': { signIn: 'https://publish.flisk.si/auth/github?return=https%3A%2F%2Froadmap.flisk.si%2F', signOut: { event: 'flisk:signout' }, login: '[data-flisk-login]', console: '/portfolio/' },
     'ranker.flisk.si': { signIn: '/login', signOut: { url: '/logout', method: 'GET' }, login: '[data-flisk-login]', console: '/submit' },
   };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -459,7 +460,10 @@
   };
   const logOut = () => {
     try {
-      const so = acct.signOut, url = new URL(so.url, location.origin);
+      const so = acct.signOut;
+      // A site that keeps its session in the page (no sign-out URL) listens for this event and clears it itself.
+      if (so.event) { document.dispatchEvent(new CustomEvent(so.event)); return; }
+      const url = new URL(so.url, location.origin);
       if (so.method !== 'POST') { location.assign(url.href); return; }
       if (url.origin !== location.origin) return;
       const f = document.createElement('form');
