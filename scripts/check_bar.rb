@@ -14,6 +14,7 @@ check = ->(ok, msg) { errors << msg unless ok }
 check.(src.include?("https://inference.flisk.si/?section=keys&utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=free-key"),
        'the free key link must be https://inference.flisk.si/?section=keys&utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=free-key')
 check.(src.match?(/here === 'inference\.flisk\.si' \? ''/), 'the free key entry must be left out on inference.flisk.si')
+check.(src.include?("!('freeKey' in OPT)"), 'the key entry must be opt-in through data-free-key')
 check.(src.scan("t('Get a free API key')").size >= 2, 'the pill and the Products menu item must both use the translated label')
 check.(src.include?('keyItem}'), 'the Products menu must carry the free key item')
 check.(src.include?('.every-link, .key { display: none; }'), 'the pill must be hidden on a phone')
