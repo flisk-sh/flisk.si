@@ -492,7 +492,7 @@
   paintAccount();
   window.addEventListener('load', paintAccount);
   // Single-page sites draw the login element after their own /api/me call, usually after `load`. Repaint when the DOM changes, at most every 50 ms.
-  if (acct.login && window.MutationObserver) {
+  if (acct && acct.login && window.MutationObserver) {
     let queued = false;
     new MutationObserver(() => {
       if (queued) return;
