@@ -487,6 +487,15 @@
   };
   paintAccount();
   window.addEventListener('load', paintAccount);
+  // Single-page sites draw the login element after their own /api/me call, usually after `load`. Repaint when the DOM changes, at most every 50 ms.
+  if (acct.login && window.MutationObserver) {
+    let queued = false;
+    new MutationObserver(() => {
+      if (queued) return;
+      queued = true;
+      setTimeout(() => { queued = false; paintAccount(); }, 50);
+    }).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  }
   window.addEventListener('resize', () => wide.forEach((p) => { if (!p.hidden) fitPanel(p); }));
   document.addEventListener('click', (e) => { if (!e.composedPath().includes(host)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
