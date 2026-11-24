@@ -16,7 +16,7 @@ The home page is in English (`/`), Dutch (`/nl/`) and German (`/de/`). All three
 
 ## For agents: llms.txt and Markdown
 
-`/llms.txt` ([llmstxt.org](https://llmstxt.org)) and the Markdown copies of the home page (`/index.md`, `/nl/index.md`, `/de/index.md`) are built from `_data/catalog.yml` and `_data/i18n/`, so a new catalog item shows up in all of them with no extra edit. The Markdown comes from `_includes/home_md.txt`. The site is static, so there is no `Accept: text/markdown` switch: agents use the `.md` addresses.
+`/llms.txt` ([llmstxt.org](https://llmstxt.org)) and the Markdown copies of the home page (`/index.md`, `/nl/index.md`, `/de/index.md`) are built from `_data/catalog.yml` and `_data/i18n/`, so a new catalog item shows up in all of them with no extra edit. The Markdown comes from `_includes/home_md.txt`. The per-product page lists in `llms.txt` come from `_data/pages.yml`, which `ruby scripts/build_pages.rb` writes by reading each product site's `/llms.txt` and `/sitemap.xml` (needs network; run it when a product adds pages, then commit the file). The site is static, so there is no `Accept: text/markdown` switch: agents use the `.md` addresses.
 
 ## The Flisk bar
 
