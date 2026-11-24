@@ -94,7 +94,8 @@
   const tracked = (url) => isHere(url) ? url : `${url}${url.includes('?') ? '&' : '?'}utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=flisk-bar`;
   // The free inference key: one entry for sites with no key of their own, except on inference.flisk.si itself. The link says which
   // Flisk site sent the visitor (utm_source is this page's host), so analytics shows Source=<site>, Channel=bar, Campaign=free-key.
-  const keyUrl = here === 'inference.flisk.si' ? '' : carry(`https://inference.flisk.si/?section=keys&utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=free-key`);
+  // Opt-in: only sites that use keys (script tag has data-free-key) show the button; every other site gets none.
+  const keyUrl = !('freeKey' in OPT) || here === 'inference.flisk.si' ? '' : carry(`https://inference.flisk.si/?section=keys&utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=free-key`);
   // flisk.si and flisk.sh already show the flisk brand in their own header, so the bar leaves its brand out there.
   const ownsBrand = here === 'flisk.si' || here === 'flisk.sh';
   const host = document.createElement('flisk-bar');
