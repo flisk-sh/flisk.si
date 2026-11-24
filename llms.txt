@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Flisk
+
+> {{ site.description }} Flisk is a small team building tools that let AI agents build, run, publish and grow software: a local CLI, hosted products, MCP servers, plugins, templates and examples. Most things are free and open source (https://github.com/flisk-sh).
+
+> For agents: to run an app on a laptop start with the Flisk CLI (https://flisk.sh); to have Flisk do a task for you use Chat (https://chat.flisk.si). Many product sites publish their own `/llms.txt`, for example https://fleet.flisk.si/llms.txt, https://pages.flisk.si/llms.txt and https://citable.flisk.si/llms.txt.
+
+Every page on flisk.si is also available as Markdown: `{{ site.url }}/index.md` (English), `{{ site.url }}/nl/index.md` (Dutch) and `{{ site.url }}/de/index.md` (German). The list below is the same as those pages, in English.
+{% for section in site.data.catalog.sections %}
+## {{ section.title }}
+
+{{ section.text }}
+
+{% for item in section.items -%}
+- [{{ item.name }}]({{ item.url }}): {{ item.text | strip }}
+{% endfor -%}
+{% endfor %}
+## This site
+
+- [Home as Markdown]({{ site.url }}/index.md): every product on one page
+- [Dutch]({{ site.url }}/nl/index.md): the same page in Dutch
+- [German]({{ site.url }}/de/index.md): the same page in German
+- [Sitemap]({{ site.url }}/sitemap.xml): every page, with language links
+- [Source](https://github.com/flisk-sh/flisk.si): edit the catalog in `_data/catalog.yml`
