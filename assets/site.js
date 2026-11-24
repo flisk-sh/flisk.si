@@ -50,6 +50,6 @@
   const here = document.documentElement.lang;
   const isHome = location.pathname === '/' || location.pathname === '/index.html';
   if (isHome && !location.search.includes('lang=') && LANGS.includes(wanted) && wanted !== 'en' && here === 'en') {
-    location.replace(`/${wanted}/${location.hash}`);
+    location.replace(`/${wanted}/${location.search}${location.hash}`);
   }
 })();
