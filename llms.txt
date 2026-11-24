@@ -17,11 +17,11 @@ Every page on flisk.si is also available as Markdown: `{{ site.url }}/index.md` 
 {% for item in section.items -%}
 - [{{ item.name }}]({{ item.url }}): {{ item.text | strip }}
 {% endfor -%}
-{% endfor %}{% for site in site.data.pages %}{% assign p = site[1] %}
+{% endfor %}{% for entry in site.data.pages %}{% assign p = entry[1] %}
 ## {{ p.name }} pages
 
-{% for page in p.pages -%}
-- [{{ page.title }}]({{ page.url }}){% if page.text != "" %}: {{ page.text }}{% endif %}
+{% for pg in p.pages -%}
+- [{{ pg.title }}]({{ pg.url }}){% if pg.text != "" %}: {{ pg.text }}{% endif %}
 {% endfor -%}
 {% endfor %}
 ## This site
