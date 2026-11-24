@@ -14,6 +14,10 @@ Every other Flisk site loads `assets/bar.js`, which is built from the catalog, s
 
 The home page is in English (`/`), Dutch (`/nl/`) and German (`/de/`). All three come from one template, `_includes/home.html`; the Dutch and German words live in `_data/i18n/nl.yml` and `de.yml` (interface strings, section titles and texts, and each item's sentence keyed by its url). An item with no translation falls back to the English text from `catalog.yml`. When you add a catalog item, add its sentence to both files. Each page has `hreflang` links, a canonical URL and a sitemap entry, and the footer switcher remembers the choice in a `flisk_lang` cookie so the English home page forwards to it next time (there is no redirect from the browser language: the site is static). `ruby scripts/check_i18n.rb` checks the data files, and `--built` checks the built pages after `jekyll build`. The shared bar (`assets/bar.js`) translates its own labels from the `<html lang>` of the page it sits on; product names and the sentences under them stay English.
 
+## For agents: llms.txt and Markdown
+
+`/llms.txt` ([llmstxt.org](https://llmstxt.org)) and the Markdown copies of the home page (`/index.md`, `/nl/index.md`, `/de/index.md`) are built from `_data/catalog.yml` and `_data/i18n/`, so a new catalog item shows up in all of them with no extra edit. The Markdown comes from `_includes/home_md.txt`. The site is static, so there is no `Accept: text/markdown` switch: agents use the `.md` addresses.
+
 ## The Flisk bar
 
 Any Flisk site can show the same slim strip of product links at the top of its page:

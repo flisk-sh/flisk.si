@@ -1,0 +1,14 @@
+{%- assign code = include.lang | default: "en" -%}
+{%- assign tr = site.data.i18n[code] -%}
+# {{ tr.title | default: "Flisk: everything we build" }}
+
+> {{ tr.description | default: site.description }}
+{% for section in site.data.catalog.sections %}
+## {{ tr.sections[section.id].title | default: section.title }}
+
+{{ tr.sections[section.id].text | default: section.text }}
+
+{% for item in section.items -%}
+- [{{ item.name }}]({{ item.url }}): {{ tr.items[item.url] | default: item.text | strip }}
+{% endfor -%}
+{% endfor %}

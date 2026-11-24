@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /de/index.md
+---
+{% include home_md.txt lang="de" %}

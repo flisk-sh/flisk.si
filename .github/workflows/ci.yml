@@ -41,3 +41,9 @@ jobs:
         run: node --check _site/assets/bar.js
       - name: Check the free API key entry in the built bar
         run: ruby scripts/check_bar.rb
+      - name: Check llms.txt and the Markdown home pages list every catalog item
+        run: |
+          n=$(grep -c '^        url: ' _data/catalog.yml)
+          for f in llms.txt index.md nl/index.md de/index.md; do
+            test "$(grep -c '^- \[.*\](https\?://' "_site/$f")" -ge "$n" || { echo "_site/$f lists fewer than $n links"; exit 1; }
+          done
