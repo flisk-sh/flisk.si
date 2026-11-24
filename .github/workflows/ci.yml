@@ -39,3 +39,5 @@ jobs:
         run: ruby scripts/check_i18n.rb --built
       - name: Syntax-check the built bar script
         run: node --check _site/assets/bar.js
+      - name: Check the free API key entry in the built bar
+        run: ruby scripts/check_bar.rb

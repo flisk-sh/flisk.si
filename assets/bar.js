@@ -52,14 +52,14 @@
     nl: { 'AI chat': 'AI-chat', 'AI cloud': 'AI-cloud', 'AI growth': 'AI-groei', 'AI locally': 'AI lokaal', 'AI learn': 'AI leren', 'AI tools': 'AI-tools',
           'Products': 'Producten', 'All products': 'Alle producten', 'Every Flisk product →': 'Elk Flisk-product →', 'Flisk products': 'Flisk-producten',
           'Talk to a human engineer': 'Praat met een echte engineer', 'Talk to a human engineer on Discord': 'Praat op Discord met een engineer',
-          'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub',
+          'Get a free API key': 'Haal een gratis API-sleutel', 'Help us explore more': 'Help ons verder verkennen', 'Help us explore more: sponsor Flisk on GitHub': 'Help ons verder verkennen: sponsor Flisk op GitHub', 'Sponsor Flisk on GitHub': 'Sponsor Flisk op GitHub',
           'Find a tool': 'Zoek een tool', 'Your tools': 'Jouw tools', 'Pin': 'Maak vast', 'Unpin': 'Maak los', 'No tool matches that.': 'Geen tool gevonden.',
           'Star a tool to pin it. The last tools you opened show up here too.': 'Geef een tool een ster om hem vast te maken. Je laatst geopende tools staan hier ook.',
           'Account': 'Account', 'Sign in': 'Inloggen', 'Signed in as': 'Ingelogd als', 'Console': 'Console', 'Log out': 'Uitloggen' },
     de: { 'AI chat': 'KI-Chat', 'AI cloud': 'KI-Cloud', 'AI growth': 'KI-Wachstum', 'AI locally': 'KI lokal', 'AI learn': 'KI lernen', 'AI tools': 'KI-Tools',
           'Products': 'Produkte', 'All products': 'Alle Produkte', 'Every Flisk product →': 'Jedes Flisk-Produkt →', 'Flisk products': 'Flisk-Produkte',
           'Talk to a human engineer': 'Sprich mit einem echten Engineer', 'Talk to a human engineer on Discord': 'Sprich auf Discord mit einem Engineer',
-          'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern',
+          'Get a free API key': 'Hol dir einen kostenlosen API-Key', 'Help us explore more': 'Hilf uns, mehr zu entdecken', 'Help us explore more: sponsor Flisk on GitHub': 'Hilf uns, mehr zu entdecken: Flisk auf GitHub sponsern', 'Sponsor Flisk on GitHub': 'Flisk auf GitHub sponsern',
           'Find a tool': 'Tool suchen', 'Your tools': 'Deine Tools', 'Pin': 'Anpinnen', 'Unpin': 'Lösen', 'No tool matches that.': 'Kein Tool gefunden.',
           'Star a tool to pin it. The last tools you opened show up here too.': 'Markiere ein Tool mit dem Stern, um es anzupinnen. Zuletzt geöffnete Tools erscheinen hier auch.',
           'Account': 'Konto', 'Sign in': 'Anmelden', 'Signed in as': 'Angemeldet als', 'Console': 'Console', 'Log out': 'Abmelden' },
@@ -92,6 +92,9 @@
   const carry = (url) => !theme ? url : `${url}${url.includes('?') ? '&' : '?'}${KEY}=${theme}`;
   // The flagship link says which Flisk site sent the visitor, so analytics.flisk.si can show which site brings Chat its users.
   const tracked = (url) => isHere(url) ? url : `${url}${url.includes('?') ? '&' : '?'}utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=flisk-bar`;
+  // The free inference key: one entry for sites with no key of their own, except on inference.flisk.si itself. The link says which
+  // Flisk site sent the visitor (utm_source is this page's host), so analytics shows Source=<site>, Channel=bar, Campaign=free-key.
+  const keyUrl = here === 'inference.flisk.si' ? '' : carry(`https://inference.flisk.si/?section=keys&utm_source=${encodeURIComponent(here)}&utm_medium=bar&utm_campaign=free-key`);
   // flisk.si and flisk.sh already show the flisk brand in their own header, so the bar leaves its brand out there.
   const ownsBrand = here === 'flisk.si' || here === 'flisk.sh';
   const host = document.createElement('flisk-bar');
@@ -142,13 +145,16 @@
       <button part="tone" type="button" aria-expanded="false" aria-controls="m${i}"${current}>${esc(t(label))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
       <div class="panel" part="tone" id="m${i}" hidden>${panel(items)}</div></div>`;
   }).join('');
+  // On the compact bar the pill is hidden and the same entry sits at the top of the Products menu (it is hidden on the full bar).
+  const keyIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="5" cy="11" r="2.75"/><path d="M7 9l6.5-6.5M11 4.5l1.75 1.75M9.5 6l1.5 1.5"/></svg>';
+  const keyItem = !keyUrl ? '' : `<a class="item keyitem" href="${esc(keyUrl)}">${keyIcon}<span><b>${esc(t('Get a free API key'))}</b></span></a>`;
   const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
       <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
-      <div class="panel wide mega" part="tone" id="msw" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
+      <div class="panel wide mega" part="tone" id="msw" hidden>${keyItem}${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         <a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a></div></div>`;
   const all = PRODUCT ? '' : `<div class="menu all-menu always">
       <button part="tone" type="button" aria-expanded="false" aria-controls="mall">${esc(t('Products'))}<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-      <div class="panel wide mega" part="tone" id="mall" hidden>${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
+      <div class="panel wide mega" part="tone" id="mall" hidden>${keyItem}${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
         ${here === 'flisk.si' ? '' : `<a class="every" href="${esc(carry(HOME + '/'))}">${esc(t('Every Flisk product →'))}</a>`}</div></div>`;
   const [firstName, firstUrl] = FIRST;
   const acct = ACCOUNT[here];
@@ -194,6 +200,15 @@
               border: 1px solid color-mix(in srgb, #ea4aaa 55%, transparent); color: #ea4aaa; font-weight: 600; }
       .give svg { width: 12px; height: 12px; fill: currentColor; }
       .give:hover { background: #ea4aaa; color: #fff; }
+      /* Get a free API key: a green pill that sits left of the chat icon. The compact bar hides it and shows .keyitem in the Products menu. */
+      .key { display: inline-flex; align-items: center; gap: 0.35rem; margin-left: 0.5rem; padding: 0.4rem 0.7rem; border-radius: 999px;
+             border: 1px solid color-mix(in srgb, var(--acc) 55%, transparent); color: var(--hi); font-weight: 400; }
+      .key svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .key:hover { background: var(--acc); color: var(--on); }
+      nav.prod .key { margin-left: auto; } nav.prod .key ~ .help { margin-left: 0.4rem; }
+      .item.keyitem { display: none; grid-column: 1 / -1; align-items: center; }
+      .keyitem svg { flex: none; width: 28px; height: 20px; fill: none; stroke: var(--hi); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .keyitem b { color: var(--hi); }
       /* Talk to a human: a small chat icon that names itself on hover or focus, and opens the Flisk Discord. */
       .help { position: relative; display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; margin-left: 0.4rem; border-radius: 50%; color: var(--dim); }
       .help svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
@@ -286,7 +301,8 @@
          wider windows get it from the .tight class the script sets when the full bar does not fit (a site with
          many menus, or a 768-980px window), so the bar never makes the page wider than the window. */
       @media (max-width: 760px) {
-        .menu:not(.all-menu):not(.acct), .every-link { display: none; }
+        .menu:not(.all-menu):not(.acct), .every-link, .key { display: none; }
+        .item.keyitem { display: flex; }
         .all-menu { display: block; }
         .give span { display: none; }
         .give { padding: 0.4rem 0.5rem; }
@@ -311,7 +327,8 @@
         .pn, .fl { display: inline-flex; align-items: center; min-height: 1.5rem; margin-top: 0; }
         .card { padding-right: 0.5rem; margin-right: 0; }
       }
-      nav.tight .menu:not(.all-menu):not(.acct), nav.tight .every-link { display: none; }
+      nav.tight .menu:not(.all-menu):not(.acct), nav.tight .every-link, nav.tight .key { display: none; }
+      nav.tight .item.keyitem { display: flex; }
       nav.tight .all-menu { display: block; }
       nav.tight .give span { display: none; }
       nav.tight .give { padding: 0.4rem 0.5rem; }
@@ -326,6 +343,7 @@
       ${PRODUCT ? menus : ''}
       ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
       ${all}
+      ${keyUrl ? `<a class="key" part="tone" href="${esc(keyUrl)}">${keyIcon}<span>${esc(t('Get a free API key'))}</span></a>` : ''}
       <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
       <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}"${PRODUCT ? tip(t('Help us explore more'), t('Sponsor Flisk on GitHub')) : ` title="${esc(t('Sponsor Flisk on GitHub'))}"`}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
       ${acct ? `<div class="menu acct"><button class="me" part="tone" type="button" aria-expanded="false" aria-controls="macct" aria-label="${esc(t('Account'))}"></button><div class="panel" part="tone" id="macct" hidden></div></div>` : ''}
