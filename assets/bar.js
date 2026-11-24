@@ -124,7 +124,7 @@
   };
   const siblings = !PRODUCT ? [] : (neighbours() || []);
   const card = !PRODUCT ? '' : `<div class="card" part="tone">
-      <img class="pi" src="${esc(iconSrc(OPT.icon || 'flisk-cli'))}" alt="" width="40" height="40">
+      <a class="pil" href="${esc(location.origin + '/')}" tabindex="-1" aria-hidden="true"><img class="pi" src="${esc(iconSrc(OPT.icon || 'flisk-cli'))}" alt="" width="40" height="40"></a>
       <a class="pn"${tip(PRODUCT, OPT.text)} href="${esc(location.origin + '/')}">${esc(PRODUCT)}</a>
       <a class="fl"${tip('All Flisk products', 'AI chat, cloud, growth, locally, learn and tools')} href="${esc(carry(HOME + '/'))}">from <img src="${HOME}/assets/icons/flisk-cli.svg" alt="" width="14" height="14"><strong translate="no">Flisk</strong></a></div>
     <span class="sibs">${siblings.map(([n, u, i, t]) => `<a class="sib" part="tone"${tip(n, t)} href="${esc(carry(u))}"><img src="${HOME}/assets/icons/${esc(i)}.svg" alt="" width="26" height="26"><span class="sr">${esc(n)}</span></a>`).join('')}</span>`;
@@ -222,7 +222,8 @@
       nav.prod { --pa: var(--acc); height: 4rem; gap: 0.2rem; background: radial-gradient(22rem 8rem at 0 0, color-mix(in srgb, var(--pa) 18%, transparent), transparent), var(--bg); }
       .card { display: grid; grid-template-columns: auto 1fr; column-gap: 0.65rem; align-items: center; padding: 0.3rem 0.9rem 0.3rem 0.3rem; margin-right: 0.2rem; border-radius: 1rem;
               background: var(--panel); box-shadow: 0 0 0 1px color-mix(in srgb, var(--pa) 55%, transparent), 0 8px 22px -10px var(--pa); }
-      .card .pi { grid-row: span 2; width: 2.5rem; height: 2.5rem; border-radius: 0.7rem; transition: transform .25s; }
+      .card .pil { grid-row: span 2; display: block; line-height: 0; }
+      .card .pi { width: 2.5rem; height: 2.5rem; border-radius: 0.7rem; transition: transform .25s; }
       .card:hover .pi { transform: rotate(-6deg) scale(1.06); }
       .pn { color: var(--ink); font: 700 1.35rem/1 'Space Grotesk', Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.03em; align-self: end; }
       .fl { display: inline-flex; align-items: center; gap: 0.3rem; align-self: start; margin-top: 0.3rem; color: var(--faint); font: 500 0.78rem/1 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 0; }
