@@ -1,0 +1,2746 @@
+# Written by scripts/build_pages.rb. Do not edit by hand; run the script.
+flisk.sh:
+  name: Flisk CLI
+  pages:
+  - title: Quick Start
+    url: https://flisk.sh/docs/quickstart/
+    text: install, verify, and boot a working stack in minutes
+  - title: Configuration
+    url: https://flisk.sh/docs/configuration/
+    text: service.json reference — appType, featuresEnabled, required package.json
+      scripts
+  - title: Examples
+    url: https://flisk.sh/docs/examples/
+    text: reference landscapes — minimal PSR starter, SaaS starter, restaurant ops,
+      a 100-service scale fixture across 7 ERP-style domains (generated services answering
+      /health, not a business app)
+  - title: Scripts
+    url: https://flisk.sh/docs/scripts/
+    text: package.json scripts required per appType, enforced by `flisk doctor`
+  - title: Install and connect the Flisk MCP server
+    url: https://github.com/flisk-sh/flisk/blob/main/docs/agent-tooling/flisk-mcp-setup.md
+    text: install Flisk with npm or the prebuilt binary, configure Codex, Claude Code,
+      Claude Desktop, or Cursor to launch the local stdio server, and run `doctor`
+      then `up` for the first time
+  - title: Flisk MCP tool reference
+    url: https://github.com/flisk-sh/flisk/blob/main/docs/agent-tooling/flisk-mcp.md
+    text: the tools a connected client exposes (`doctor`, `up`, `down`, `status`,
+      `logs`, `resource_list`) and how to target a project
+  - title: AI Agents & Skills
+    url: https://flisk.sh/docs/agents/
+    text: install the portable Flisk agent skills (Agent Skills `SKILL.md` format)
+      for Claude Code, Codex, OpenCode and Cursor, and the `AGENTS.md` rules template
+      for other tools
+  - title: Features
+    url: https://flisk.sh/features/
+    text: 35+ product capabilities, all driven by one service.json
+  - title: Compare
+    url: https://flisk.sh/compare/
+    text: head-to-head vs Devbox, Devenv, Garden, Skaffold, DevSpace, Gitpod, Codespaces,
+      Coder, Daytona, Okteto
+  - title: Why Flisk
+    url: https://flisk.sh/why/
+    text: the problem Flisk solves and why it exists
+  - title: No Vendor Lock-in
+    url: https://flisk.sh/no-lock-in/
+    text: every generated file is open-standard Docker/TypeScript/Starlark, MIT-licensed
+  - title: Does Flisk fit?
+    url: https://flisk.sh/fit/
+    text: check your stack in 30 seconds
+  - title: Sandbox
+    url: https://flisk.sh/sandbox/
+    text: try Flisk without installing anything
+  - title: Personal Demos
+    url: https://demo.flisk.si
+    text: a Flisk stack built for a person's X handle and the words they build with
+  - title: flisk-example
+    url: https://github.com/flisk-sh/flisk-example
+    text: minimal PSR stack (Hono, Vite, Bun)
+  - title: flisk-user-management
+    url: https://github.com/flisk-sh/flisk-user-management
+    text: enterprise SCIM 2.0 & OAuth2 PKCE demo
+  - title: flisk-restaurant-example
+    url: https://github.com/flisk-sh/flisk-restaurant-example
+    text: restaurant operations demo — reservations, kitchen, menu, floor ops
+  - title: flisk-erp-system
+    url: https://github.com/flisk-sh/flisk-erp-system
+    text: 100-service scale fixture across 7 ERP-style domains; all healthy on a clean
+      CI runner in 472 s, images built (https://github.com/flisk-sh/flisk/actions/runs/36395860088)
+  - title: flisk-ecommerce-example
+    url: https://github.com/flisk-sh/flisk-ecommerce-example
+    text: Vue 3 storefront + Hono catalog API; smallest example of `--framework vue`
+  - title: flisk-auth-queue-email-example
+    url: https://github.com/flisk-sh/flisk-auth-queue-email-example
+    text: run an OIDC identity provider, a NATS queue and email (Mailpit) locally
+      behind small interfaces
+  - title: flisk-saas-starter
+    url: https://github.com/flisk-sh/flisk-saas-starter
+    text: SaaS dashboard + checkout starter
+  - title: Blog
+    url: https://flisk.sh/blog/
+    text: long-form field notes on local-first development, generated infrastructure,
+      and Kubernetes-free workflows
+  - title: Request a license
+    url: https://flisk.sh/#waitlist
+    text: ''
+  - title: Sitemap
+    url: https://flisk.sh/sitemap.xml
+    text: ''
+  - title: macOS/Linux install script
+    url: https://flisk.sh/install.sh
+    text: ''
+  - title: Full agent reference (llms-full.txt)
+    url: https://flisk.sh/llms-full.txt
+    text: every section of this file in one document
+  - title: Stacklytics, how long Flisk takes to bring each stack up - Flisk CLI
+    url: https://flisk.sh/benchmarks/
+    text: How long Flisk takes to scaffold and bring up every language, framework
+      and resource type it supports, from Flisk’s own nightly CI. A setup-time measure,
+      not a runtime benchmark.
+  - title: Flisk for AI agents - Flisk CLI
+    url: https://flisk.sh/agents/
+    text: 'Give Claude Code, Cursor or Codex the Flisk runtime: the flisk mcp server
+      and the Flisk skills, so your agent can scaffold, start, check and fix a full
+      local stack on your laptop. Free, MIT core, no account.'
+  - title: Golden layers - Flisk CLI
+    url: https://flisk.sh/layers/
+    text: Every Dockerfile Flisk generates builds in the same four layers, each starting
+      from a shared golden image for the stack, so Docker reuses the slow steps.
+  - title: Waiting for MVP? - Flisk CLI
+    url: https://flisk.sh/waiting/
+    text: A calculator for what slow environment setup costs your team before the
+      MVP ships. Set your own numbers; the arithmetic is printed under the result.
+  - title: Migrate to Flisk - Flisk CLI
+    url: https://flisk.sh/migrate/
+    text: Move your local development from Docker Compose, Tilt, Skaffold or a setup
+      wiki to Flisk. Tell us about your stack and we help your team get to one flisk
+      up.
+  - title: Questions and answers - Flisk CLI
+    url: https://flisk.sh/docs/faq/
+    text: 'Short answers to the questions people ask first about Flisk: Kubernetes,
+      Docker, cost, generated files, leaving Flisk, migrations, CI and AI agents.'
+  - title: Troubleshooting - Flisk CLI
+    url: https://flisk.sh/docs/troubleshooting/
+    text: Flisk and Tilt error messages as they are printed, what causes each one
+      and how to fix it.
+  - title: How it works - Flisk CLI
+    url: https://flisk.sh/docs/how-it-works/
+    text: 'What runs where when you start an app with flisk up: your service.json
+      files, the files Flisk writes, local processes, and containers on Docker and
+      Tilt.'
+  - title: What's new - Flisk CLI
+    url: https://flisk.sh/docs/whats-new/
+    text: Recent additions to the Flisk CLI, each with the command to try it and a
+      link to the change on GitHub.
+  - title: CLI commands - Flisk CLI
+    url: https://flisk.sh/docs/cli/
+    text: Every flisk command, alias and flag on one page, with examples.
+  - title: Flisk + Helm - Flisk CLI
+    url: https://flisk.sh/docs/with-helm/
+    text: 'Flisk CLI and Helm are not alternatives: Flisk starts services on your
+      machine with Docker and Tilt, and production deployment stays with your Helm
+      charts.'
+  - title: Architecture - Flisk CLI
+    url: https://flisk.sh/docs/architecture/
+    text: The three parts of Flisk, how a session flows from flisk project to flisk
+      up, and which files are committed and which are generated.
+  - title: Features - Flisk CLI
+    url: https://flisk.sh/docs/features/
+    text: 'What the Flisk CLI does, in plain words: one service.json per service,
+      one command to start, checks on the generated files, AI agent support, and a
+      free MIT core.'
+  - title: Documentation - Flisk CLI
+    url: https://flisk.sh/docs/
+    text: 'Flisk docs: run the demo, follow the quick start, or pick the guide that
+      matches what you already have. Reference for commands, service.json and generated
+      files.'
+  - title: The Conversation That Survives a Restart | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-conversation-that-survives-a-restart/
+    text: How the Flisk agent resource keeps session checkpoints on a named volume,
+      routes by x-session-id and drains turns on SIGTERM, so restarts and hot reloads
+      stop losing state.
+  - title: Why One Manifest Matters | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-one-manifest-matters/
+    text: The benefits of giving each service one explicit source for local development
+      intent.
+  - title: Databases Are Part of the App | Flisk CLI
+    url: https://flisk.sh/blog/articles/databases-are-part-of-the-app/
+    text: How local database setup, migrations, and service ownership shape daily
+      developer confidence.
+  - title: Gradual Adoption Without Drama | Flisk CLI
+    url: https://flisk.sh/blog/articles/gradual-adoption-without-drama/
+    text: How teams can bring Flisk into an existing repo without stopping product
+      work.
+  - title: The Hidden Price of Cloud Workspaces | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-hidden-price-of-cloud-workspaces/
+    text: Why rented developer environments can solve setup while introducing spend,
+      latency, and governance questions.
+  - title: The Product Engineer Case for Flisk | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-product-engineer-case-for-flisk/
+    text: How product developers can ship across services without memorizing infrastructure
+      internals.
+  - title: Prisma in a Generated Stack | Flisk CLI
+    url: https://flisk.sh/blog/articles/prisma-in-a-generated-stack/
+    text: Where ORM setup fits when service definitions generate development infrastructure.
+  - title: Stop Asking AI to Guess Your Architecture | Flisk CLI
+    url: https://flisk.sh/blog/articles/stop-asking-ai-to-guess-your-architecture/
+    text: How Flisk gives assistants concrete context before they suggest changes
+      in the wrong layer.
+  - title: The Best Docs Are Rebuilt | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-best-docs-are-rebuilt/
+    text: Why documentation that regenerates from service definitions is easier to
+      trust than a wiki page.
+  - title: Documentation for Humans and Assistants | Flisk CLI
+    url: https://flisk.sh/blog/articles/documentation-for-humans-and-assistants/
+    text: Why modern engineering docs need to serve both people reading and agents
+      acting.
+  - title: The Spec Is the Map, Not the Terrain | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-spec-is-the-map-not-the-terrain/
+    text: How teams can use specs to reduce ambiguity without confusing written intent
+      for production behavior.
+  - title: Owning the Output | Flisk CLI
+    url: https://flisk.sh/blog/articles/owning-the-output/
+    text: Why teams should be able to keep every generated file if they outgrow the
+      generator.
+  - title: When Specs Lie Quietly | Flisk CLI
+    url: https://flisk.sh/blog/articles/when-specs-lie-quietly/
+    text: A practical look at stale assumptions, missing edge cases, and the false
+      comfort of tidy requirements.
+  - title: NATS in the Development Loop | Flisk CLI
+    url: https://flisk.sh/blog/articles/nats-in-the-development-loop/
+    text: Why event-driven services need local messaging support that developers can
+      see and restart.
+  - title: Why AI Needs Guardrails, Not Theater | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-ai-needs-guardrails-not-theater/
+    text: The practical role of generated boundaries, ownership notes, and service
+      maps in AI-assisted coding.
+  - title: The Local Gateway Pattern | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-local-gateway-pattern/
+    text: Why gateways, nginx, and routing deserve generated support in local service
+      landscapes.
+  - title: From Empty Repo to Working Landscape | Flisk CLI
+    url: https://flisk.sh/blog/articles/from-empty-repo-to-working-landscape/
+    text: How a service landscape forms when definitions, generated artifacts, and
+      local orchestration line up.
+  - title: The Machine Should Tell the Truth | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-laptop-should-tell-the-truth/
+    text: Why local environments should reveal integration problems early instead
+      of hiding them until CI.
+  - title: No Kubernetes Before Lunch | Flisk CLI
+    url: https://flisk.sh/blog/articles/no-kubernetes-before-lunch/
+    text: Why Flisk keeps developers productive without asking every product engineer
+      to become a cluster operator.
+  - title: The Discipline of Boring Defaults | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-discipline-of-boring-defaults/
+    text: Why teams move faster when generated defaults are predictable, readable,
+      and unexciting.
+  - title: Do Not Rewrite Before You Understand | Flisk CLI
+    url: https://flisk.sh/blog/articles/do-not-rewrite-before-you-understand/
+    text: Why brownfield modernization starts with discovery, not a heroic platform
+      replacement.
+  - title: New Hire Confidence Is a Feature | Flisk CLI
+    url: https://flisk.sh/blog/articles/new-hire-confidence-is-a-feature/
+    text: Why the first successful local boot shapes how quickly people feel useful.
+  - title: Queues Belong in the Local Story | Flisk CLI
+    url: https://flisk.sh/blog/articles/queues-belong-in-the-local-story/
+    text: Why background work and messaging need first-class local support, not production-only
+      mystery.
+  - title: The DevOps Case for Two Different Health Checks | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-devops-case-for-two-different-health-checks/
+    text: Why Flisk separates flisk doctor (environment) from flisk config verify
+      (generated project consistency), and how that shortens platform support threads.
+  - title: The First Manifest to Write | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-first-manifest-to-write/
+    text: Where to start when turning an existing service into an explicit Flisk service
+      definition.
+  - title: Rules Go in AGENTS.md, Facts Come From the Stack | Flisk CLI
+    url: https://flisk.sh/blog/articles/rules-go-in-agents-md-facts-come-from-the-stack/
+    text: 'How to split assistant instructions: durable team rules in AGENTS.md, live
+      facts such as ports, URLs and health from the stack, so neither goes stale.'
+  - title: What SDD Gets Right | Flisk CLI
+    url: https://flisk.sh/blog/articles/what-sdd-gets-right/
+    text: 'The useful parts of spec-driven development: shared language, reviewable
+      intent, and better AI handoffs.'
+  - title: Testing the System You Actually Run | Flisk CLI
+    url: https://flisk.sh/blog/articles/testing-the-system-you-actually-run/
+    text: How local orchestration can make tests reflect real service relationships
+      instead of isolated assumptions.
+  - title: Microservices Without Local Theater | Flisk CLI
+    url: https://flisk.sh/blog/articles/microservices-without-local-theater/
+    text: How to tell the difference between a useful local stack and a fragile demo.
+  - title: When Cloud Development Makes Sense | Flisk CLI
+    url: https://flisk.sh/blog/articles/when-cloud-development-makes-sense/
+    text: A fair look at where cloud workspaces help and where local tooling remains
+      simpler.
+  - title: The Escape Hatch Is the Product | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-escape-hatch-is-the-product/
+    text: How no-lock-in design makes a developer tool safer to adopt, and why generated
+      files you can read and keep matter more than features.
+  - title: flisk doctor as Team Memory | Flisk CLI
+    url: https://flisk.sh/blog/articles/flisk-doctor-as-team-memory/
+    text: How health checks can replace long troubleshooting threads with actionable
+      local diagnostics.
+  - title: Why Big Repos Need Small Rituals | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-big-repos-need-small-rituals/
+    text: How a few simple, repeated commands can hold a large service graph together,
+      so a big repository stays easy to start and check every day.
+  - title: Traefik Without Mystery | Flisk CLI
+    url: https://flisk.sh/blog/articles/traefik-without-mystery/
+    text: How generated Traefik routing config makes local service URLs predictable,
+      so every developer reaches each service at the same address.
+  - title: The Founder Case for Flisk | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-founder-case-for-flisk/
+    text: How Flisk reduces setup drag so tiny teams spend more time on customer-facing
+      decisions.
+  - title: Terminal UI for Real Work | Flisk CLI
+    url: https://flisk.sh/blog/articles/terminal-ui-for-real-work/
+    text: How a focused terminal interface can make a complex service landscape easier
+      to scan.
+  - title: Why Flisk Does Not Hide the Stack | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-flisk-does-not-hide-the-stack/
+    text: Flisk exposes standard tools because hiding every detail makes teams weaker
+      when debugging starts.
+  - title: Service Definitions as Team Contracts | Flisk CLI
+    url: https://flisk.sh/blog/articles/service-definitions-as-team-contracts/
+    text: How one service.json can make runtime expectations visible across product
+      and platform work.
+  - title: No Docker Is a Valid Answer | Flisk CLI
+    url: https://flisk.sh/blog/articles/no-docker-is-a-valid-answer/
+    text: When a Flisk project can run entirely as local processes with no Docker
+      or Tilt, and when containers, a gateway and parity are worth the cost.
+  - title: Local First Does Not Mean Local Only | Flisk CLI
+    url: https://flisk.sh/blog/articles/local-first-does-not-mean-local-only/
+    text: Why strong local development complements CI, staging, and production instead
+      of replacing them.
+  - title: The End of Setup Archaeology | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-end-of-setup-archaeology/
+    text: Why developers should not have to reconstruct old setup decisions from scripts
+      and memories.
+  - title: Bun, Node, and Practical Defaults | Flisk CLI
+    url: https://flisk.sh/blog/articles/bun-node-and-practical-defaults/
+    text: How runtime choices should serve developer feedback instead of becoming
+      identity debates.
+  - title: The Case for Verdaccio | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-case-for-verdaccio/
+    text: How a local package registry supports service-heavy TypeScript development.
+  - title: Frontend and Backend in One Loop | Flisk CLI
+    url: https://flisk.sh/blog/articles/frontend-and-backend-in-one-loop/
+    text: Why product work moves faster when UI, API, and generated clients update
+      together.
+  - title: Why Generated Docs Beat Forgotten Docs | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-generated-docs-beat-forgotten-docs/
+    text: How generated C4 diagrams and assistant briefings keep documentation closer
+      to the live system.
+  - title: The Difference Between Demo and Daily Driver | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-difference-between-demo-and-daily-driver/
+    text: What separates a local stack that impresses once from one developers trust
+      every day.
+  - title: The AI Code Review Context Problem | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-ai-code-review-context-problem/
+    text: Why reviewers and assistants both need a map of generated files and service
+      boundaries.
+  - title: When the Stack Should Say No | Flisk CLI
+    url: https://flisk.sh/blog/articles/when-the-stack-should-say-no/
+    text: Why good local tooling should fail early, explain clearly, and avoid partial
+      mystery states.
+  - title: Hot Reload Is a Trust Feature | Flisk CLI
+    url: https://flisk.sh/blog/articles/hot-reload-is-a-trust-feature/
+    text: Why developers keep using local tools only when feedback feels immediate
+      and reliable.
+  - title: MIT License as Product Philosophy | Flisk CLI
+    url: https://flisk.sh/blog/articles/mit-license-as-product-philosophy/
+    text: Why open licensing matters when a tool sits in the middle of daily engineering
+      work.
+  - title: Postgres as a First-Class Neighbor | Flisk CLI
+    url: https://flisk.sh/blog/articles/postgres-as-a-first-class-neighbor/
+    text: How local database services become less painful when they are part of generated
+      orchestration.
+  - title: The Brownfield Rescue Path | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-brownfield-rescue-path/
+    text: How existing repos can be discovered and gradually shaped into explicit
+      service definitions.
+  - title: The Service Registry as Shared Memory | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-service-registry-as-shared-memory/
+    text: How a service registry helps teams understand what exists, where it runs,
+      and how it connects.
+  - title: The Real Meaning of Reproducible | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-real-meaning-of-reproducible/
+    text: What reproducibility should mean for service discovery, ports, credentials,
+      generated files, and startup.
+  - title: Ports Should Not Be Folklore | Flisk CLI
+    url: https://flisk.sh/blog/articles/ports-should-not-be-folklore/
+    text: Why local port assignment belongs in generated configuration instead of
+      memory and Slack.
+  - title: Playwright Belongs Near the Stack | Flisk CLI
+    url: https://flisk.sh/blog/articles/playwright-belongs-near-the-stack/
+    text: Why end-to-end testing is more useful when the local system is easy to boot
+      and reset.
+  - title: The Difference Between Simple and Simplistic | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-difference-between-simple-and-simplistic/
+    text: How Flisk tries to reduce local complexity without pretending distributed
+      systems are easy.
+  - title: Acceptance Criteria That Can Fail on Your Laptop | Flisk CLI
+    url: https://flisk.sh/blog/articles/acceptance-criteria-that-can-fail-on-your-laptop/
+    text: 'Turn spec acceptance criteria into checks that can fail locally: readiness
+      endpoints, a status command, a migrator that must exit zero, and a generated-file
+      check.'
+  - title: Local Tooling and Team Morale | Flisk CLI
+    url: https://flisk.sh/blog/articles/local-tooling-and-team-morale/
+    text: Why reliable development environments make engineers more willing to touch
+      unfamiliar services.
+  - title: The Local Stack as a Product Surface | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-local-stack-as-a-product-surface/
+    text: Why internal developer experience deserves the same care as user-facing
+      workflows.
+  - title: The Quiet ROI of Fewer Interruptions | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-quiet-roi-of-fewer-interruptions/
+    text: How reducing setup questions and environment drift returns attention to
+      product work.
+  - title: The DevOps Case for Flisk | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-devops-case-for-flisk/
+    text: How generated local environments keep platform attention closer to production
+      reliability.
+  - title: Migrations Are Not a Start Script | Flisk CLI
+    url: https://flisk.sh/blog/articles/migrations-are-not-a-start-script/
+    text: Why database migrations belong in an explicit migrator resource that must
+      exit zero before dependants start, not in an API start script or entrypoint.
+  - title: Why Flisk Is Not a Cloud IDE | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-flisk-is-not-a-cloud-ide/
+    text: The difference between renting a remote machine and generating a better
+      local development surface.
+  - title: Generated Clients Without Guesswork | Flisk CLI
+    url: https://flisk.sh/blog/articles/generated-clients-without-guesswork/
+    text: How generated SDK and client surfaces reduce drift between frontend and
+      backend work.
+  - title: Starlark for Repeatable Local Rules | Flisk CLI
+    url: https://flisk.sh/blog/articles/starlark-for-repeatable-local-rules/
+    text: Why small deterministic orchestration rules can beat a pile of custom shell
+      scripts.
+  - title: Why Local Dev Needs Product Design | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-local-dev-needs-product-design/
+    text: Internal tools still have users, workflows, friction, and moments where
+      clarity matters.
+  - title: From Product Intent to Runnable Services | Flisk CLI
+    url: https://flisk.sh/blog/articles/from-product-intent-to-runnable-services/
+    text: How Flisk turns service definitions into local systems developers can actually
+      inspect and run.
+  - title: Secrets Are Not Onboarding Steps | Flisk CLI
+    url: https://flisk.sh/blog/articles/secrets-are-not-onboarding-steps/
+    text: How managed identities reduce the habit of copying credentials through unsafe
+      channels.
+  - title: The Cost of Setup Rituals | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-cost-of-setup-rituals/
+    text: How repeated onboarding chores quietly consume product time and make teams
+      afraid to change services.
+  - title: Observability Starts on the Machine | Flisk CLI
+    url: https://flisk.sh/blog/articles/observability-starts-on-the-laptop/
+    text: Why logs, status, health, and service relationships should be visible before
+      staging.
+  - title: Microservice Sprawl Needs a Workbench | Flisk CLI
+    url: https://flisk.sh/blog/articles/microservice-sprawl-needs-a-workbench/
+    text: Why service count becomes manageable only when developers have a coherent
+      local surface.
+  - title: Standard Files Beat Platform Lock-In | Flisk CLI
+    url: https://flisk.sh/blog/articles/standard-files-beat-platform-lock-in/
+    text: Why teams should keep generated output they can read, edit, commit, and
+      carry forward.
+  - title: What Belongs in CI After Flisk | Flisk CLI
+    url: https://flisk.sh/blog/articles/what-belongs-in-ci-after-flisk/
+    text: How local reproducibility changes what teams expect from continuous integration.
+  - title: The Platform Engineer Case for Flisk | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-platform-engineer-case-for-flisk/
+    text: Why platform teams should automate local development instead of becoming
+      first-line support for individual developer environments.
+  - title: A Better First Week for Founding Engineers | Flisk CLI
+    url: https://flisk.sh/blog/articles/a-better-first-week-for-founding-engineers/
+    text: How early teams can avoid building local infrastructure from scratch before
+      the product is proven.
+  - title: The Local System Is a Contract | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-local-system-is-a-contract/
+    text: Why every service should declare how it runs, connects, and participates
+      in the development loop.
+  - title: AI Assistants Need Topology | Flisk CLI
+    url: https://flisk.sh/blog/articles/ai-assistants-need-topology/
+    text: Why coding assistants behave better when they understand services, boundaries,
+      generated files, and ownership.
+  - title: Day-One Onboarding for Microservices | Flisk CLI
+    url: https://flisk.sh/blog/articles/day-one-onboarding-for-microservices/
+    text: What it should feel like when a new developer joins a service-heavy product
+      team.
+  - title: A Better Default for Service Teams | Flisk CLI
+    url: https://flisk.sh/blog/articles/a-better-default-for-service-teams/
+    text: Why Flisk is built for teams that want standard tools, faster feedback,
+      and less local ceremony.
+  - title: Tilt Without the Cluster Tax | Flisk CLI
+    url: https://flisk.sh/blog/articles/tilt-without-the-cluster-tax/
+    text: How Flisk uses Tilt and Starlark for local orchestration without forcing
+      Kubernetes concepts into every task.
+  - title: The Problem With Perfect Templates | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-problem-with-perfect-templates/
+    text: Why templates help only when they keep matching the system after the first
+      generation.
+  - title: Making Brownfield Code Legible | Flisk CLI
+    url: https://flisk.sh/blog/articles/making-brownfield-code-legible/
+    text: How discovery can reveal hidden services, missing manifests, and patterns
+      worth preserving.
+  - title: Selective Startup for Big Repos | Flisk CLI
+    url: https://flisk.sh/blog/articles/selective-startup-for-big-repos/
+    text: How teams can work on one slice of a system without booting every service
+      every time.
+  - title: Counting the Cost of Waiting | Flisk CLI
+    url: https://flisk.sh/blog/articles/counting-the-cost-of-waiting/
+    text: Why blocked developers are expensive even before a team buys any extra infrastructure.
+  - title: C4 Diagrams That Do Not Rot | Flisk CLI
+    url: https://flisk.sh/blog/articles/c4-diagrams-that-do-not-rot/
+    text: Why architecture diagrams should be generated from the system instead of
+      redrawn after the fact.
+  - title: The Problem With Works on My Machine | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-problem-with-works-on-my-machine/
+    text: How reproducible generated environments remove a phrase teams should not
+      need anymore.
+  - title: The CLI as a Calm Interface | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-cli-as-a-calm-interface/
+    text: Why a development CLI should guide without burying engineers under flags
+      and hidden states.
+  - title: The AGENTS.md Advantage | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-agents-md-advantage/
+    text: A practical guide to generated assistant briefings and why they matter in
+      larger repos.
+  - title: From Ticket to Topology | Flisk CLI
+    url: https://flisk.sh/blog/articles/from-ticket-to-topology/
+    text: How assistants can work better when user stories connect to actual services
+      and generated context.
+  - title: Code Generation That Stays Inspectable | Flisk CLI
+    url: https://flisk.sh/blog/articles/code-generation-that-stays-inspectable/
+    text: How generated files can help teams without becoming an opaque maintenance
+      burden.
+  - title: The Practical Beauty of One Command | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-practical-beauty-of-one-command/
+    text: Why one reliable command can be more valuable than a thick setup guide.
+  - title: Local Credentials Without Spreadsheets | Flisk CLI
+    url: https://flisk.sh/blog/articles/local-credentials-without-spreadsheets/
+    text: Why developer secrets need managed paths, not tribal knowledge and old setup
+      docs.
+  - title: The Fast Path to a Useful Demo | Flisk CLI
+    url: https://flisk.sh/blog/articles/the-fast-path-to-a-useful-demo/
+    text: Why a runnable multi-service demo beats screenshots when teams need product
+      feedback.
+  - title: Why Flisk Matters After the Spec | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-flisk-matters-after-the-spec/
+    text: A closing argument for pairing spec-driven thinking with a development workbench
+      that can actually run the system.
+  - title: Give Your Assistant Questions to Ask, Not Guesses to Make | Flisk CLI
+    url: https://flisk.sh/blog/articles/give-your-assistant-questions-not-guesses/
+    text: Why a coding assistant should query the running stack through flisk mcp
+      instead of guessing ports, URLs and generated files from the repository tree.
+  - title: Why Local Feedback Still Wins | Flisk CLI
+    url: https://flisk.sh/blog/articles/why-local-feedback-still-wins/
+    text: The case for fast local loops even when cloud development environments look
+      convenient on paper.
+  - title: Vite Everywhere It Helps | Flisk CLI
+    url: https://flisk.sh/blog/articles/vite-everywhere-it-helps/
+    text: How consistent Vite usage can make frontend, backend, SDK, and library workflows
+      easier to reason about.
+  - title: MVP Speed Without Throwaway Tooling | Flisk CLI
+    url: https://flisk.sh/blog/articles/mvp-speed-without-throwaway-tooling/
+    text: Why fast early product work still deserves a local stack that can survive
+      growth.
+  - title: Generated Does Not Mean Disposable | Flisk CLI
+    url: https://flisk.sh/blog/articles/generated-does-not-mean-disposable/
+    text: How generated artifacts can become stable, reviewable parts of the engineering
+      system.
+  - title: Plain Docker Is Still a Feature | Flisk CLI
+    url: https://flisk.sh/blog/articles/plain-docker-is-still-a-feature/
+    text: Why standard generated Docker files are easier to inspect, debug, and keep
+      than opaque platform magic.
+  - title: A Local Registry for Real Teams | Flisk CLI
+    url: https://flisk.sh/blog/articles/a-local-registry-for-real-teams/
+    text: Why internal packages and generated clients benefit from a local registry
+      during development.
+  - title: Configuration That Explains Itself | Flisk CLI
+    url: https://flisk.sh/blog/articles/configuration-that-explains-itself/
+    text: Why generated configs should carry enough structure for humans and assistants
+      to understand them.
+  - title: Golden Layers for Boring Builds | Flisk CLI
+    url: https://flisk.sh/blog/articles/golden-layers-for-boring-builds/
+    text: How shared Docker layers can make generated services faster and easier to
+      reason about.
+  - title: How to Review Generated Infrastructure | Flisk CLI
+    url: https://flisk.sh/blog/articles/how-to-review-generated-infrastructure/
+    text: A guide to inspecting generated Docker, Tilt, TypeScript, and config outputs
+      with confidence.
+  - title: A Smaller Surface for Mistakes | Flisk CLI
+    url: https://flisk.sh/blog/articles/a-smaller-surface-for-mistakes/
+    text: How generated conventions reduce the number of places local setup can quietly
+      drift.
+  - title: What SDD Cannot Do | Flisk CLI
+    url: https://flisk.sh/blog/articles/what-sdd-cannot-do/
+    text: Why specs cannot replace product judgment, architecture tradeoffs, operational
+      feedback, or integration testing.
+  - title: Flisk MCP servers - Flisk CLI
+    url: https://flisk.sh/mcp/
+    text: Add Flisk’s free MCP servers to Claude, Claude Code, Cursor, Gemini CLI
+      or Codex with one copy and paste. No account, no key.
+  - title: Public claims registry - Flisk CLI
+    url: https://flisk.sh/docs/claims/
+    text: 'The public claims registry for Flisk CLI: each number on this site, the
+      evidence behind it and its limits, kept in the Flisk repository.'
+  - title: 'North star: first button on a phone'
+    url: https://flisk.sh/docs/north-star/
+    text: Flisk CLI runs your multi-service app on your machine from a Compose file
+      or plain commands, and gives AI coding agents an MCP server to start it, read
+      its health and logs, and fix what breaks. For containers it builds on Docker
+      and Tilt. It is not a deploy tool. Production stays on Helm.
+  - title: FliskOS
+    url: https://flisk.sh/console/
+    text: 'FliskOS: your Flisk projects, your coding agents and the Flisk apps in
+      one local window'
+os.flisk.si:
+  name: FliskOS
+  pages:
+  - title: Home
+    url: https://os.flisk.si/
+    text: product overview and screenshots
+  - title: Download for macOS
+    url: https://os.flisk.si/download/mac
+    text: latest release zip
+  - title: Download for Windows
+    url: https://os.flisk.si/download/windows
+    text: latest release zip
+  - title: Install script
+    url: https://os.flisk.si/install.sh
+    text: the script run once after installing the app
+  - title: Live demo
+    url: https://os.flisk.si/demo/
+    text: the real app running on sample projects, no sign-in
+  - title: Sitemap
+    url: https://os.flisk.si/sitemap.xml
+    text: ''
+  - title: Source and issues
+    url: https://github.com/flisk-sh/fliskos
+    text: ''
+run-my-agents.flisk.si:
+  name: Run My Agents
+  pages:
+  - title: Install steps as JSON
+    url: https://run-my-agents.flisk.si/api/install
+    text: the commands to run in Claude Code
+  - title: MCP server
+    url: https://run-my-agents.flisk.si/mcp
+    text: Streamable HTTP, one read-only tool, how_to_install
+  - title: About and FAQ
+    url: https://run-my-agents.flisk.si/about
+    text: what it does and stores
+  - title: Source
+    url: https://github.com/flisk-sh/run-my-agents
+    text: ''
+  - title: 'Run My Agents: Run many Claude Code agents on one repo, safely'
+    url: https://run-my-agents.flisk.si/
+    text: 'A free Claude Code plugin: before an agent edits a file another session
+      just changed, it gets a warning. No server, no account, no keys. Open source.'
+  - title: Kitchen Rush · Run My Agents
+    url: https://run-my-agents.flisk.si/play
+    text: 'A free browser game from Run My Agents: hold out five minutes against bugs,
+      flaky tests and red CI with up to three agent cooks.'
+pages.flisk.si:
+  name: Pages
+  pages:
+  - title: About and FAQ
+    url: https://pages.flisk.si/about
+    text: how publishing works and what a space may contain
+  - title: All spaces as JSON
+    url: https://pages.flisk.si/spaces.json
+    text: every space with its title, publisher and source
+  - title: mutation-report
+    url: https://pages.flisk.si/@odykyi/mutation-report/
+    text: by @odykyi
+  - title: 'Org-Wide CI Visibility: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/org-wide-ci-visibility/
+    text: 'by @odykyi: See the health of every repository in an organisation at once:
+      dashboards, red lists, ownership and a weekly review that works.'
+  - title: 'CI for Agent-Written Pull Requests: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ci-for-agent-pull-requests/
+    text: 'by @odykyi: Gates, merge queues and review habits for a flood of pull requests
+      written by coding agents.'
+  - title: 'Make Your Repo Ready for Coding Agents: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/repo-ready-for-coding-agents/
+    text: 'by @odykyi: AGENTS.md, fast checks, clear commands and guard rails that
+      let a coding agent work in your repository safely.'
+  - title: 'Dependency Updates Without Chaos: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/dependency-updates/
+    text: 'by @odykyi: Run Dependabot or Renovate so updates arrive in reviewable
+      batches, CI proves them, and security fixes land fast.'
+  - title: 'Release Automation: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/release-automation/
+    text: 'by @odykyi: Versioning, changelogs, tags, publishing to npm and registries,
+      and verifying a release from a workflow you can trust.'
+  - title: 'Debugging CI Failures: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/debugging-ci-failures/
+    text: 'by @odykyi: A practical routine for reading logs, reproducing failures
+      locally and telling a real regression from an environment problem.'
+  - title: 'Monorepo CI: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/monorepo-ci/
+    text: 'by @odykyi: Run only what changed, share caches, split jobs and keep a
+      monorepo pipeline fast and readable as it grows.'
+  - title: 'Open-Source Repo Health: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/open-source-repo-health/
+    text: 'by @odykyi: The files, settings and habits that make a public repository
+      trustworthy: license, README, contributing guide, security policy and more.'
+  - title: 'GitHub Actions Security: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/github-actions-security/
+    text: 'by @odykyi: Pin actions, limit token permissions, handle secrets and untrusted
+      pull requests, and audit workflows before an attacker does.'
+  - title: 'CI Metrics That Matter: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ci-metrics-that-matter/
+    text: 'by @odykyi: Pass rate, median and p90 run time, flip counts and mean time
+      to green: what to measure, how to compute it and what to ignore.'
+  - title: 'Faster GitHub Actions: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/faster-github-actions/
+    text: 'by @odykyi: Cut pipeline time with caching, matrices, concurrency, path
+      filters and smaller jobs, and measure what actually got faster.'
+  - title: 'Flaky Tests and Flaky CI: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/flaky-tests-and-ci/
+    text: 'by @odykyi: Find, reproduce and fix tests and workflows that pass and fail
+      without a code change, and stop them from eroding trust in CI.'
+  - title: 'Prompts and structured outputs: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/structured-outputs-and-prompts/
+    text: 'by @odykyi: Get reliable JSON, tool calls and repeatable behaviour from
+      language models, and keep prompts in version control like code.'
+  - title: 'Vibe coding without the mess: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/vibe-coding-done-right/
+    text: 'by @odykyi: Build apps by describing them, then keep them maintainable:
+      specs, tests, small steps and knowing when to read the code.'
+  - title: 'Open models and self-hosted inference: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/self-hosting-open-models/
+    text: 'by @odykyi: Pick, quantize, serve and monitor open-weight models, and know
+      when a hosted endpoint is the better choice.'
+  - title: 'Publish pages and host small apps: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/publish-and-host-small-apps/
+    text: 'by @odykyi: Get an agent-built page or small app online for free: static
+      hosting, previews, custom domains and what to avoid publishing.'
+  - title: 'Multi-agent system patterns: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/multi-agent-systems/
+    text: 'by @odykyi: Orchestrators, workers, queues, handoffs and shared state:
+      patterns for agents that cooperate, and the failure modes to plan for.'
+  - title: 'MCP servers in production: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/mcp-servers-in-production/
+    text: 'by @odykyi: Authentication, transports, versioning, tool design, registries
+      and monitoring for Model Context Protocol servers that real users depend on.'
+  - title: 'Cut LLM cost and latency: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/llm-cost-and-latency/
+    text: 'by @odykyi: Caching, routing, batching, smaller models and streaming: practical
+      ways to make an AI feature cheaper and faster.'
+  - title: 'Learn AI engineering by building: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/learn-ai-engineering/
+    text: 'by @odykyi: A practical path from first API call to a shipped agent: projects,
+      practice sandboxes, portfolios and finding your first customer.'
+  - title: 'Get found by AI search: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/get-found-by-ai-search/
+    text: 'by @odykyi: Make your site and README readable and citable by ChatGPT,
+      Claude, Perplexity and Google AI answers.'
+  - title: 'Docs and READMEs for humans and agents: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/docs-and-readmes-for-agents/
+    text: 'by @odykyi: Write README files, llms.txt, AGENTS.md and docs that people
+      skim and that coding agents can act on correctly.'
+  - title: 'Coding agents in practice: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/coding-agents-in-practice/
+    text: 'by @odykyi: How to work with Claude Code, Codex and similar agents day
+      to day: briefs, worktrees, review, limits and the habits that keep output good.'
+  - title: 'Cloudflare Workers for small apps: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/cloudflare-workers-for-small-apps/
+    text: 'by @odykyi: Build APIs, bots and AI features on Workers, D1, KV and Workers
+      AI: limits, patterns, local dev and deployment.'
+  - title: 'CI guards and AI code review: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ci-guards-and-ai-code-review/
+    text: 'by @odykyi: Deterministic checks first, model review second: guards, ratchets,
+      scoreboards and review bots that earn trust.'
+  - title: 'AI security for builders: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ai-security-for-builders/
+    text: 'by @odykyi: Prompt injection, secret handling, tool permissions and output
+      validation for apps that give a model real capabilities.'
+  - title: 'AI sandboxes for agents: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ai-sandboxes-for-agents/
+    text: 'by @odykyi: Run code that an AI wrote without trusting it: containers,
+      microVMs, network limits, snapshots and cost, from a laptop to a fleet.'
+  - title: 'Agent memory and context engineering: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/agent-memory-and-context/
+    text: 'by @odykyi: What to put in a context window, what to store outside it,
+      and how sessions, checkpoints and summaries keep an agent coherent.'
+  - title: 'Testing and evaluating AI agents: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/agent-evals-and-testing/
+    text: 'by @odykyi: Turn vague agent quality into test cases, graders, baselines
+      and CI guards, without letting a model grade its own homework.'
+  - title: 'Background jobs and queues locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/workers-and-queues/
+    text: 'by @odykyi: Run workers, queues, cron jobs, webhooks and one-off tasks
+      on your laptop, and debug them when they get stuck. 10 practical guides with
+      real commands.'
+  - title: 'Windows and WSL local development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/windows-and-wsl-dev/
+    text: 'by @odykyi: Run multi-service apps on Windows: WSL 2, Docker, file paths,
+      line endings, ports and native processes. 10 practical guides with real commands.'
+  - title: 'Test the real stack, then hand it off: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/testing-and-shipping/
+    text: 'by @odykyi: Integration and browser tests against the stack you actually
+      run, CI setup, and handing a working app to Render, Cloudflare or a VPS. 10
+      practical guides with real commands.'
+  - title: 'Team dev environments and onboarding: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/team-dev-environments/
+    text: 'by @odykyi: Get a new developer running on day one, keep setup in the repo,
+      check drift in CI, and set up Mac, Windows and Linux. 10 practical guides with
+      real commands.'
+  - title: 'Language and framework recipes: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/stack-recipes/
+    text: 'by @odykyi: Step-by-step local setups for common stacks: FastAPI and React,
+      Express and Vite, Next.js and Postgres, Go, Rust, Bun and more. 10 practical
+      guides with real commands.'
+  - title: 'Search, files and object storage locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/search-and-storage-local/
+    text: 'by @odykyi: Run search engines, S3-compatible storage and file services
+      on a laptop for development and tests. 10 practical guides with real commands.'
+  - title: 'Build a SaaS app locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/saas-architecture-local/
+    text: 'by @odykyi: The parts most SaaS apps need, from auth and billing to a database,
+      jobs and email, and how to run them together while you build. 10 practical guides
+      with real commands.'
+  - title: 'RAG and vector databases locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/rag-and-vector-db-local/
+    text: 'by @odykyi: pgvector, Qdrant, Chroma and friends on a laptop: ingest documents,
+      test retrieval and keep embeddings across restarts. 10 practical guides with
+      real commands.'
+  - title: 'Python local development setup: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/python-dev-setup/
+    text: 'by @odykyi: Python services on a laptop: virtualenvs, uv and pip, reload
+      servers, Django, Flask and FastAPI, and running them next to other services.
+      10 practical guides with real commands.'
+  - title: 'Payments and webhooks locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/payments-and-webhooks/
+    text: 'by @odykyi: Test payment flows, webhook signatures, retries and idempotency
+      on your laptop before anything touches production. 10 practical guides with
+      real commands.'
+  - title: 'Logs, traces and metrics locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/observability-local/
+    text: 'by @odykyi: See what a multi-service app does on your laptop: structured
+      logs, OpenTelemetry traces, metrics and dashboards. 10 practical guides with
+      real commands.'
+  - title: 'Node.js local development setup: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/nodejs-dev-setup/
+    text: 'by @odykyi: Set up Node.js services for local work: versions, package managers,
+      watch mode, debugging, env files and running several apps at once. 10 practical
+      guides with real commands.'
+  - title: 'Monorepos with several services: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/monorepo-tooling/
+    text: 'by @odykyi: pnpm workspaces, Turborepo, Nx and plain folders: how to structure
+      a repo with many services and run the right ones locally. 10 practical guides
+      with real commands.'
+  - title: 'Run microservices on your laptop: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/microservices-local-dev/
+    text: 'by @odykyi: How to run a frontend, APIs, databases and workers together
+      on one machine, start only what you need, and stop fighting ports. 10 practical
+      guides with real commands.'
+  - title: 'MCP servers and coding assistants: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/mcp-local-dev/
+    text: 'by @odykyi: Build and test MCP servers locally, connect Claude Code, Cursor
+      and Codex, and give your assistant a safe way to run the stack. 10 practical
+      guides with real commands.'
+  - title: 'Local URLs, routing and HTTPS: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/local-routing-and-https/
+    text: 'by @odykyi: Reverse proxies, *.localhost names, local HTTPS certificates
+      and routing several services behind one gateway on a laptop. 10 practical guides
+      with real commands.'
+  - title: 'Local LLMs for development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/local-llm-models/
+    text: 'by @odykyi: Run models on your laptop with Ollama and similar tools, point
+      apps and agents at them, and mock models in tests. 10 practical guides with
+      real commands.'
+  - title: 'Databases in local development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/local-database-guide/
+    text: 'by @odykyi: Postgres, Redis, migrations, seeds and resets on a laptop,
+      with the commands to connect, inspect and start over. 10 practical guides with
+      real commands.'
+  - title: 'From laptop to production: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/laptop-to-production/
+    text: 'by @odykyi: Take an app that runs locally to a host: what changes, what
+      to keep the same, and how to avoid surprises on the first deploy. 10 practical
+      guides with real commands.'
+  - title: 'Keep your laptop fast while developing: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/laptop-resources/
+    text: 'by @odykyi: RAM, CPU, disk and battery when you run many services: measure
+      what uses them and cut it down. 10 practical guides with real commands.'
+  - title: 'Kafka and streaming locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/kafka-and-streaming-local/
+    text: 'by @odykyi: Run Kafka or Redpanda for development, create topics, test
+      consumers and inspect messages without a cluster. 10 practical guides with real
+      commands.'
+  - title: 'GraphQL and gRPC in local dev: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/graphql-and-grpc-local/
+    text: 'by @odykyi: Run GraphQL gateways and gRPC services locally, generate clients,
+      inspect calls and connect them to a frontend. 10 practical guides with real
+      commands.'
+  - title: 'Go and Rust local development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/go-and-rust-dev-setup/
+    text: 'by @odykyi: Fast edit and run loops for Go and Rust services, cross builds
+      for containers, and running them beside Node or Python services. 10 practical
+      guides with real commands.'
+  - title: 'Frontend dev servers and APIs: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/frontend-dev-servers/
+    text: 'by @odykyi: Vite, Next.js and other dev servers talking to local APIs:
+      proxies, CORS, cookies, env vars and hot reload that keeps working. 10 practical
+      guides with real commands.'
+  - title: 'Event-driven systems locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/event-driven-local/
+    text: 'by @odykyi: Events, outbox, sagas and idempotent consumers: build and debug
+      event-driven services on a laptop. 10 practical guides with real commands.'
+  - title: 'Env vars and secrets in local dev: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/env-and-secrets-local/
+    text: 'by @odykyi: Keep env files, secrets and per-developer overrides under control
+      in local development without committing values. 10 practical guides with real
+      commands.'
+  - title: 'Email and notifications in local dev: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/email-and-notifications-local/
+    text: 'by @odykyi: Catch outgoing email, preview templates and test notifications
+      locally without sending anything to real people. 10 practical guides with real
+      commands.'
+  - title: 'E-commerce backends locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ecommerce-backend-local/
+    text: 'by @odykyi: Orders, inventory, carts and payments as services on one laptop,
+      with realistic data and the flows you need to test. 10 practical guides with
+      real commands.'
+  - title: 'Dockerfiles for development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/dockerfiles-for-dev/
+    text: 'by @odykyi: Write Dockerfiles that build fast and reload well in development:
+      layer caching, multi-stage builds, bind mounts and non-root users. 10 practical
+      guides with real commands.'
+  - title: 'Docker on Mac: speed and resources: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/docker-on-mac-performance/
+    text: 'by @odykyi: Make containers fast on macOS: file sharing, VM memory and
+      CPU, Apple Silicon images, Colima and keeping disk usage in check. 10 practical
+      guides with real commands.'
+  - title: 'Docker Compose for local development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/docker-compose-guide/
+    text: 'by @odykyi: Practical answers for Compose in local development: ports,
+      hot reload, healthchecks, volumes, and when to move past it. 10 practical guides
+      with real commands.'
+  - title: 'Local dev tools compared: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/dev-loop-tools-compared/
+    text: 'by @odykyi: Compose, Tilt, Skaffold, DevSpace, Garden, devcontainers and
+      Flisk: what each one is for and how to pick. 10 practical guides with real commands.'
+  - title: 'When the local stack breaks: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/dev-env-troubleshooting/
+    text: 'by @odykyi: Fixes for the usual local development failures: a service that
+      will not start, missing logs, restarts, DNS, disk and env vars. 10 practical
+      guides with real commands.'
+  - title: 'Data and ML tools locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/data-and-ml-local/
+    text: 'by @odykyi: Notebooks, pipelines, experiment tracking and model serving
+      on a laptop next to the app that uses them. 10 practical guides with real commands.'
+  - title: 'CI for multi-service apps: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ci-for-multi-service-apps/
+    text: 'by @odykyi: Run the whole stack in CI: service containers, health waits,
+      caching, test splits and keeping CI close to local. 10 practical guides with
+      real commands.'
+  - title: 'Build your own MCP server: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/build-an-mcp-server/
+    text: 'by @odykyi: Write an MCP server in TypeScript or Python, design its tools,
+      test it locally and hand it to coding assistants. 10 practical guides with real
+      commands.'
+  - title: 'Authentication in local development: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/auth-local-dev/
+    text: 'by @odykyi: OAuth callbacks, sessions, JWTs and identity providers on localhost,
+      without breaking cookies or redirects. 10 practical guides with real commands.'
+  - title: 'Design and test APIs locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/api-design-local/
+    text: 'by @odykyi: OpenAPI specs, mock servers, contract tests and versioning
+      while you build APIs that other services call. 10 practical guides with real
+      commands.'
+  - title: 'Running AI agents locally: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/ai-agents-local/
+    text: 'by @odykyi: How to run AI agents next to their tools, database and queue
+      on your laptop, keep sessions across restarts, and inspect them. 10 practical
+      guides with real commands.'
+  - title: 'Agent frameworks on your laptop: 10 practical guides'
+    url: https://pages.flisk.si/@odykyi/agent-frameworks-local/
+    text: 'by @odykyi: Run agents built with popular frameworks locally next to tools,
+      memory and a database, and compare how each handles state. 10 practical guides
+      with real commands.'
+  - title: 'Flisk: Sales Architect task'
+    url: https://pages.flisk.si/@odykyi/flisk-candidate-test/
+    text: 'by @odykyi: Flisk engineering assessment: four practical exercises with
+      an automated self-assessment.'
+  - title: E2E links
+    url: https://pages.flisk.si/@odykyi/e2e-check-links/
+    text: 'by @odykyi: See the report.'
+  - title: CI report
+    url: https://pages.flisk.si/@odykyi/pages-ci-demo/
+    text: 'by @odykyi: Built by run 41326317095 from f575cdd at 2026-11-01 16:26 UTC.'
+  - title: Parcels test reports
+    url: https://pages.flisk.si/@odykyi/test-reports/
+    text: 'by @odykyi: pytest reports from commit 23c1513 on main, CI run 41311255247.'
+  - title: Coverage report
+    url: https://pages.flisk.si/@odykyi/coverage-report/
+    text: by @odykyi
+  - title: jscpd Rust coverage
+    url: https://pages.flisk.si/@odykyi/rust-coverage/
+    text: 'by @odykyi: Line coverage of the jscpd Rust workspace on master.'
+  - title: 'Oleksandr Dykyi · Developer CV · Recommended role: Founding Engineer'
+    url: https://pages.flisk.si/@odykyi/cv/
+    text: 'by @odykyi: Oleksandr Dykyi: recommended role Founding Engineer, from a
+      DevEx analysis of 97 rated developer tools, 27 at expert level, across 8 tool
+      families.'
+  - title: Oleksandr Dykyi · DevEx profile
+    url: https://pages.flisk.si/@odykyi/portfolio/
+    text: 'by @odykyi: Oleksandr Dykyi: Creator of Flisk · Amsterdam. DevEx profile
+      from public GitHub activity, scored with roadmap.flisk.si.'
+  - title: flisk up, live
+    url: https://pages.flisk.si/@odykyi/flisk-up/
+    text: 'by @odykyi: Press flisk up and watch two service.json files become a running
+      stack: generated files, a local gateway, Postgres, live rebuilds and routed
+      requests. An interactive Flisk simulator.'
+  - title: Agents that survive a restart
+    url: https://pages.flisk.si/@odykyi/agent-stack-live/
+    text: 'by @odykyi: A live multi-agent stack from flisk project agent-stack: a
+      Bun agent, an MCP tool server, Postgres and NATS. Start chats, kill the agent,
+      and watch every session resume from its checkpoint.'
+  - title: Adoption Radar | DevEx Roadmap
+    url: https://pages.flisk.si/@odykyi/devex-radar/
+    text: 'by @odykyi: Adopt means use it. Trial means try it. Assess means watch
+      it. Hold means avoid for now. Each tool links the proof.'
+  - title: How GPUs work
+    url: https://pages.flisk.si/@odykyi/how-gpus-work/
+    text: 'by @odykyi: Why a GPU with thousands of slow cores beats a CPU with a few
+      fast ones on graphics and AI: an interactive explainer you can play with.'
+  - title: Ship a launch in a week
+    url: https://pages.flisk.si/@odykyi/ship-in-a-week/
+    text: 'by @odykyi: How we planned Pages for Product Hunt: score the ideas, cut
+      the scope, ship the smallest thing that is real.'
+  - title: Source
+    url: https://github.com/flisk-sh/pages
+    text: ''
+  - title: https://pages.flisk.si/sitemap-site.xml
+    url: https://pages.flisk.si/sitemap-site.xml
+    text: ''
+  - title: https://pages.flisk.si/@odykyi/sitemap.xml
+    url: https://pages.flisk.si/@odykyi/sitemap.xml
+    text: ''
+citable.flisk.si:
+  name: Citable
+  pages:
+  - title: Check a site
+    url: https://citable.flisk.si/example.com
+    text: put the address after the domain
+  - title: MCP server
+    url: https://citable.flisk.si/mcp
+    text: Streamable HTTP, one read-only tool, check_site
+  - title: About the checker
+    url: https://citable.flisk.si/about
+    text: what it fetches and how
+  - title: Source
+    url: https://github.com/flisk-sh/citable
+    text: ''
+  - title: 'Citable: Can AI answers cite your site?'
+    url: https://citable.flisk.si/
+    text: Check whether ChatGPT, Claude, Perplexity and Google AI Overviews can crawl,
+      read and cite any page, crawler by crawler, with the fix. Free, no signup.
+  - title: 'stripe.com: 96/100 for AI search · Citable'
+    url: https://citable.flisk.si/stripe.com
+    text: Can ChatGPT, Claude, Perplexity and Google AI cite stripe.com? Score 96/100,
+      grade A, 2 things to fix, each with the fix.
+  - title: 'vercel.com: 98/100 for AI search · Citable'
+    url: https://citable.flisk.si/vercel.com
+    text: Can ChatGPT, Claude, Perplexity and Google AI cite vercel.com? Score 98/100,
+      grade A, 1 thing to fix, each with the fix.
+  - title: 'nytimes.com: 17/100 for AI search · Citable'
+    url: https://citable.flisk.si/nytimes.com
+    text: Can ChatGPT, Claude, Perplexity and Google AI cite nytimes.com? Score 17/100,
+      grade F, 3 things to fix, each with the fix.
+  - title: 'flisk.sh: 100/100 for AI search · Citable'
+    url: https://citable.flisk.si/flisk.sh
+    text: Can ChatGPT, Claude, Perplexity and Google AI cite flisk.sh? Score 100/100,
+      grade A, 0 things to fix, each with the fix.
+  - title: 'Citable: AI 답변이 내 사이트를 인용할 수 있을까요?'
+    url: https://citable.flisk.si/ko
+    text: ChatGPT, Claude, Perplexity, Google AI Overviews가 어떤 페이지든 크롤링하고 읽고 인용할 수
+      있는지 크롤러별로 확인하고 해결 방법까지 알려 드립니다. 무료, 가입 불필요.
+  - title: 검사기 소개 · Citable
+    url: https://citable.flisk.si/ko/about
+    text: 'Citable이 AI 검색을 위해 사이트를 검사하는 방법: 무엇을 가져오는지, 어떤 크롤러를 보내는지, 무엇을 저장하는지, 자주
+      묻는 질문.'
+  - title: 'stripe.com: AI 검색 96/100 · Citable'
+    url: https://citable.flisk.si/ko/stripe.com
+    text: ChatGPT, Claude, Perplexity, Google AI가 stripe.com을(를) 인용할 수 있을까요? 96/100점,
+      A등급, 수정할 항목 2개와 각각의 해결 방법.
+  - title: 'vercel.com: AI 검색 98/100 · Citable'
+    url: https://citable.flisk.si/ko/vercel.com
+    text: ChatGPT, Claude, Perplexity, Google AI가 vercel.com을(를) 인용할 수 있을까요? 98/100점,
+      A등급, 수정할 항목 1개와 각각의 해결 방법.
+  - title: 'nytimes.com: AI 검색 17/100 · Citable'
+    url: https://citable.flisk.si/ko/nytimes.com
+    text: ChatGPT, Claude, Perplexity, Google AI가 nytimes.com을(를) 인용할 수 있을까요? 17/100점,
+      F등급, 수정할 항목 3개와 각각의 해결 방법.
+  - title: 'flisk.sh: AI 검색 100/100 · Citable'
+    url: https://citable.flisk.si/ko/flisk.sh
+    text: ChatGPT, Claude, Perplexity, Google AI가 flisk.sh을(를) 인용할 수 있을까요? 100/100점,
+      A등급, 수정할 항목 0개와 각각의 해결 방법.
+readme.flisk.si:
+  name: README Score
+  pages:
+  - title: Score a repository
+    url: https://readme.flisk.si/flisk-sh/flisk
+    text: put the GitHub owner and repository in the address
+  - title: MCP server
+    url: https://readme.flisk.si/mcp
+    text: Streamable HTTP, one read-only tool, score_readme
+  - title: Every check and threshold
+    url: https://readme.flisk.si/checks
+    text: what each check looks at and its points
+  - title: About and FAQ
+    url: https://readme.flisk.si/about
+    text: what it reads and stores
+  - title: Source
+    url: https://github.com/flisk-sh/readme-score
+    text: ''
+  - title: 'README Score: your README out of 100, with a fix for every miss'
+    url: https://readme.flisk.si/
+    text: 'Enter a GitHub repo or paste a README: a score out of 100, the sections
+      found and missing, and a fix for each miss. No AI: same README, same score.'
+  - title: 'honojs/hono: 63/100 README score · README Score'
+    url: https://readme.flisk.si/honojs/hono
+    text: 'honojs/hono at 79f23af: 63/100 (D) as a library; 15 checks pass, 12 fail.'
+  - title: 'BurntSushi/ripgrep: 54/100 README score · README Score'
+    url: https://readme.flisk.si/BurntSushi/ripgrep
+    text: 'BurntSushi/ripgrep at 3e85c6c: 54/100 (D) as a CLI tool; 12 checks pass,
+      13 fail.'
+  - title: 'fastapi/fastapi: 70/100 README score · README Score'
+    url: https://readme.flisk.si/fastapi/fastapi
+    text: 'fastapi/fastapi at 05e6df7: 70/100 (C) as a CLI tool; 17 checks pass, 11
+      fail.'
+studio.flisk.si:
+  name: Studio
+  pages:
+  - title: Local Studio
+    url: https://studio.flisk.si/
+    text: Batch resize, compress and watermark photos and PDFs in your browser. Nothing
+      is uploaded.
+  - title: Resize photos online, free, nothing uploaded | Flisk Studio
+    url: https://studio.flisk.si/resize-photos/
+    text: 'Shrink, crop square and compress a whole batch of photos in seconds. Your
+      photos stay on your computer: nothing is uploaded.'
+  - title: Merge PDF files online, free, nothing uploaded | Flisk Studio
+    url: https://studio.flisk.si/merge-pdfs/
+    text: Join several PDF files into one, in the order you choose. Your documents
+      never leave your computer, which matters for contracts, invoices and IDs.
+  - title: Make a PDF smaller, free, nothing uploaded | Flisk Studio
+    url: https://studio.flisk.si/shrink-pdf/
+    text: Scanned documents and photo-heavy PDFs can shrink a lot. Your files are
+      processed on your own computer and never uploaded.
+  - title: Add a watermark to a PDF, free, nothing uploaded | Flisk Studio
+    url: https://studio.flisk.si/watermark-pdf/
+    text: Stamp text such as Confidential or Draft across every page. It runs on your
+      own computer, so your document is never uploaded.
+analytics.flisk.si:
+  name: Flisk Analytics
+  pages:
+  - title: Sign in
+    url: https://analytics.flisk.si/
+    text: GitHub sign-in is limited to allowed logins; dashboards and site data are
+      private.
+  - title: Source and setup
+    url: https://github.com/flisk-sh/analytics
+    text: tracker installation and local development.
+tools.flisk.si:
+  name: Flisk Tools
+  pages:
+  - title: The store
+    url: https://tools.flisk.si/
+    text: 790 dev tools, agent skills and apps; search with ?q=
+  - title: Catalog API
+    url: https://tools.flisk.si/api/tools
+    text: 'search the catalog as JSON: ?q=, kind=, group=, mcp=1, page='
+  - title: MCP server
+    url: https://tools.flisk.si/mcp
+    text: Streamable HTTP, tools search_store and get_listing
+  - title: About and FAQ
+    url: https://tools.flisk.si/about
+    text: what it does and stores
+  - title: Source
+    url: https://github.com/flisk-sh/flisk-tools
+    text: ''
+  - title: Add yours to the store · Flisk Tools
+    url: https://tools.flisk.si/publish
+    text: Sign in with GitHub and add your app, dev tool or agent skill to Flisk Tools
+      with one pull request. Free, open source.
+  - title: 'Lab: every dev tool as an element · Flisk Tools'
+    url: https://tools.flisk.si/lab
+    text: 375 dev tools from Flisk Tools laid out like a periodic table, one block
+      per family. Click a tile to open it.
+  - title: 'Compass: easy to use against built for big systems · Flisk Tools'
+    url: https://tools.flisk.si/compass
+    text: '375 developer tools placed by a checklist: easy to use left to right, made
+      for big real systems bottom to top. Click a dot to open it.'
+  - title: 'Adoption Radar: adopt, trial, assess or hold · Flisk Tools'
+    url: https://tools.flisk.si/radar
+    text: 375 developer tools sorted into Adopt, Trial, Assess and Hold from release
+      and maturity signals, one slice per family. Click a dot to open it.
+  - title: 'Journeys: seven levels, three routes · Flisk Tools'
+    url: https://tools.flisk.si/journeys
+    text: Seven levels from Package Wrangler to Platform Architect, with the tools
+      to learn at each stop for the Backend route.
+  - title: 'Roles: the tools each developer job needs · Flisk Tools'
+    url: https://tools.flisk.si/roles
+    text: '44 jobs in software, from Backend Engineer to Platform Architect, and the
+      tools each one needs: must have, every day, good to know.'
+  - title: 'Skills: free AI agent skills from GitHub · Flisk Tools'
+    url: https://tools.flisk.si/skills
+    text: '402 free AI agent skills from GitHub, by what they help with: plan, code,
+      test, debug, review, ship. Sorted by stars.'
+  - title: 'Ask: compare tools side by side · Flisk Tools'
+    url: https://tools.flisk.si/ask
+    text: 'Type yarn vs npm vs bun and get a side-by-side answer from the Flisk Tools
+      data: adoption ring, ease of use, big-system fit, stars and license. No AI call.'
+  - title: 'Portfolio: your best-fit developer role · Flisk Tools'
+    url: https://tools.flisk.si/portfolio
+    text: Rate the developer tools you know from 0 to 3 and get your best-fit role,
+      your skill shape across 8 families and a page to share. Nothing is stored.
+  - title: 'Citable: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/citable
+    text: Can AI answers cite your site? Put citable.flisk.si/ in front of any address.
+      Reads a page the way ChatGPT search, Claude and Perplexity crawlers do, scores
+      it
+  - title: 'Command Comparer: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/command-comparer
+    text: Flisk next to Terraform, Docker Compose, Tilt and more, command by command.
+      Commands side by side across many tabs, with a source link for every cell.
+  - title: 'DevEx Roadmap: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/devex-roadmap
+    text: 'A community-edited map of developer tools, roles and agent skills. Compass,
+      Adoption Radar, Lab, Journeys, Roles, Skills, Portfolio and Ask: hundreds of
+      tools a'
+  - title: 'Flisk CLI: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk
+    text: 'Run your whole AI-built app on your own laptop with one command: flisk
+      up. Flisk discovers your services, generates the local config and runs them
+      with live rel'
+  - title: 'Flisk Import: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk-import
+    text: Turn a Docker Compose file into Flisk services. Imports the services in
+      a repository's docker-compose.yml into Flisk as service.json files. Use --dry-run
+      to see
+  - title: 'Flisk Tools: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk-tools
+    text: 'This store: every dev tool, agent skill and app, searchable and open source.
+      A free marketplace of developer tools, AI agent skills and apps. Search it,
+      add you'
+  - title: 'flisk-demo-bubbles: Agent skill, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk-demo-bubbles
+    text: Hand out a personalised Flisk demo for a person from what they build. Reply
+      with a demo.flisk.si link, call the JSON API or the make_demo MCP tool, and
+      post the
+  - title: 'flisk-unfollowers: Agent skill, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk-unfollowers
+    text: Who unfollowed an X account in the last 10 minutes, hour or day. Uses the
+      get_unfollowers MCP tool or the unfollowers API. X keeps no unfollow history,
+      so it co
+  - title: 'FliskOS: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/fliskos
+    text: One local window for your Flisk projects, agents and apps. Projects and
+      their health, coding agents working on them, and the other Flisk apps. Runs
+      on your mach
+  - title: 'Helpdock: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/helpdock
+    text: Any GitHub repo's docs, as a help center and an MCP server. Replace github.com
+      with helpdock.flisk.si in a repository address to browse its docs, get answers
+      qu
+  - title: 'md2html: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/md2html
+    text: 'GitHub-flavored Markdown to HTML that is safe to put in a page. A configured
+      markdown-it and sanitize-html: tables, task lists, alerts and the HTML that
+      READMEs'
+  - title: 'Pages: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/pages
+    text: 'Your agent builds a page. One command makes it a link. Publish an interactive
+      page to pages.flisk.si/@your-login/name. Free and public, no keys, no database:
+      ev'
+  - title: 'Personal Demos: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/flisk-demos
+    text: A personalised Flisk demo for what you build. Open demo.flisk.si/your-handle/what-you-build-in-dashes
+      and get a demo stack made for you. Also an MCP server (mak
+  - title: 'README Score: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/readme-score
+    text: Your README, scored out of 100, with a fix for every miss. Enter a GitHub
+      repository or paste a README and get a score out of 100, the sections found
+      and missin
+  - title: 'Service Definitions: App, Flisk apps · Flisk Tools'
+    url: https://tools.flisk.si/listing/service-definitions
+    text: A community registry of Flisk apps, one service.json per app. Apps imported
+      with flisk-import and validated against the Flisk service schema, the way Definitely
+  - title: 'brainstorming: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-brainstorming
+    text: 'Find out what you really want before building: ask, compare approaches,
+      write and approve a design doc.. Find out what you really want before building:
+      ask, com'
+  - title: 'diagnosing-superpowers: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-diagnosing-superpowers
+    text: Read the session transcripts to show why an agent session went wrong, with
+      file and line proof.. Read the session transcripts to show why an agent session
+      went
+  - title: 'dispatching-parallel-agents: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-dispatching-parallel-agents
+    text: Give each independent problem to its own sub-agent and run them side by
+      side.. Give each independent problem to its own sub-agent and run them side
+      by side.
+  - title: 'executing-plans: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-executing-plans
+    text: Carry out a written plan yourself, task by task, with test proof and a ledger,
+      then one final review.. Carry out a written plan yourself, task by task, with
+      tes
+  - title: 'finishing-a-development-branch: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-finishing-a-development-branch
+    text: When work is done and green, pick merge, PR or discard, then clean up the
+      branch and worktree.. When work is done and green, pick merge, PR or discard,
+      then cle
+  - title: 'receiving-code-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-receiving-code-review
+    text: 'Handle review comments with checks, not blind yes: understand, verify,
+      then fix or push back.. Handle review comments with checks, not blind yes: understand,
+      ve'
+  - title: 'requesting-code-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-requesting-code-review
+    text: Hand your finished work to a fresh reviewer sub-agent with the right context
+      before it merges.. Hand your finished work to a fresh reviewer sub-agent with
+      the r
+  - title: 'subagent-driven-development: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-subagent-driven-development
+    text: Run a plan with a fresh sub-agent per task, a review after each, and a broad
+      review at the end.. Run a plan with a fresh sub-agent per task, a review after
+      each
+  - title: 'systematic-debugging: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-systematic-debugging
+    text: 'Find the root cause before any fix, in four phases: investigate, compare,
+      hypothesise, then fix.. Find the root cause before any fix, in four phases:
+      investigat'
+  - title: 'test-driven-development: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-test-driven-development
+    text: Write the failing test first, watch it fail, write the least code to pass,
+      then clean up.. Write the failing test first, watch it fail, write the least
+      code to
+  - title: 'using-git-worktrees: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-using-git-worktrees
+    text: Work in an isolated git worktree so your current branch stays untouched..
+      Work in an isolated git worktree so your current branch stays untouched.
+  - title: 'using-superpowers: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-using-superpowers
+    text: 'Session starter: check for a fitting skill and use it before answering
+      or acting.. Session starter: check for a fitting skill and use it before answering
+      or act'
+  - title: 'verification-before-completion: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-verification-before-completion
+    text: 'No saying done until you ran the check and read the output: tests, lint,
+      build.. No saying done until you ran the check and read the output: tests, lint,
+      build.'
+  - title: 'writing-plans: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-writing-plans
+    text: Turn a spec into a step-by-step plan with exact files, tests and commands
+      for a new engineer.. Turn a spec into a step-by-step plan with exact files,
+      tests and
+  - title: 'writing-skills: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/superpowers-writing-skills
+    text: 'Make or edit a skill like TDD: test the agent without it first, write it,
+      then close loopholes.. Make or edit a skill like TDD: test the agent without
+      it first,'
+  - title: 'ask-matt: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-ask-matt
+    text: 'Router: tells you which skill or flow to use, from idea to ship, for your
+      situation.. Router: tells you which skill or flow to use, from idea to ship,
+      for your'
+  - title: 'code-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-code-review
+    text: 'Review changes since a commit two ways at once: coding standards and does
+      it match the spec.. Review changes since a commit two ways at once: coding standards
+      a'
+  - title: 'codebase-design: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-codebase-design
+    text: 'Shared words and rules for deep modules: small interface, lots of behaviour,
+      clean seams.. Shared words and rules for deep modules: small interface, lots
+      of beh'
+  - title: 'diagnosing-bugs: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-diagnosing-bugs
+    text: Debug hard bugs and slowdowns by building a tight pass/fail feedback loop
+      first.. Debug hard bugs and slowdowns by building a tight pass/fail feedback
+      loop firs
+  - title: 'domain-modeling: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-domain-modeling
+    text: 'Build and sharpen the project''s domain language: write GLOSSARY.md and
+      decision records (ADRs).. Build and sharpen the project''s domain language:
+      write GLOSSARY'
+  - title: 'git-guardrails-claude-code: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-git-guardrails-claude-code
+    text: Add a Claude Code hook that blocks git push, reset --hard, clean -f, branch
+      -D and similar.. Add a Claude Code hook that blocks git push, reset --hard,
+      clean -f
+  - title: 'grill-me: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-grill-me
+    text: Get interviewed hard about your plan or design until everything is clear..
+      Get interviewed hard about your plan or design until everything is clear.
+  - title: 'grill-with-docs: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-grill-with-docs
+    text: Get grilled on your plan, while the agent writes the glossary and ADRs as
+      you go.. Get grilled on your plan, while the agent writes the glossary and ADRs
+      as you
+  - title: 'grilling: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-grilling
+    text: Question the user round by round down a decision tree, with a suggested
+      answer for each question.. Question the user round by round down a decision
+      tree, with a
+  - title: 'handoff: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-handoff
+    text: Compact this chat into a handoff doc another agent can pick up, with secrets
+      removed.. Compact this chat into a handoff doc another agent can pick up, with
+      secr
+  - title: 'implement: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-implement
+    text: Build one ticket or spec with TDD, typecheck often, then run code review
+      and commit.. Build one ticket or spec with TDD, typecheck often, then run code
+      review a
+  - title: 'implement-spec: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-implement-spec
+    text: Implement a whole spec and its tickets on one integration branch, with sub-agents
+      on the ready tickets.. Implement a whole spec and its tickets on one integrati
+  - title: 'improve-codebase-architecture: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-improve-codebase-architecture
+    text: Find shallow modules worth deepening, show them in an HTML report, then
+      talk through the one you pick.. Find shallow modules worth deepening, show them
+      in an HT
+  - title: 'migrate-to-shoehorn: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-migrate-to-shoehorn
+    text: Swap `as` type casts in tests for @total-typescript/shoehorn so partial
+      test data stays type-safe.. Swap `as` type casts in tests for @total-typescript/shoehorn
+  - title: 'pr: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-pr
+    text: 'Template for a PR body: summary diagram, before/after evidence, how risky
+      the merge is.. Template for a PR body: summary diagram, before/after evidence,
+      how ris'
+  - title: 'prototype: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-prototype
+    text: 'Make throwaway code that answers a design question: a state-logic page
+      or several UI variants.. Make throwaway code that answers a design question:
+      a state-logi'
+  - title: 'research: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-research
+    text: Send a background agent to read primary sources and save the findings, with
+      citations, as Markdown.. Send a background agent to read primary sources and
+      save th
+  - title: 'retro: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-retro
+    text: 'Review a coding session and suggest fixes to the agent''s setup: navigation,
+      checks, standards, AGENTS.md.. Review a coding session and suggest fixes to
+      the agen'
+  - title: 'setup-matt-pocock-skills: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-setup-matt-pocock-skills
+    text: 'One-time repo setup for these skills: issue tracker, triage labels, where
+      glossary and ADRs live.. One-time repo setup for these skills: issue tracker,
+      triage l'
+  - title: 'setup-pre-commit: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-setup-pre-commit
+    text: Set up Husky pre-commit with lint-staged Prettier, typecheck and tests..
+      Set up Husky pre-commit with lint-staged Prettier, typecheck and tests.
+  - title: 'setup-ts-deep-modules: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-setup-ts-deep-modules
+    text: Wire dependency-cruiser into a TypeScript repo so each package hides its
+      insides behind entry points.. Wire dependency-cruiser into a TypeScript repo
+      so each pa
+  - title: 'tdd: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-tdd
+    text: Red-green TDD with tests at agreed seams that check behaviour through public
+      interfaces.. Red-green TDD with tests at agreed seams that check behaviour through
+  - title: 'to-spec: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-to-spec
+    text: Turn the current chat into a spec and publish it to the issue tracker, no
+      more interview.. Turn the current chat into a spec and publish it to the issue
+      tracker
+  - title: 'to-tickets: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-to-tickets
+    text: Split a plan or spec into thin vertical tickets, each saying which tickets
+      block it.. Split a plan or spec into thin vertical tickets, each saying which
+      tickets
+  - title: 'triage: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-triage
+    text: Move issues and outside PRs through triage states, check them, and write
+      briefs agents can follow.. Move issues and outside PRs through triage states,
+      check the
+  - title: 'wayfinder: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-wayfinder
+    text: Plan a job too big for one session as a map of decision tickets, settled
+      one by one.. Plan a job too big for one session as a map of decision tickets,
+      settled o
+  - title: 'wizard: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-wizard
+    text: 'Make a bash wizard that walks a human through manual steps: cloud setup,
+      secrets, a cutover.. Make a bash wizard that walks a human through manual steps:
+      cloud'
+  - title: 'writing-for-agents: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/mattpocock-writing-for-agents
+    text: 'Style guide for docs agents read: skills, AGENTS.md and CLAUDE.md, with
+      context pointers.. Style guide for docs agents read: skills, AGENTS.md and CLAUDE.md,
+      wi'
+  - title: 'ai-regression-testing: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-ai-regression-testing
+    text: Catch repeat AI coding bugs with sandbox API tests and a bug-check flow..
+      Catch repeat AI coding bugs with sandbox API tests and a bug-check flow.
+  - title: 'browser-qa: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-browser-qa
+    text: 'Run post-deploy UI checks in a real browser: console errors, flows, screenshots..
+      Run post-deploy UI checks in a real browser: console errors, flows, screenshot'
+  - title: 'canary-watch: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-canary-watch
+    text: Watch a live URL after release for errors, slow pages and broken endpoints..
+      Watch a live URL after release for errors, slow pages and broken endpoints.
+  - title: 'codebase-onboarding: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-codebase-onboarding
+    text: Map an unfamiliar repo and write an onboarding guide plus a starter CLAUDE.md..
+      Map an unfamiliar repo and write an onboarding guide plus a starter CLAUDE.md.
+  - title: 'coding-standards: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-coding-standards
+    text: 'Baseline coding rules: clear names, immutability, KISS, DRY, YAGNI.. Baseline
+      coding rules: clear names, immutability, KISS, DRY, YAGNI.'
+  - title: 'conventional-commit-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-conventional-commit-review
+    text: Review staged changes and write a Conventional Commits message.. Review
+      staged changes and write a Conventional Commits message.
+  - title: 'database-migrations: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-database-migrations
+    text: 'Ship safe DB migrations: reversible, zero-downtime renames, safe indexes,
+      backfills.. Ship safe DB migrations: reversible, zero-downtime renames, safe
+      indexes,'
+  - title: 'deployment-patterns: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-deployment-patterns
+    text: Deploy with rolling, blue-green or canary, Docker, health checks and rollback..
+      Deploy with rolling, blue-green or canary, Docker, health checks and rollback.
+  - title: 'gateguard: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-gateguard
+    text: Block the first edit until the agent shows facts about importers and schemas..
+      Block the first edit until the agent shows facts about importers and schemas.
+  - title: 'git-workflow: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-git-workflow
+    text: Pick a branching flow, write clean commits, merge vs rebase, fix conflicts..
+      Pick a branching flow, write clean commits, merge vs rebase, fix conflicts.
+  - title: 'hexagonal-architecture: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-hexagonal-architecture
+    text: 'Design ports and adapters: domain core, use cases, testable boundaries..
+      Design ports and adapters: domain core, use cases, testable boundaries.'
+  - title: 'mcp-server-patterns: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-mcp-server-patterns
+    text: 'Build MCP servers with the TypeScript SDK: tools, resources, Zod, transports..
+      Build MCP servers with the TypeScript SDK: tools, resources, Zod, transports.'
+  - title: 'safety-guard: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-safety-guard
+    text: Warn before rm -rf, force push, DROP TABLE; lock edits to one folder.. Warn
+      before rm -rf, force push, DROP TABLE; lock edits to one folder.
+  - title: 'search-first: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-search-first
+    text: Research existing libraries and tools before writing custom code.. Research
+      existing libraries and tools before writing custom code.
+  - title: 'security-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-security-review
+    text: Security checklist for auth, user input, secrets, endpoints and payments..
+      Security checklist for auth, user input, secrets, endpoints and payments.
+  - title: 'security-scan: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-security-scan
+    text: Scan the .claude folder, hooks and MCP servers for bad config and injection..
+      Scan the .claude folder, hooks and MCP servers for bad config and injection.
+  - title: 'tdd-workflow: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-tdd-workflow
+    text: 'TDD loop: failing test first, smallest fix to green, refactor, 80% coverage..
+      TDD loop: failing test first, smallest fix to green, refactor, 80% coverage.'
+  - title: 'verification-loop: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/affaan-m-verification-loop
+    text: 'Check finished work: build, types, lint, tests, security grep, diff review..
+      Check finished work: build, types, lint, tests, security grep, diff review.'
+  - title: 'OpenCode: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/opencode
+    text: Open-source terminal coding agent for any model. Repo moved from sst/opencode
+      to anomalyco/opencode; old install links may redirect.
+  - title: 'Ollama: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/ollama
+    text: Run open models locally behind a simple API. Widely used but still 0.x by
+      version; the desktop app and cloud models are additions to the OSS server.
+  - title: 'claude-api: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-claude-api
+    text: 'Gives the agent up-to-date facts to build apps on the Claude API: models,
+      streaming, tools, caching.. Gives the agent up-to-date facts to build apps on
+      the Clau'
+  - title: 'doc-coauthoring: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-doc-coauthoring
+    text: 'Write a spec, RFC or design doc in three steps: gather context, shape it,
+      test it on a fresh reader.. Write a spec, RFC or design doc in three steps:
+      gather con'
+  - title: 'frontend-design: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-frontend-design
+    text: 'Build UI with a clear look of its own: pick a direction, type and palette,
+      avoid template defaults.. Build UI with a clear look of its own: pick a direction,
+      ty'
+  - title: 'mcp-builder: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-mcp-builder
+    text: Build a good MCP server (Python or TypeScript) so an LLM can use an outside
+      API through well-made tools.. Build a good MCP server (Python or TypeScript)
+      so an L
+  - title: 'skill-creator: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-skill-creator
+    text: Make a new skill, test it with sample prompts, and tune its description
+      so it fires at the right time.. Make a new skill, test it with sample prompts,
+      and tune
+  - title: 'web-artifacts-builder: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-web-artifacts-builder
+    text: Build a bigger React + Tailwind + shadcn artifact and bundle it into one
+      HTML file.. Build a bigger React + Tailwind + shadcn artifact and bundle it
+      into one HT
+  - title: 'webapp-testing: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/anthropics-webapp-testing
+    text: 'Drive a local web app with Playwright scripts: check flows, take screenshots,
+      read browser logs.. Drive a local web app with Playwright scripts: check flows,
+      ta'
+  - title: 'Claude Code: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/claude-code
+    text: Anthropic's agentic coding tool for the terminal and IDEs. Closed source
+      despite the public repo; needs a Claude subscription or API billing.
+  - title: 'LangChain: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/langchain
+    text: Model, tool and retriever building blocks for LLM apps. Many layers of abstraction;
+      the 1.0 rewrite moved agent runtime onto LangGraph.
+  - title: 'Next.js: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/nextjs
+    text: React framework for full-stack web apps. Some features behave differently
+      outside Vercel's hosting.
+  - title: 'Turbopack: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/turbopack
+    text: Incremental Rust bundler built into Next.js. Only usable through Next.js;
+      webpack plugins and custom configs do not carry over.
+  - title: 'design-system: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/nextlevelbuilder-design-system
+    text: Three-layer design tokens, CSS variables and component specs.. Three-layer
+      design tokens, CSS variables and component specs.
+  - title: 'ui-styling: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/nextlevelbuilder-ui-styling
+    text: Build accessible UI with shadcn/ui, Radix, Tailwind and canvas designs..
+      Build accessible UI with shadcn/ui, Radix, Tailwind and canvas designs.
+  - title: 'ui-ux-pro-max: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/nextlevelbuilder-ui-ux-pro-max
+    text: UI/UX rules and a design system generator for web and mobile screens.. UI/UX
+      rules and a design system generator for web and mobile screens.
+  - title: 'Go modules: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/go-modules
+    text: Go's built-in dependency management. Private modules need GOPRIVATE and
+      proxy settings that trip up first-time setups.
+  - title: 'autoplan: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-autoplan
+    text: Run the CEO, design, eng and DX plan reviews in a row, auto-deciding with
+      6 rules and one final gate.. Run the CEO, design, eng and DX plan reviews in
+      a row, au
+  - title: 'benchmark: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-benchmark
+    text: Measure page speed in a real browser, save a baseline, and flag slowdowns
+      after changes.. Measure page speed in a real browser, save a baseline, and flag
+      slowdo
+  - title: 'benchmark-models: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-benchmark-models
+    text: Compare how different AI models do on the same skill or prompt, with a guided
+      run.. Compare how different AI models do on the same skill or prompt, with a
+      guide
+  - title: 'browse: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-browse
+    text: 'Let the agent drive a real browser: open pages, click flows, take screenshots,
+      read console errors.. Let the agent drive a real browser: open pages, click
+      flows'
+  - title: 'canary: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-canary
+    text: 'Watch production after a deploy: screenshots, console errors and baseline
+      compare for several minutes.. Watch production after a deploy: screenshots,
+      console er'
+  - title: 'captain: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-captain
+    text: Run a crew of coding agents from one controller; workers report READY, only
+      the controller merges.. Run a crew of coding agents from one controller; workers
+      rep
+  - title: 'careful: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-careful
+    text: Warn before risky shell commands like rm -rf, DROP TABLE and force-push,
+      so you can stop them.. Warn before risky shell commands like rm -rf, DROP TABLE
+      and for
+  - title: 'codex: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-codex
+    text: Ask the OpenAI Codex CLI for an independent second opinion on your code
+      or plan.. Ask the OpenAI Codex CLI for an independent second opinion on your
+      code or pla
+  - title: 'context-restore: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-context-restore
+    text: Load your last saved working context so you can pick up where you stopped,
+      even on another branch.. Load your last saved working context so you can pick
+      up wher
+  - title: 'context-save: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-context-save
+    text: Save what you are doing, decisions made and what is left, so a later session
+      can resume.. Save what you are doing, decisions made and what is left, so a
+      later s
+  - title: 'cso: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-cso
+    text: 'Security audit in chief-security-officer mode: attack surface, OWASP, supply
+      chain, with evidence.. Security audit in chief-security-officer mode: attack
+      surfac'
+  - title: 'design-consultation: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-design-consultation
+    text: 'Talk through your product and build a full design system: type, colour,
+      layout, motion, DESIGN.md.. Talk through your product and build a full design
+      system: ty'
+  - title: 'design-html: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-design-html
+    text: Turn an approved design into real HTML/CSS where text reflows and sizes
+      itself correctly.. Turn an approved design into real HTML/CSS where text reflows
+      and siz
+  - title: 'design-motion: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-design-motion
+    text: Animate a finished design into a seamless looping MP4 and GIF to show it
+      working.. Animate a finished design into a seamless looping MP4 and GIF to show
+      it work
+  - title: 'design-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-design-review
+    text: 'Review a live site like a designer: spacing, hierarchy, AI-slop looks,
+      then fix and verify.. Review a live site like a designer: spacing, hierarchy,
+      AI-slop loo'
+  - title: 'design-shotgun: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-design-shotgun
+    text: Generate several design variants, show them side by side, collect feedback
+      and iterate.. Generate several design variants, show them side by side, collect
+      feedb
+  - title: 'deslop-shared-libs: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-deslop-shared-libs
+    text: Scan recent work for copied code worth moving into a shared library; read-only,
+      up to three picks.. Scan recent work for copied code worth moving into a shared
+  - title: 'devex-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-devex-review
+    text: 'Test the real developer experience of a live product: docs, quickstart
+      and CLI, with timings.. Test the real developer experience of a live product:
+      docs, quick'
+  - title: 'diagram: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-diagram
+    text: 'Turn a text description into a diagram: mermaid source, editable Excalidraw
+      file, SVG and PNG.. Turn a text description into a diagram: mermaid source,
+      editable'
+  - title: 'document-generate: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-document-generate
+    text: Write missing docs from scratch for a feature, module or project, using
+      the Diataxis four-part layout.. Write missing docs from scratch for a feature,
+      module or
+  - title: 'document-release: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-document-release
+    text: After you commit, before merge, check that docs still match the code and
+      fix them.. After you commit, before merge, check that docs still match the code
+      and fix
+  - title: 'eval-plan: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-eval-plan
+    text: 'Plan a paid AI eval: write bars and stop rules, dry-run free, run a 3-item
+      priced pilot first.. Plan a paid AI eval: write bars and stop rules, dry-run
+      free, ru'
+  - title: 'freeze: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-freeze
+    text: Block edits outside one folder for the session, so the agent cannot touch
+      other code.. Block edits outside one folder for the session, so the agent cannot
+      touch
+  - title: 'gstack-openclaw-investigate: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-openclaw-investigate
+    text: 'Root-cause debugging for the OpenClaw agent: no fix before you know why
+      it broke.. Root-cause debugging for the OpenClaw agent: no fix before you know
+      why it br'
+  - title: 'guard: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-guard
+    text: 'Full safety mode: warn on destructive commands and lock edits to one directory,
+      in one go.. Full safety mode: warn on destructive commands and lock edits to
+      one'
+  - title: 'health: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-health
+    text: Score code quality from types, lint, tests, dead code and scripts, and track
+      the trend.. Score code quality from types, lint, tests, dead code and scripts,
+      and
+  - title: 'investigate: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-investigate
+    text: 'Find the root cause of a bug first, then fix it: symptoms, code trace,
+      recent changes, reproduce.. Find the root cause of a bug first, then fix it:
+      symptoms, co'
+  - title: 'ios-clean: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ios-clean
+    text: 'Remove the DebugBridge package and its #if DEBUG code from an iOS app..
+      Remove the DebugBridge package and its #if DEBUG code from an iOS app.'
+  - title: 'ios-design-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ios-design-review
+    text: Design audit of an iOS app on a real device, scored 0-10 on hierarchy, spacing
+      and accessibility.. Design audit of an iOS app on a real device, scored 0-10
+      on h
+  - title: 'ios-fix: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ios-fix
+    text: Fix iOS bugs on a real device, but only after a state snapshot reproduces
+      the bug as a test fixture.. Fix iOS bugs on a real device, but only after a
+      state snap
+  - title: 'ios-qa: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ios-qa
+    text: 'QA a SwiftUI app live on a USB iPhone: find, fix and verify bugs through
+      a debug bridge.. QA a SwiftUI app live on a USB iPhone: find, fix and verify
+      bugs throu'
+  - title: 'ios-sync: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ios-sync
+    text: Regenerate the iOS debug bridge after you add observable state or upgrade
+      gstack.. Regenerate the iOS debug bridge after you add observable state or upgrade
+      gst
+  - title: 'land-and-deploy: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-land-and-deploy
+    text: Take the PR from /ship, merge it with your OK, watch the deploy and verify
+      production.. Take the PR from /ship, merge it with your OK, watch the deploy
+      and veri
+  - title: 'landing-report: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-landing-report
+    text: 'Read-only dashboard of the ship queue: which branches are waiting and what
+      to land next.. Read-only dashboard of the ship queue: which branches are waiting
+      and'
+  - title: 'learn: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-learn
+    text: Show, search or record what the agent learned about this project, without
+      changing code.. Show, search or record what the agent learned about this project,
+      with
+  - title: 'modernize: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-modernize
+    text: Take an old PR and decide MODERNIZE, REWORK or CLOSE; rebase and prove intent
+      survived.. Take an old PR and decide MODERNIZE, REWORK or CLOSE; rebase and
+      prove
+  - title: 'office-hours: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-office-hours
+    text: Founder-style questioning to pin down the real problem and write a design
+      doc, no code yet.. Founder-style questioning to pin down the real problem and
+      write a
+  - title: 'open-gstack-browser: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-open-gstack-browser
+    text: Open an AI-driven Chromium window with a sidebar, where you can watch each
+      agent action live.. Open an AI-driven Chromium window with a sidebar, where
+      you can w
+  - title: 'plan-ceo-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-plan-ceo-review
+    text: 'Review a plan like a founder: expand, hold or cut scope, and test edge
+      cases and failure paths.. Review a plan like a founder: expand, hold or cut
+      scope, and te'
+  - title: 'plan-design-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-plan-design-review
+    text: Review a plan's UI and design choices before building, interactively, with
+      scores.. Review a plan's UI and design choices before building, interactively,
+      with s
+  - title: 'plan-devex-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-plan-devex-review
+    text: 'Review a plan for developer experience: SDK, CLI help, getting started,
+      onboarding.. Review a plan for developer experience: SDK, CLI help, getting
+      started, onb'
+  - title: 'plan-eng-review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-plan-eng-review
+    text: 'Review a plan like an eng manager: scope, architecture, tests, edge cases,
+      with a test diagram.. Review a plan like an eng manager: scope, architecture,
+      tests,'
+  - title: 'plan-tune: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-plan-tune
+    text: See and tune how often gstack asks you questions, and view your inferred
+      developer profile.. See and tune how often gstack asks you questions, and view
+      your inf
+  - title: 'qa: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-qa
+    text: Test the app (browser, API, CLI, jobs, webhooks), fix the bugs found, and
+      verify the fixes.. Test the app (browser, API, CLI, jobs, webhooks), fix the
+      bugs foun
+  - title: 'qa-only: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-qa-only
+    text: 'Same QA, report only: reproducible bugs with evidence, and no code or test
+      changes.. Same QA, report only: reproducible bugs with evidence, and no code
+      or test'
+  - title: 'retro: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-retro
+    text: 'Weekly engineering retro from commit history: work patterns, quality and
+      per-person notes.. Weekly engineering retro from commit history: work patterns,
+      quality'
+  - title: 'review: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-review
+    text: Pre-merge review of your branch diff for structural bugs that tests miss..
+      Pre-merge review of your branch diff for structural bugs that tests miss.
+  - title: 'scrape: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-scrape
+    text: Pull data from a web page through your signed-in browser and return it as
+      one JSON document.. Pull data from a web page through your signed-in browser
+      and retur
+  - title: 'setup-browser-cookies: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-setup-browser-cookies
+    text: Import your real browser cookies into the headless browser so it can test
+      pages behind login.. Import your real browser cookies into the headless browser
+      so it
+  - title: 'setup-deploy: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-setup-deploy
+    text: Detect your deploy platform, prod URL and health checks, and save them to
+      CLAUDE.md for /land-and-deploy.. Detect your deploy platform, prod URL and health
+      chec
+  - title: 'setup-gbrain: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-setup-gbrain
+    text: Install gbrain, a persistent knowledge base, and wire it to your coding
+      agent as CLI and MCP.. Install gbrain, a persistent knowledge base, and wire
+      it to your
+  - title: 'ship: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ship
+    text: 'One flow: merge base, run tests, review diff, bump version, update changelog,
+      commit, push, open PR.. One flow: merge base, run tests, review diff, bump version'
+  - title: 'skillify: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-skillify
+    text: Turn the last successful scrape into a saved browser skill that reruns in
+      about 200ms.. Turn the last successful scrape into a saved browser skill that
+      reruns i
+  - title: 'spec: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-spec
+    text: Interrogate a vague request in five phases until it becomes a precise, backlog-ready
+      spec issue.. Interrogate a vague request in five phases until it becomes a
+  - title: 'sync-gbrain: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-sync-gbrain
+    text: Refresh gbrain with this repo's code and update CLAUDE.md so the agent searches
+      the brain.. Refresh gbrain with this repo's code and update CLAUDE.md so the
+      age
+  - title: 'test-audit: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-test-audit
+    text: Find low-value or duplicate tests across the repo, prove it, and retire
+      them in approved batches.. Find low-value or duplicate tests across the repo,
+      prove it,
+  - title: 'ubicloud: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-ubicloud
+    text: Run a heavy test suite, build or eval on a short-lived 16-vCPU cloud VM
+      with a timer and cleanup.. Run a heavy test suite, build or eval on a short-lived
+      16-vCP
+  - title: 'unfreeze: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-unfreeze
+    text: Remove the /freeze edit lock so the agent can edit all directories again..
+      Remove the /freeze edit lock so the agent can edit all directories again.
+  - title: 'write-skill: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/gstack-write-skill
+    text: 'Write or trim a skill without bloat: edit ladder, size checks and drift
+      checks.. Write or trim a skill without bloat: edit ladder, size checks and drift
+      checks.'
+  - title: 'llama.cpp: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/llama-cpp
+    text: C/C++ inference for GGUF models on CPU and GPU. Ships many builds a day
+      with pre-1.0 versions; pin a build for reproducible results.
+  - title: 'Codex: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/codex
+    text: OpenAI's coding agent for terminal, IDE and cloud. The CLI is Apache-2.0
+      but still 0.x; using it needs a ChatGPT plan or OpenAI API key.
+  - title: 'Kubernetes: Dev tool, Containers & clusters · Flisk Tools'
+    url: https://tools.flisk.si/listing/kubernetes
+    text: Upstream container orchestration, as a reference point. Not a local dev
+      tool on its own; you reach it locally through kind, k3d, minikube and friends.
+  - title: 'shadcn: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/shadcn-shadcn
+    text: Add, search, fix and compose shadcn/ui components with project-aware rules..
+      Add, search, fix and compose shadcn/ui components with project-aware rules.
+  - title: 'Deno: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/deno
+    text: JavaScript and TypeScript runtime with built-in tooling. npm compatibility
+      is good since 2.0, but some packages still assume Node-only APIs.
+  - title: 'Gemini CLI: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/gemini-cli
+    text: Google's open-source terminal agent for Gemini. Still 0.x with weekly releases;
+      free-tier quotas and model routing change often.
+  - title: 'FastAPI: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/fastapi
+    text: Python API framework with type-driven validation. Still versioned 0.x, though
+      long-standing and widely used.
+  - title: 'taste-skill: Agent skill, Agent skills · Flisk Tools'
+    url: https://tools.flisk.si/listing/leonxlnx-taste-skill
+    text: Art-direct landing pages and app screens so they do not look like AI slop..
+      Art-direct landing pages and app screens so they do not look like AI slop.
+  - title: 'Bun: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/bun
+    text: JavaScript runtime, package manager and bundler in one. Node API compatibility
+      is high but not complete; check native addons before switching runtime.
+  - title: 'vLLM: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/vllm
+    text: High-throughput LLM serving engine. Built for Linux GPU servers; macOS and
+      Windows support is limited. Still 0.x.
+  - title: 'nvm: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/nvm
+    text: Shell script to manage Node.js versions. POSIX shells only (Windows needs
+      the separate nvm-windows), and it slows shell start-up.
+  - title: 'Zed: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/zed
+    text: Fast Rust editor with built-in agent panel and ACP. Hosted AI features need
+      a Zed account; external agents plug in through the Agent Client Protocol.
+  - title: 'Django: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/django
+    text: Batteries-included Python web framework. No built-in story for containers
+      or service dependencies; bring your own Compose.
+  - title: 'uv: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/uv
+    text: Fast Python package and project manager. Still 0.x with frequent releases;
+      pin the uv version in CI. Trial only by the pre-1.0 rule.
+  - title: 'create-vite: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/create-vite
+    text: Official Vite project templates. Official Vite project templates
+  - title: 'Vite: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/vite
+    text: Frontend dev server and build tool. Dev serves unbundled ESM, so dev and
+      production output can still differ in edge cases.
+  - title: 'Spring Boot: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/spring-boot
+    text: Java framework with Compose support and devtools. Java framework with Compose
+      support and devtools
+  - title: 'code-server: Dev tool, Dev environments · Flisk Tools'
+    url: https://tools.flisk.si/listing/code-server
+    text: VS Code in the browser on any machine you run. An editor only; uses the
+      Open VSX registry, so some Microsoft extensions are missing.
+  - title: 'Grafana: Dev tool, Platform · Flisk Tools'
+    url: https://tools.flisk.si/listing/grafana
+    text: Dashboards over metrics, logs and traces. AGPL since 2021; Grafana Cloud
+      is the hosted paid option.
+  - title: 'NestJS: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/nestjs
+    text: Structured Node.js framework for server apps. Structured Node.js framework
+      for server apps
+  - title: 'act: Dev tool, Platform · Flisk Tools'
+    url: https://tools.flisk.si/listing/act
+    text: Run GitHub Actions workflows locally in Docker. Pre-1.0; runner images differ
+      from GitHub's, so some actions behave differently or fail.
+  - title: 'Docker Engine: Dev tool, Containers & clusters · Flisk Tools'
+    url: https://tools.flisk.si/listing/docker-engine
+    text: The open-source Docker daemon and CLI for Linux. Linux only; macOS and Windows
+      need a VM such as Docker Desktop, OrbStack or Colima.
+  - title: 'Daytona: Dev tool, Dev environments · Flisk Tools'
+    url: https://tools.flisk.si/listing/daytona
+    text: Former dev-environment manager, now AI code sandboxes. Pivoted from dev
+      environments to sandboxes for AI-generated code; the GitHub repo was archived
+      in 2026.
+  - title: 'Ansible: Dev tool, Platform · Flisk Tools'
+    url: https://tools.flisk.si/listing/ansible
+    text: Agentless configuration management over SSH. The control node needs Linux
+      or macOS; Windows users run it through WSL.
+  - title: 'Cline: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/cline
+    text: Open-source coding agent for VS Code and the terminal. Bring your own model
+      key; costs track your provider's token billing directly.
+  - title: 'Prometheus: Dev tool, Platform · Flisk Tools'
+    url: https://tools.flisk.si/listing/prometheus
+    text: CNCF metrics database and alerting. Single-node by design; long-term storage
+      needs Thanos, Mimir or similar.
+  - title: 'webpack: Dev tool, Package & build · Flisk Tools'
+    url: https://tools.flisk.si/listing/webpack
+    text: Configurable module bundler for JavaScript. Slow on large apps and config-heavy;
+      new projects usually start on Vite or Rspack.
+  - title: 'Warp: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/warp
+    text: Agentic terminal and development environment. The client is now AGPL on
+      GitHub, but AI features are metered and need a Warp account.
+  - title: 'Astro: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/astro
+    text: Content-first web framework with islands. Content-first web framework with
+      islands
+  - title: 'AutoGen: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/autogen
+    text: Microsoft's multi-agent conversation framework. In maintenance mode; Microsoft
+      points new work to Microsoft Agent Framework. Last release Sep 2025.
+  - title: 'MinIO: Dev tool, Local services & data · Flisk Tools'
+    url: https://tools.flisk.si/listing/minio
+    text: S3-compatible object storage server. Repo archived Apr 2026; community edition
+      is source-only with no binaries or console.
+  - title: 'CrewAI: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/crewai
+    text: Role-based multi-agent crews and flows in Python. Telemetry is on by default;
+      set CREWAI_DISABLE_TELEMETRY to opt out.
+  - title: 'Ruby on Rails: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/rails
+    text: Full-stack Ruby web framework. Windows support is through WSL.
+  - title: 'Appwrite: Dev tool, Local services & data · Flisk Tools'
+    url: https://tools.flisk.si/listing/appwrite
+    text: Self-hostable backend with auth, DB, storage, functions. Self-hosted install
+      is a large Compose stack.
+  - title: 'React Router: Dev tool, Monorepos & frameworks · Flisk Tools'
+    url: https://tools.flisk.si/listing/react-router
+    text: React framework mode, successor to Remix. React framework mode, successor
+      to Remix
+  - title: 'goose: Dev tool, AI & agents · Flisk Tools'
+    url: https://tools.flisk.si/listing/goose
+    text: Local, extensible open-source AI agent built on MCP. Moved from Block to
+      the Agentic AI Foundation; repo and docs URLs changed in 2026.
+  - title: 'Dive: Dev tool, Containers & clusters · Flisk Tools'
+    url: https://tools.flisk.si/listing/dive
+    text: Explore image layers and find wasted space. Pre-1.0 with long gaps between
+      releases; an image inspector, not a runtime manager.
+fleet.flisk.si:
+  name: Fleet
+  pages:
+  - title: Docs
+    url: https://fleet.flisk.si/docs
+    text: the HTTP and MCP API with curl, TypeScript and Python examples
+  - title: SKILL.md
+    url: https://fleet.flisk.si/SKILL.md
+    text: the same as one file an agent can read to set itself up
+  - title: Pricing
+    url: https://fleet.flisk.si/pricing
+    text: compare a month of pods across providers
+  - title: Podlytics
+    url: https://fleet.flisk.si/podlytics
+    text: price, start time and success rate of providers
+  - title: Demo
+    url: https://fleet.flisk.si/demo
+    text: a recorded run of six agents in six pods at once
+  - title: Source
+    url: https://github.com/flisk-sh/fleet
+    text: MIT licensed
+  - title: 'fleet: one API for every agent pod'
+    url: https://fleet.flisk.si/
+    text: One API for every agent pod, over HTTP or MCP. Fleet starts each sandbox
+      on the cheapest provider you have an account at and moves on when one fails.
+  - title: 'fleet: één API voor elke agent-pod'
+    url: https://fleet.flisk.si/nl
+    text: Eén API voor elke agent-pod, via HTTP of MCP. Fleet start elke sandbox bij
+      de goedkoopste aanbieder waar jij een account hebt en gaat door naar de volgende
+      als er één uitvalt.
+host.flisk.si:
+  name: Host
+  pages:
+  - title: 'Host: free places to run your AI agent'
+    url: https://host.flisk.si/
+    text: 'Your AI agent needs a computer that stays on. A list of free ones, with
+      the catch for each: Hugging Face Spaces, Oracle Always Free, Render, Koyeb,
+      Fly and Cloudflare.'
+  - title: Host API docs
+    url: https://host.flisk.si/docs
+    text: Start, list and stop pod hosts with one API call.
+  - title: 'Sandbox rating: no card, with a link'
+    url: https://host.flisk.si/rating
+    text: 'Hosted sandbox providers ranked by two things: can you start with no credit
+      card, and does the sandbox give you a public link to your app.'
+bot.flisk.si:
+  name: Flisk Bot
+  pages:
+  - title: 'Flisk Bot: an agent that takes open jobs'
+    url: https://bot.flisk.si/
+    text: Flisk Bot is an open AI agent that takes jobs from jobs.flisk.si, checks
+      READMEs and AI findability, and answers in chat. Every step is saved and public.
+  - title: Computers · Flisk Bot
+    url: https://bot.flisk.si/computers
+    text: ''
+roadmap.flisk.si:
+  name: DevEx Roadmap
+  pages:
+  - title: How it works | DevEx Roadmap
+    url: https://roadmap.flisk.si/about/
+    text: '300+ developer tools on four views: the Compass (easy to use vs. made for
+      big, real systems), the Adoption Radar, the Lab (a periodic table) and Journeys
+      from beginner to platform architect. Community-edited, every placement follows
+      a public rubric.'
+  - title: Badges | DevEx Roadmap
+    url: https://roadmap.flisk.si/badges/
+    text: '300+ developer tools on four views: the Compass (easy to use vs. made for
+      big, real systems), the Adoption Radar, the Lab (a periodic table) and Journeys
+      from beginner to platform architect. Community-edited, every placement follows
+      a public rubric.'
+  - title: Findings | DevEx Roadmap
+    url: https://roadmap.flisk.si/findings/
+    text: '300+ developer tools on four views: the Compass (easy to use vs. made for
+      big, real systems), the Adoption Radar, the Lab (a periodic table) and Journeys
+      from beginner to platform architect. Community-edited, every placement follows
+      a public rubric.'
+  - title: 'DevEx Roadmap: a community-edited map of local developer tools, scored
+      by a checklist'
+    url: https://roadmap.flisk.si/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: Adoption Radar | DevEx Roadmap
+    url: https://roadmap.flisk.si/radar/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Package & build | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/foundations/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Containers & clusters | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/containers/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Inner loop | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/inner-loop/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Dev environments | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/environments/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Monorepos & frameworks | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/frameworks/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Local services & data | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/services/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: AI & agents | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/agents/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: 'Adoption Radar: Platform | DevEx Roadmap'
+    url: https://roadmap.flisk.si/radar/platform/
+    text: Adopt means use it. Trial means try it. Assess means watch it. Hold means
+      avoid for now. Each tool links the proof.
+  - title: The DevEx Compass | DevEx Roadmap
+    url: https://roadmap.flisk.si/compass/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Package & build | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/foundations/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Containers & clusters | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/containers/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Inner loop | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/inner-loop/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Dev environments | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/environments/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Monorepos & frameworks | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/frameworks/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Local services & data | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/services/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: AI & agents | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/agents/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: 'The DevEx Compass: Platform | DevEx Roadmap'
+    url: https://roadmap.flisk.si/compass/platform/
+    text: 'Left: hard to use. Right: easy. Bottom: made for small, simple setups.
+      Top: made for big, real systems. A checklist puts every dot, not a person.'
+  - title: The DevEx Lab | DevEx Roadmap
+    url: https://roadmap.flisk.si/lab/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Package & build | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/foundations/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Containers & clusters | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/containers/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Inner loop | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/inner-loop/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Dev environments | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/environments/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Monorepos & frameworks | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/frameworks/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Local services & data | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/services/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: AI & agents | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/agents/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: 'The DevEx Lab: Platform | DevEx Roadmap'
+    url: https://roadmap.flisk.si/lab/platform/
+    text: Every tool as an element, scaled to fill your screen. Hover a tile for its
+      formula; pick a family to zoom in.
+  - title: Journeys | DevEx Roadmap
+    url: https://roadmap.flisk.si/journeys/
+    text: Eight levels from your first lockfile to platform architect, including building
+      with coding agents. Pick a track.
+  - title: 'Journeys: Backend | DevEx Roadmap'
+    url: https://roadmap.flisk.si/journeys/backend/
+    text: Eight levels from your first lockfile to platform architect, including building
+      with coding agents. Pick a track.
+  - title: 'Journeys: AI & agents | DevEx Roadmap'
+    url: https://roadmap.flisk.si/journeys/ai-agents/
+    text: Eight levels from your first lockfile to platform architect, including building
+      with coding agents. Pick a track.
+  - title: 'Journeys: Platform | DevEx Roadmap'
+    url: https://roadmap.flisk.si/journeys/platform/
+    text: Eight levels from your first lockfile to platform architect, including building
+      with coding agents. Pick a track.
+  - title: 'Journeys: AI-native SDLC | DevEx Roadmap'
+    url: https://roadmap.flisk.si/journeys/ai-native/
+    text: Eight levels from your first lockfile to platform architect, including building
+      with coding agents. Pick a track.
+  - title: Roles | DevEx Roadmap
+    url: https://roadmap.flisk.si/roles/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Build products | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/build/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Run and ship | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/run/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Data and AI | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/data-ai/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Quality and security | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/quality/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Customer-facing | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/field/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: 'Roles: Lead and steer | DevEx Roadmap'
+    url: https://roadmap.flisk.si/roles/lead/
+    text: 'Pick a job. See the tools that job really uses: must have, every day, good
+      to know.'
+  - title: Agent Skills | DevEx Roadmap
+    url: https://roadmap.flisk.si/skills/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Plan and design | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/plan/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Write code | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/code/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Test | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/test/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Debug | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/debug/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Review | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/review/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Git and PRs | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/git/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Frontend and design | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/frontend/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Ops and infra | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/ops/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Security | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/security/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Docs and writing | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/docs/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Data and AI | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/data/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: 'Agent Skills: Agent workflow | DevEx Roadmap'
+    url: https://roadmap.flisk.si/skills/meta/
+    text: Free AI agent skills from GitHub, tested by a small, cheap model (Haiku).
+      Further right means Haiku used it right more often.
+  - title: Your developer portfolio | DevEx Roadmap
+    url: https://roadmap.flisk.si/portfolio/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Package & build | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/foundations/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Containers & clusters | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/containers/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Inner loop | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/inner-loop/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Dev environments | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/environments/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Monorepos & frameworks | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/frameworks/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Local services & data | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/services/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: AI & agents | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/agents/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: 'Your developer portfolio: Platform | DevEx Roadmap'
+    url: https://roadmap.flisk.si/portfolio/platform/
+    text: Rate the tools you know from 0 to 3. Get your best-fit role, your skill
+      shape and a page you can share.
+  - title: Ask | DevEx Roadmap
+    url: https://roadmap.flisk.si/ask/
+    text: Type what you want to compare, like yarn vs npm vs bun. You get the answer
+      from this site's data, no AI needed.
+cmd.flisk.si:
+  name: Command Comparer
+  pages:
+  - title: About | Command Comparer
+    url: https://cmd.flisk.si/about/
+    text: Side-by-side commands for Flisk, Terraform, AWS CDK, Docker Compose, Tilt,
+      Skaffold, Garden, PM2 and more, across 16 tabs, with a source link for every
+      cell.
+  - title: Pick tools | Command Comparer
+    url: https://cmd.flisk.si/pick/
+    text: Side-by-side commands for Flisk, Terraform, AWS CDK, Docker Compose, Tilt,
+      Skaffold, Garden, PM2 and more, across 16 tabs, with a source link for every
+      cell.
+  - title: 'Command Comparer: Flisk commands next to Terraform, Compose, Tilt and
+      more'
+    url: https://cmd.flisk.si/
+    text: Flisk next to the usual tools. Terraform and CDK provision infrastructure.
+      Flisk only runs your app locally. Every command has a source link.
+  - title: Flisk vs Terraform, OpenTofu, Pulumi, CDK and CloudFormation | Command
+      Comparer
+    url: https://cmd.flisk.si/iac/
+    text: Flisk vs Terraform, OpenTofu, Pulumi, CDK and CloudFormation. These provision
+      cloud infrastructure. Flisk runs your app locally and never provisions. Every
+      command has a source link.
+  - title: Flisk vs Docker Compose and Tilt | Command Comparer
+    url: https://cmd.flisk.si/compose-tilt/
+    text: Flisk vs Docker Compose and Tilt. Flisk generates a Compose file and a Tiltfile
+      and runs them for you. Every command has a source link.
+  - title: Flisk vs process-compose, Overmind and PM2 | Command Comparer
+    url: https://cmd.flisk.si/process-runners/
+    text: Flisk vs process-compose, Overmind and PM2. With a command in every service.json,
+      Flisk runs plain processes without Docker. Every command has a source link.
+  - title: Flisk vs Skaffold, DevSpace and Garden | Command Comparer
+    url: https://cmd.flisk.si/kubernetes-dev/
+    text: Flisk vs Skaffold, DevSpace and Garden. These work against a cluster and
+      deploy. Flisk is local only and never deploys. Every command has a source link.
+  - title: Flisk vs kind and minikube | Command Comparer
+    url: https://cmd.flisk.si/local-kubernetes/
+    text: Flisk vs kind and minikube. kind and minikube run real Kubernetes on your
+      laptop. Flisk does not. Every command has a source link.
+  - title: Flisk vs Telepresence and mirrord | Command Comparer
+    url: https://cmd.flisk.si/cluster-bridges/
+    text: Flisk vs Telepresence and mirrord. These connect your laptop to a remote
+      cluster. Flisk needs no cluster. Every command has a source link.
+  - title: Flisk vs Dev Containers and Devbox | Command Comparer
+    url: https://cmd.flisk.si/dev-environments/
+    text: Flisk vs Dev Containers and Devbox. These install your toolchain. Flisk
+      runs your services and only checks the tools. Every command has a source link.
+  - title: Flisk vs GitHub Codespaces and Coder | Command Comparer
+    url: https://cmd.flisk.si/cloud-workspaces/
+    text: Flisk vs GitHub Codespaces and Coder. These give you a remote machine. You
+      can run flisk up inside one. Every command has a source link.
+  - title: Flisk vs Nx and Turborepo | Command Comparer
+    url: https://cmd.flisk.si/monorepo-tools/
+    text: Flisk vs Nx and Turborepo. Nx and Turborepo run and cache builds. Flisk
+      caches nothing. Every command has a source link.
+  - title: Flisk vs .NET Aspire and Encore | Command Comparer
+    url: https://cmd.flisk.si/app-frameworks/
+    text: Flisk vs .NET Aspire and Encore. Aspire and Encore are frameworks you adopt.
+      Flisk needs no code changes. Every command has a source link.
+  - title: Flisk vs LocalStack, Supabase CLI and Firebase emulators | Command Comparer
+    url: https://cmd.flisk.si/local-services/
+    text: Flisk vs LocalStack, Supabase CLI and Firebase emulators. These emulate
+      cloud services locally. Flisk starts Postgres, NATS and Traefik beside your
+      app. Every command has a source link.
+  - title: Flisk vs Prisma, Drizzle, Atlas and dbmate | Command Comparer
+    url: https://cmd.flisk.si/databases/
+    text: Flisk vs Prisma, Drizzle, Atlas and dbmate. These define and run migrations.
+      Flisk runs them in a migrator resource before the API starts. Every command
+      has a source link.
+  - title: Flisk vs LangGraph and Mastra | Command Comparer
+    url: https://cmd.flisk.si/ai-agents/
+    text: Flisk vs LangGraph and Mastra. LangGraph and Mastra build the agent. Flisk
+      runs it next to its tools and database. Every command has a source link.
+  - title: Flisk vs Warp, Superset, skills.sh and Coder | Command Comparer
+    url: https://cmd.flisk.si/agent-tools/
+    text: Flisk vs Warp, Superset, skills.sh and Coder. These help coding agents work.
+      Flisk runs the stack the agent works on. Every command has a source link.
+  - title: Flisk vs Claude Code, Codex, Cursor and Gemini CLI | Command Comparer
+    url: https://cmd.flisk.si/coding-agents/
+    text: Flisk vs Claude Code, Codex, Cursor and Gemini CLI. These are the agents.
+      Flisk gives them a stack to run and an MCP server to call. Every command has
+      a source link.
+demo.flisk.si:
+  name: Personal Demos
+  pages:
+  - title: 'Personal Demos: reply grok bubbles, get a local stack'
+    url: https://demo.flisk.si/
+    text: 'Reply to any X post with grok bubbles and get a link to a running local
+      stack: real service.json files, a repo built in CI, and a live run you can clone.'
+  - title: How grok bubbles works, without AI
+    url: https://demo.flisk.si/how-it-works
+    text: Grok only triggers it. A plain program turns the link into service.json
+      files, a repo built in CI and a stack that runs live. Here is every step, and
+      where it stops.
+practice.flisk.si:
+  name: Practice & Learn AI
+  pages:
+  - title: Survive a restart, wait for a person | Practice & Learn AI
+    url: https://practice.flisk.si/labs/43-durable/
+    text: Build a claim flow that saves its place after every step, pauses for a human
+      on large amounts, and pays exactly once.
+  - title: Is Flisk installed? | Practice & Learn AI
+    url: https://practice.flisk.si/labs/01-installed/
+    text: Check that the Flisk CLI is on your PATH and that your machine can run a
+      local stack.
+  - title: A model plus a harness | Practice & Learn AI
+    url: https://practice.flisk.si/labs/30-harness/
+    text: 'Wrap your tool loop in the parts that make it usable: instructions in a
+      file, a permission question, a budget and a log.'
+  - title: Call a hosted model and read the bill | Practice & Learn AI
+    url: https://practice.flisk.si/labs/11-chat-api/
+    text: Send a chat request to a hosted model from your own script, keep a conversation
+      going, and print what each call costs.
+  - title: Memory that outlives the conversation | Practice & Learn AI
+    url: https://practice.flisk.si/labs/42-memory/
+    text: Let your assistant store facts and find them in a later session, without
+      one customer seeing another’s.
+  - title: Scaffold a project | Practice & Learn AI
+    url: https://practice.flisk.si/labs/02-scaffold/
+    text: Create a new Flisk project in an empty folder.
+  - title: Build a tool server any assistant can use | Practice & Learn AI
+    url: https://practice.flisk.si/labs/32-mcp-server/
+    text: Publish your tools over the Model Context Protocol so any assistant that
+      speaks it can call them.
+  - title: Get data back, not prose | Practice & Learn AI
+    url: https://practice.flisk.si/labs/14-structured-output/
+    text: Turn messy customer emails into validated records your code can trust.
+  - title: Many workers, one dispatcher | Practice & Learn AI
+    url: https://practice.flisk.si/labs/44-fan-out/
+    text: Process a batch of claims in parallel with a cap on how many run at once,
+      retries for the ones that fail, and no claim lost.
+  - title: Answer from your documents, with sources | Practice & Learn AI
+    url: https://practice.flisk.si/labs/21-rag/
+    text: Build a question answerer that reads your own documents, names the file
+      each answer came from, and says so when the answer is not there.
+  - title: Make AI-written code safe to merge | Practice & Learn AI
+    url: https://practice.flisk.si/labs/33-hardening/
+    text: 'Set up the checks that catch a coding agent’s mistakes before a person
+      has to: lint, types, tests with a coverage floor, and a commit hook.'
+  - title: Build a dataset and a baseline to beat | Practice & Learn AI
+    url: https://practice.flisk.si/labs/23-dataset-baseline/
+    text: Make a small labelled dataset and score two cheap baselines on it, so later
+      work has a number to beat.
+  - title: One door for every tool, with rules | Practice & Learn AI
+    url: https://practice.flisk.si/labs/52-gateway-policy/
+    text: Put every tool call through one checkpoint that decides allow, deny or ask
+      a person, from rules kept in a file.
+  - title: Search by meaning | Practice & Learn AI
+    url: https://practice.flisk.si/labs/20-embeddings/
+    text: Turn text into vectors and find the closest sentences, first in memory and
+      then in a database.
+  - title: Attack your own assistant | Practice & Learn AI
+    url: https://practice.flisk.si/labs/51-security/
+    text: Break your assistant with instructions hidden in the content it reads, then
+      close the hole in the design rather than in the prompt.
+  - title: Pick a model with numbers | Practice & Learn AI
+    url: https://practice.flisk.si/labs/12-compare-models/
+    text: Run the same five tasks on three models and choose one from a table of speed,
+      cost and quality.
+  - title: Put a coding agent on rails | Practice & Learn AI
+    url: https://practice.flisk.si/labs/31-coding-agent-rules/
+    text: Write the instruction file a coding agent reads, and use permission modes
+      so it plans before it edits.
+  - title: Grade with a judge you have checked | Practice & Learn AI
+    url: https://practice.flisk.si/labs/40-evals-judge/
+    text: Use a model to grade answers, and prove first that it grades the way you
+      do.
+  - title: 'Capstone: the claims desk | Practice & Learn AI'
+    url: https://practice.flisk.si/labs/54-capstone/
+    text: Put the course together into one assistant for Parcel Desk and hand it to
+      someone else to run.
+  - title: Choose and run open models | Practice & Learn AI
+    url: https://practice.flisk.si/labs/34-open-weights/
+    text: Measure what a smaller, more compressed copy of a model costs you in quality
+      and gives you in speed and memory.
+  - title: Fine-tune a small open model | Practice & Learn AI
+    url: https://practice.flisk.si/labs/24-fine-tune/
+    text: Train a small adapter (LoRA) on your dataset and prove with the test rows
+      whether it beat the baselines.
+  - title: 'See every step: traces | Practice & Learn AI'
+    url: https://practice.flisk.si/labs/41-tracing/
+    text: Record every model call and tool call of a run so you can see where the
+      time and money went.
+  - title: 'Give a model tools: the loop from scratch | Practice & Learn AI'
+    url: https://practice.flisk.si/labs/13-tool-loop/
+    text: Write the loop that lets a model call your functions, with no framework,
+      so you know what every framework is doing for you.
+  - title: Ship it and know the bill | Practice & Learn AI
+    url: https://practice.flisk.si/labs/53-deploy/
+    text: Package your assistant so it runs the same anywhere, keep secrets out of
+      the package, and work out what a request costs.
+  - title: Let it improve itself, and prove it | Practice & Learn AI
+    url: https://practice.flisk.si/labs/45-self-improve/
+    text: Have a model propose changes to your prompt from its own failures, and accept
+      a change only when held-back data says it helped.
+  - title: Measure retrieval before you tune it | Practice & Learn AI
+    url: https://practice.flisk.si/labs/22-rag-evals/
+    text: Put a number on how often the right page is found, then change one thing
+      and see if the number moves.
+  - title: Run a model on your laptop | Practice & Learn AI
+    url: https://practice.flisk.si/labs/10-local-model/
+    text: 'Run a small open model on your own machine and call it two ways: from the
+      terminal and over HTTP.'
+  - title: Add a backend resource | Practice & Learn AI
+    url: https://practice.flisk.si/labs/03-backend/
+    text: Add your first backend service to the project and see Flisk pick it up.
+  - title: Find the use case worth building | Practice & Learn AI
+    url: https://practice.flisk.si/labs/50-discovery/
+    text: Turn a customer’s vague wish for AI into one use case with a number that
+      says when it worked.
+  - title: Awesome Flisk catalog | Practice & Learn AI
+    url: https://practice.flisk.si/catalog/
+    text: Browse official, community, and archived Flisk learning resources.
+  - title: Practice & Learn AI — hands-on labs, from a first model call to a shipped
+      assistant | Practice & Learn AI
+    url: https://practice.flisk.si/
+    text: Free hands-on labs for building with AI. Run a model, give it tools, measure
+      it, make it survive a restart, and ship it to a customer. Each lab ends with
+      a check you run yourself.
+learn.flisk.si:
+  name: Flisk Learn
+  pages:
+  - title: Learn
+    url: https://learn.flisk.si/
+    text: ''
+  - title: Practice
+    url: https://learn.flisk.si/practice
+    text: ''
+  - title: Exam · Flisk Learn
+    url: https://learn.flisk.si/exam
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Is Flisk installed? · Flisk Learn
+    url: https://learn.flisk.si/practice/01-installed
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Scaffold a project · Flisk Learn
+    url: https://learn.flisk.si/practice/02-scaffold
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Add a backend resource · Flisk Learn
+    url: https://learn.flisk.si/practice/03-backend
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Run a model on your laptop · Flisk Learn
+    url: https://learn.flisk.si/practice/10-local-model
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Call a hosted model and read the bill · Flisk Learn
+    url: https://learn.flisk.si/practice/11-chat-api
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Pick a model with numbers · Flisk Learn
+    url: https://learn.flisk.si/practice/12-compare-models
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: 'Give a model tools: the loop from scratch · Flisk Learn'
+    url: https://learn.flisk.si/practice/13-tool-loop
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Get data back, not prose · Flisk Learn
+    url: https://learn.flisk.si/practice/14-structured-output
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Search by meaning · Flisk Learn
+    url: https://learn.flisk.si/practice/20-embeddings
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Answer from your documents, with sources · Flisk Learn
+    url: https://learn.flisk.si/practice/21-rag
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Measure retrieval before you tune it · Flisk Learn
+    url: https://learn.flisk.si/practice/22-rag-evals
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Build a dataset and a baseline to beat · Flisk Learn
+    url: https://learn.flisk.si/practice/23-dataset-baseline
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Fine-tune a small open model · Flisk Learn
+    url: https://learn.flisk.si/practice/24-fine-tune
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: A model plus a harness · Flisk Learn
+    url: https://learn.flisk.si/practice/30-harness
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Put a coding agent on rails · Flisk Learn
+    url: https://learn.flisk.si/practice/31-coding-agent-rules
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Build a tool server any assistant can use · Flisk Learn
+    url: https://learn.flisk.si/practice/32-mcp-server
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Make AI-written code safe to merge · Flisk Learn
+    url: https://learn.flisk.si/practice/33-hardening
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Choose and run open models · Flisk Learn
+    url: https://learn.flisk.si/practice/34-open-weights
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Grade with a judge you have checked · Flisk Learn
+    url: https://learn.flisk.si/practice/40-evals-judge
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: 'See every step: traces · Flisk Learn'
+    url: https://learn.flisk.si/practice/41-tracing
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Memory that outlives the conversation · Flisk Learn
+    url: https://learn.flisk.si/practice/42-memory
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Survive a restart, wait for a person · Flisk Learn
+    url: https://learn.flisk.si/practice/43-durable
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Many workers, one dispatcher · Flisk Learn
+    url: https://learn.flisk.si/practice/44-fan-out
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Let it improve itself, and prove it · Flisk Learn
+    url: https://learn.flisk.si/practice/45-self-improve
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Find the use case worth building · Flisk Learn
+    url: https://learn.flisk.si/practice/50-discovery
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Attack your own assistant · Flisk Learn
+    url: https://learn.flisk.si/practice/51-security
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: One door for every tool, with rules · Flisk Learn
+    url: https://learn.flisk.si/practice/52-gateway-policy
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: Ship it and know the bill · Flisk Learn
+    url: https://learn.flisk.si/practice/53-deploy
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'
+  - title: 'Capstone: the claims desk · Flisk Learn'
+    url: https://learn.flisk.si/practice/54-capstone
+    text: 'Learn Flisk and AI engineering: answers from the docs, labs on your own
+      computer, and an exam scored on real work.'

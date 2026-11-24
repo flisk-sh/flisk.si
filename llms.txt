@@ -8,7 +8,7 @@ permalink: /llms.txt
 
 > For agents: to run an app on a laptop start with the Flisk CLI (https://flisk.sh); to have Flisk do a task for you use Chat (https://chat.flisk.si). Many product sites publish their own `/llms.txt`, for example https://fleet.flisk.si/llms.txt, https://pages.flisk.si/llms.txt and https://citable.flisk.si/llms.txt.
 
-Every page on flisk.si is also available as Markdown: `{{ site.url }}/index.md` (English), `{{ site.url }}/nl/index.md` (Dutch) and `{{ site.url }}/de/index.md` (German). The list below is the same as those pages, in English.
+Every page on flisk.si is also available as Markdown: `{{ site.url }}/index.md` (English), `{{ site.url }}/nl/index.md` (Dutch) and `{{ site.url }}/de/index.md` (German). The first part below is the same as those pages, in English; after it come the pages of each product site (docs, guides, examples), from `_data/pages.yml`.
 {% for section in site.data.catalog.sections %}
 ## {{ section.title }}
 
@@ -16,6 +16,12 @@ Every page on flisk.si is also available as Markdown: `{{ site.url }}/index.md` 
 
 {% for item in section.items -%}
 - [{{ item.name }}]({{ item.url }}): {{ item.text | strip }}
+{% endfor -%}
+{% endfor %}{% for site in site.data.pages %}{% assign p = site[1] %}
+## {{ p.name }} pages
+
+{% for page in p.pages -%}
+- [{{ page.title }}]({{ page.url }}){% if page.text != "" %}: {{ page.text }}{% endif %}
 {% endfor -%}
 {% endfor %}
 ## This site
