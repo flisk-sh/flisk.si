@@ -148,7 +148,7 @@
   }).join('');
   // On the compact bar the pill is hidden and the same entry sits at the top of the Products menu (it is hidden on the full bar).
   const keyIcon = '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="5" cy="11" r="2.75"/><path d="M7 9l6.5-6.5M11 4.5l1.75 1.75M9.5 6l1.5 1.5"/></svg>';
-  const keyItem = !keyUrl ? '' : `<a class="item keyitem" href="${esc(keyUrl)}">${keyIcon}<span><b>${esc(t('Get a free API key'))}</b></span></a>`;
+  const keyItem = !keyUrl ? '' : `<a class="item keyitem" href="${esc(keyUrl)}" target="_blank" rel="noopener">${keyIcon}<span><b>${esc(t('Get a free API key'))}</b></span></a>`;
   const switcher = !PRODUCT ? '' : `<div class="menu all-menu sw">
       <button part="tone" type="button" aria-expanded="false" aria-controls="msw" aria-label="${esc(t('All Flisk products'))}"${tip(t('All Flisk products'), t('Switch to any Flisk product'))}><svg class="gr" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2h3.5v3.5H2zM6.25 2h3.5v3.5h-3.5zM10.5 2H14v3.5h-3.5zM2 6.25h3.5v3.5H2zM6.25 6.25h3.5v3.5h-3.5zM10.5 6.25H14v3.5h-3.5zM2 10.5h3.5V14H2zM6.25 10.5h3.5V14h-3.5zM10.5 10.5H14V14h-3.5z"/></svg></button>
       <div class="panel wide mega" part="tone" id="msw" hidden>${keyItem}${finder}${MENUS.map(([label, items]) => `<div class="grp"><p>${esc(t(label))}</p>${panel(items, true)}</div>`).join('')}
@@ -345,7 +345,7 @@
       ${PRODUCT ? menus : ''}
       ${here === 'flisk.si' || PRODUCT ? '' : `<a class="every-link" part="tone" href="${esc(carry(HOME + '/'))}">${esc(t('All products'))}</a>`}
       ${all}
-      ${keyUrl ? `<a class="key" part="tone" href="${esc(keyUrl)}">${keyIcon}<span>${esc(t('Get a free API key'))}</span></a>` : ''}
+      ${keyUrl ? `<a class="key" part="tone" href="${esc(keyUrl)}" target="_blank" rel="noopener">${keyIcon}<span>${esc(t('Get a free API key'))}</span></a>` : ''}
       <a class="help" part="tone" href="https://discord.gg/qMu5Xn8Kaq" target="_blank" rel="noopener" data-tip="${esc(t('Talk to a human engineer'))}" aria-label="${esc(t('Talk to a human engineer on Discord'))}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z"/></svg></a>
       <a class="give" href="https://github.com/sponsors/flisk-sh" target="_blank" rel="noopener" aria-label="${esc(t('Help us explore more: sponsor Flisk on GitHub'))}"${PRODUCT ? tip(t('Help us explore more'), t('Sponsor Flisk on GitHub')) : ` title="${esc(t('Sponsor Flisk on GitHub'))}"`}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.25s-5.75-3.4-5.75-7.6A3.15 3.15 0 0 1 8 4.7a3.15 3.15 0 0 1 5.75 1.95c0 4.2-5.75 7.6-5.75 7.6z"/></svg><span>${esc(t('Help us explore more'))}</span></a>
       ${acct ? `<div class="menu acct"><button class="me" part="tone" type="button" aria-expanded="false" aria-controls="macct" aria-label="${esc(t('Account'))}"></button><div class="panel" part="tone" id="macct" hidden></div></div>` : ''}
