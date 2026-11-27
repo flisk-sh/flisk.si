@@ -20,6 +20,11 @@ check.(src.include?('keyItem}'), 'the Products menu must carry the free key item
 check.(src.include?('.every-link, .key { display: none; }'), 'the pill must be hidden on a phone')
 check.(src.include?('nav.tight .key { display: none; }') || src.include?('nav.tight .key {'), 'the pill must be hidden on the compact (.tight) bar')
 check.(src.scan(/\.item\.keyitem \{ display: flex; \}/).size >= 2, 'the Products menu item must show on the phone bar and on the .tight bar')
+# The last-resort steps of the narrow bar: without them the profile icon is clipped on a 375px product bar.
+check.(src.include?("for (const step of ['tight', 'tighter', 'tightest'])"), 'fit() must try tight, tighter, then tightest')
+check.(src.include?("nav.classList.remove('tight', 'tighter', 'tightest')"), 'fit() must clear all three steps before measuring')
+check.(src.include?('nav.tighter .menu.acct { margin-left: 0; margin-right: 0; }'), 'the tighter bar must drop the margins between its controls')
+check.(src.include?('nav.tightest .first { display: none; }'), 'the tightest bar must drop the first-product chip')
 %w[nl de].each do |lang|
   check.(src.match?(/^\s*#{lang}: \{.*?'Get a free API key': '[^']+'/m), "the #{lang} bar words must translate 'Get a free API key'")
 end
